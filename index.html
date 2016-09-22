@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="https://lipis.github.io/bootstrap-social/assets/css/font-awesome.css"/>
         <meta name="google-signin-scope" content="profile email">
         <meta name="google-signin-client_id" content="867236501816-d2t9lddp7qj7749tdqnto35foko2vii0.apps.googleusercontent.com">
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </head>
     <body>
         <h1 class="text-center">Biegi</h1>
@@ -30,6 +29,14 @@ function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
 };
+$(document).ready(function() {
+    $.ajax({
+        url: "http://run.metadetron.com/Biegi/auth"
+    }).then(function(data) {
+       console.log(data);
+    });
+});
         </script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </body>
 </html>
