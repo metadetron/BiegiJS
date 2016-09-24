@@ -5,4 +5,5 @@ body {
 div.portlet {
     padding: 10px;
     border: 1px solid lightgray;
+    margin-bottom: 30px;
 }
