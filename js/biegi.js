@@ -44,46 +44,10 @@
 
             function drawAxisTickColors() {
                 var data = new google.visualization.DataTable();
-                data.addColumn('timeofday', 'Time of Day');
-                data.addColumn('number', 'Motivation Level');
+                data.addColumn('string', 'Month');
+                data.addColumn('number', 'Distance');
                 var options = {
-                    title: 'Motivation and Energy Level Throughout the Day',
-                    focusTarget: 'category',
-                    hAxis: {
-                        title: 'Time of Day',
-                        format: 'h:mm a',
-                        viewWindow: {
-                            min: [7, 30, 0],
-                            max: [17, 30, 0]
-                        },
-                        textStyle: {
-                            fontSize: 14,
-                            color: '#053061',
-                            bold: true,
-                            italic: false
-                        },
-                        titleTextStyle: {
-                            fontSize: 18,
-                            color: '#053061',
-                            bold: true,
-                            italic: false
-                        }
-                    },
-                    vAxis: {
-                        title: 'Rating (scale of 1-10)',
-                        textStyle: {
-                            fontSize: 18,
-                            color: '#67001f',
-                            bold: false,
-                            italic: false
-                        },
-                        titleTextStyle: {
-                            fontSize: 18,
-                            color: '#67001f',
-                            bold: true,
-                            italic: false
-                        }
-                    }
+                    title: 'Distance per month'
                 };
                 // wywolaj api pobierajace liste danych
                 $.ajax({
