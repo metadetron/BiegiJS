@@ -54,7 +54,6 @@
                     url: "http://run.metadetron.com/Biegi/month/"
                 }).then(function(months) {
                     data.addRows(months);
-                    view.render();                
                     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
                     chart.draw(data, options);
                 });
