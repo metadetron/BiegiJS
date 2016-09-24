@@ -9,7 +9,7 @@
 
   var Months = Backbone.Collection.extend({
     model: Month,
-    url:"http://run.metadetron.com/Biegi/miesiac/"
+    url:"http://run.metadetron.com/Biegi/month/"
   });
 
 ////////////////////////////// V I E W S /////////////////////////////////
