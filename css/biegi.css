@@ -1,9 +1,27 @@
 body { 
     padding-top: 70px; 
+    /* background-color: #D7F7F9; */
 }
 
 div.portlet {
-    padding: 10px;
     border: 1px solid lightgray;
     margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+div.portlet div.title, div.portlet div.body {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+div.portlet div.title {
+    border-bottom: 1px solid lightgrey;
+    background-color: #FAFAFA;
+    border-radius: 4px 4px 0px 0px;
+    font-weight: bold;
+}
+
+div.portlet div.body {
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 4px 4px;
 }
