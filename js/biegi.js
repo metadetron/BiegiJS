@@ -107,8 +107,8 @@
                             var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
                             chart.draw(data, options);
                         },
-                        error: function(model, response) {            
-                            alert(response.statusText);
+                        error: function(model, response) {
+                            alert(response.responseText);
                         }
                     }
                 );
