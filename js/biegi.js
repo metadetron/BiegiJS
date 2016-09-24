@@ -8,7 +8,11 @@
             this.render(); // samorenderujacego sie na starcie 
         },
         render: function(){
-            $(this.el).append("<ul> <li>hello world</li> </ul>");
+            $.get('tpl/portlet.html', 
+                function(data) {
+                    $(this.el).append( _.template(data));
+                }, 
+                'html');
         }
     });
     new LorumView();
