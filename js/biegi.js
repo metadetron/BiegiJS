@@ -1,17 +1,5 @@
 ////////////////////////////// M O D E L S ////////////////////////////////////
 
-  var Month = Backbone.Model.extend({
-    defaults: {
-      date: null,
-      distance: 0
-    }
-  });
-
-  var Months = Backbone.Collection.extend({
-    model: Month,
-    url:"http://run.metadetron.com/Biegi/month/"
-  });
-
 ////////////////////////////// V I E W S /////////////////////////////////
 
 // co tu sie dzieje sie?
@@ -98,20 +86,14 @@
                     }
                 };
                 // wywolaj api pobierajace liste danych
-                var months = new Months();
-                months.fetch(
-                    {
-                        success: function() {            
-                            data.addRows(months);
-                            view.render();                
-                            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-                            chart.draw(data, options);
-                        },
-                        error: function(model, response) {
-                            alert(response.responseText);
-                        }
-                    }
-                );
+                $.ajax({
+                    url: "http://run.metadetron.com/Biegi/month/"
+                }).then(function(months) {
+                    data.addRows(months);
+                    view.render();                
+                    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                    chart.draw(data, options);
+                });
             }            
         }
     });
