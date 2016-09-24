@@ -8,9 +8,10 @@
             this.render(); // samorenderujacego sie na starcie 
         },
         render: function(){
+            var that = this;
             $.get('tpl/portlet.html', 
                 function(data) {
-                    $(this.el).append( _.template(data));
+                    $(that.el).append( _.template(data));
                 }, 
                 'html');
         }
