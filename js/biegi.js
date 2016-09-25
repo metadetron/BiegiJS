@@ -1,7 +1,8 @@
 ////////////////////////////// M O D E L S ////////////////////////////////////
 var StatsModel = Backbone.Model.extend({
+    urlRoot: 'http://run.metadetron.com/Biegi/stats/', 
     defaults: {
-        currentDate: "TESCIOR!",
+        currentDate: null,
         runCount: null,
         lastRun: null,
         totalDistance: null
