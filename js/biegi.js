@@ -128,7 +128,7 @@ var PBCollection = Backbone.Collection.extend({
                     var compiledTemplate = _.template(data);
                     $(that.el).append(compiledTemplate());
                     _.each(that.model.models, function (pbModel) {
-                        new PBView({model: pbModel}).render($("pbs"));
+                        new PBView({model: pbModel}).render($('tbody.body#pbs'));
                     }, this);                    
                 }, 
                 'html'
