@@ -1,3 +1,5 @@
+// UWAGA! Ta wersja jeszcze nie keszuje templateow!
+
 ////////////////////////////// M O D E L S ////////////////////////////////////
 var StatsModel = Backbone.Model.extend({
     urlRoot: 'http://run.metadetron.com/Biegi/stats/', 
@@ -107,7 +109,7 @@ var PBCollection = Backbone.Collection.extend({
             $.get('tpl/pb.html', 
                 function(data) {
                     var compiledTemplate = _.template(data);
-                    $(that.el).append(compiledTemplate());
+                    $(that.el).append(compiledTemplate(that.model.toJSON()));
                 }, 
                 'html'
             );
