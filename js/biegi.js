@@ -94,7 +94,7 @@ var StatsModel = Backbone.Model.extend({
             $.get('tpl/pbs.html', 
                 function(data) {
                     var compiledTemplate = _.template(data);
-                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                    $(that.el).append(compiledTemplate());
                 }, 
                 'html'
             );
