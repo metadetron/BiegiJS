@@ -63,8 +63,8 @@ var StatsModel = Backbone.Model.extend({
             var that = this;
             $.get('tpl/stats.html', 
                 function(data) {
-                    var template = _.template(data);
-                    $(that.el).append(template(that.model.toJSON()));
+                    var compiledTemplate = _.template(data);
+                    $(that.el).append(compiledTemplate(that.model.toJSON()));
                 }, 
                 'html'
             );
