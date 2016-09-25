@@ -71,5 +71,7 @@ var StatsModel = Backbone.Model.extend({
             );
         }
     });
-    new StatsView({model: new StatsModel()});
+    var stats = new StatsModel({id: 0});
+    stats.fetch();
+    new StatsView({model: stats});
 })(jQuery);
