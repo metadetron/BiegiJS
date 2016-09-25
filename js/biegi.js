@@ -80,3 +80,25 @@ var StatsModel = Backbone.Model.extend({
         }
     );
 })(jQuery);
+
+(function($){
+    // definicja widoku
+    var PBSView = Backbone.View.extend({
+        el: $('#col_right'), // renderowanego w tym elemencie
+        initialize: function(){
+            _.bindAll(this, 'render'); // zeby metody znaly "this" 
+            this.render(); // samorenderujacego sie na starcie 
+        },
+        render: function(){
+            var that = this;
+            $.get('tpl/pbs.html', 
+                function(data) {
+                    var compiledTemplate = _.template(data);
+                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                }, 
+                'html'
+            );
+        }
+    });
+    new PBSView();
+})(jQuery);
