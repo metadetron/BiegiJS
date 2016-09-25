@@ -11,6 +11,19 @@ var StatsModel = Backbone.Model.extend({
     }
 });
 
+var PBModel = Backbone.Model.extend({
+    defaults: {
+        track: null,
+        time: null
+    },
+    initialize: function(){        
+    }
+});
+
+var PBCollection = Backbone.Collection.extend({
+    url: 'http://run.metadetron.com/Biegi/pb/',
+    model: PBModel 
+});
 
 ////////////////////////////// V I E W S /////////////////////////////////
 (function($){
@@ -83,6 +96,27 @@ var StatsModel = Backbone.Model.extend({
 
 (function($){
     // definicja widoku
+    var PBView = Backbone.View.extend({
+        el: $('tbody.body#pbs'), // renderowanego w tym elemencie
+        initialize: function(){
+            _.bindAll(this, 'render'); // zeby metody znaly "this" 
+            this.render(); // samorenderujacego sie na starcie 
+        },
+        render: function(){
+            var that = this;
+            $.get('tpl/pb.html', 
+                function(data) {
+                    var compiledTemplate = _.template(data);
+                    $(that.el).append(compiledTemplate());
+                }, 
+                'html'
+            );
+        }
+    });
+})(jQuery);
+
+(function($){
+    // definicja widoku
     var PBSView = Backbone.View.extend({
         el: $('#col_right'), // renderowanego w tym elemencie
         initialize: function(){
@@ -95,10 +129,20 @@ var StatsModel = Backbone.Model.extend({
                 function(data) {
                     var compiledTemplate = _.template(data);
                     $(that.el).append(compiledTemplate());
+                    _.each(that.model.models, function (pbModel) {
+                        new PBView({model: pbModel});
+                    }, this);                    
                 }, 
                 'html'
             );
         }
     });
-    new PBSView();
+    var pbCollection = new PBCollection();
+    pbCollection.fetch(
+        {
+            success: function() {
+                new PBSView({model: pbCollection});
+            }
+        }
+    );
 })(jQuery);
