@@ -1,4 +1,15 @@
 ////////////////////////////// M O D E L S ////////////////////////////////////
+var StatsModel = Backbone.Model.extend({
+    defaults: {
+        currentDate: "TESCIOR!",
+        runCount: null,
+        lastRun: null,
+        totalDistance: null
+    },
+    initialize: function(){        
+    }
+});
+
 
 ////////////////////////////// V I E W S /////////////////////////////////
 (function($){
@@ -52,11 +63,11 @@
             var that = this;
             $.get('tpl/stats.html', 
                 function(data) {
-                    $(that.el).append( _.template(data));
+                    $(that.el).append( _.template(data)(this.model.toJSON()));
                 }, 
                 'html'
             );
         }
     });
-    new StatsView();
+    new StatsView({model: new StatsModel()});
 })(jQuery);
