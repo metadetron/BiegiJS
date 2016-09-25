@@ -113,9 +113,6 @@ var PBCollection = Backbone.Collection.extend({
             );
         }
     });
-})(jQuery);
-
-(function($){
     // definicja widoku
     var PBSView = Backbone.View.extend({
         el: $('#col_right'), // renderowanego w tym elemencie
