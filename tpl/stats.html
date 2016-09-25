@@ -1,9 +1,20 @@
 <div class="portlet">
     <div class="title">Statystyki</div>
     <div class="body">
+        <img id="profilePhoto"></img>
         <div>Dzisiaj jest <%= currentDate %>.</div>
 	    <div>Ilość biegów do tej pory:  <%= runCount %>.</div>
 	    <div>Ostatni bieg w systemie: <%= lastRun %>.</div>
 	    <div><strong>Łącznie przebiegniętych: <%= totalDistance %> kilometrów!</strong></div>
     </div>
 </div>
+<script type="text/javascript">
+    var profile = googleUser.getBasicProfile();
+    $("#profilePhoto").attr("src", profile.getImageUrl());
+/*    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + );
+    console.log("Email: " + profile.getEmail()); */
+</script>
