@@ -62,3 +62,24 @@
     });
     new ChartView();
 })(jQuery);
+
+(function($){
+    // definicja widoku
+    var StatsView = Backbone.View.extend({
+        el: $('#col_left'), // renderowanego w tym elemencie
+        initialize: function(){
+            _.bindAll(this, 'render'); // zeby metody znaly "this" 
+            this.render(); // samorenderujacego sie na starcie 
+        },
+        render: function(){
+            var that = this;
+            $.get('tpl/stats.html', 
+                function(data) {
+                    $(that.el).append( _.template(data));
+                }, 
+                'html'
+            );
+        }
+    });
+    new StatsView();
+})(jQuery);
