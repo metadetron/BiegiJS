@@ -99,17 +99,16 @@ var PBCollection = Backbone.Collection.extend({
 (function($){
     // definicja widoku
     var PBView = Backbone.View.extend({
-        el: $('tbody.body#pbs'), // renderowanego w tym elemencie
+        el: null, // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
-            this.render(); // samorenderujacego sie na starcie 
         },
-        render: function(){
+        render: function(elem){
             var that = this;
             $.get('tpl/pb.html', 
                 function(data) {
                     var compiledTemplate = _.template(data);
-                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                    elem.append(compiledTemplate(that.model.toJSON()));
                 }, 
                 'html'
             );
@@ -129,7 +128,7 @@ var PBCollection = Backbone.Collection.extend({
                     var compiledTemplate = _.template(data);
                     $(that.el).append(compiledTemplate());
                     _.each(that.model.models, function (pbModel) {
-                        $('tbody.body#pbs').append(new PBView({model: pbModel}).el);
+                        new PBView({model: pbModel}).render($("pbs"));
                     }, this);                    
                 }, 
                 'html'
