@@ -25,3 +25,14 @@ body {
     background-color: #FFFFFF;
     border-radius: 0px 0px 4px 4px;
 }
+
+#profilePhoto {
+    border-radius: 10px;
+}
+
+div#fullName {
+    background-color: #EEEEEE;
+    margin: 10px -10px;
+    padding: 5px;
+    font-weight: bold;
+}
