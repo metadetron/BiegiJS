@@ -38,7 +38,7 @@
         },
         render: function(){
             var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= message %></div>');
-            $(that.el).append(compiledTemplate(this.message));
+            $(this.el).append(compiledTemplate(this.message));
         }
     });
 
