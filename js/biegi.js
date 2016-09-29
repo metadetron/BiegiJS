@@ -29,6 +29,20 @@ var PBCollection = Backbone.Collection.extend({
 
 ////////////////////////////// V I E W S /////////////////////////////////
 (function($){
+    var ErrorView = Backbone.View.extend({
+        el: $('#error'), 
+        initialize: function(){
+            _.bindAll(this, 'render');  
+            this.render();  
+        },
+        render: function(){
+            var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= message %></div>');
+            $(that.el).append(compiledTemplate(this.message));
+        }
+    });
+})(jQuery);
+
+(function($){
     var ChartView = Backbone.View.extend({
         el: $('#col_middle'), 
         initialize: function(){
@@ -91,6 +105,9 @@ var PBCollection = Backbone.Collection.extend({
         {
             success: function() {
                 new StatsView({model: stats});
+            },
+            error: function(collection, response, options) {
+                new ErrorView({message: response.responseText});
             }
         }
     );
@@ -140,6 +157,9 @@ var PBCollection = Backbone.Collection.extend({
         {
             success: function() {
                 new PBSView({model: pbCollection});
+            },
+            error: function(collection, response, options) {
+                new ErrorView({message: response.responseText});
             }
         }
     );
