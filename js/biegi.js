@@ -37,7 +37,7 @@
             this.render();  
         },
         render: function(){
-            var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= message %></div>');
+            var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= responseText %></div>');
             $(this.el).append(compiledTemplate(this.message));
         }
     });
@@ -107,7 +107,7 @@
                     new StatsView({model: stats});
                 },
                 error: function(collection, response, options) {
-                    new ErrorView({message: response.responseText});
+                    new ErrorView({model: response});
                 }
             }
         );
@@ -159,7 +159,7 @@
                     new PBSView({model: pbCollection});
                 },
                 error: function(collection, response, options) {
-                    new ErrorView({message: response.responseText});
+                    new ErrorView({model: response});
                 }
             }
         );
