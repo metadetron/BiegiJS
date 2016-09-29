@@ -30,19 +30,17 @@
     });
 
     ////////////////////////////// V I E W S /////////////////////////////////
-    (function($){
-        var ErrorView = Backbone.View.extend({
-            el: $('#error'), 
-            initialize: function(){
-                _.bindAll(this, 'render');  
-                this.render();  
-            },
-            render: function(){
-                var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= message %></div>');
-                $(that.el).append(compiledTemplate(this.message));
-            }
-        });
-    })(jQuery);
+    var ErrorView = Backbone.View.extend({
+        el: $('#error'), 
+        initialize: function(){
+            _.bindAll(this, 'render');  
+            this.render();  
+        },
+        render: function(){
+            var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= message %></div>');
+            $(that.el).append(compiledTemplate(this.message));
+        }
+    });
 
     (function($){
         var ChartView = Backbone.View.extend({
