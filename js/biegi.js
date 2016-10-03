@@ -51,31 +51,33 @@ var biegiApp = (function(){
                 this.render();  
             },
             render: function(){
-                var that = this;
-                $.get('tpl/chart.html', 
-                    function(data) {
-                        $(that.el).append( _.template(data));
-                    }, 
-                    'html'
-                );
-                google.charts.load('current', {packages: ['corechart', 'bar']});
-                google.charts.setOnLoadCallback(drawAxisTickColors);
+                if (isAuthenticated()) {
+                    var that = this;
+                    $.get('tpl/chart.html', 
+                        function(data) {
+                            $(that.el).append( _.template(data));
+                        }, 
+                        'html'
+                    );
+                    google.charts.load('current', {packages: ['corechart', 'bar']});
+                    google.charts.setOnLoadCallback(drawAxisTickColors);
 
-                function drawAxisTickColors() {
-                    var data = new google.visualization.DataTable();
-                    data.addColumn('string', 'Month');
-                    data.addColumn('number', 'Distance');
-                    var options = {
-                        title: 'Distance per month'
-                    };
-                    // wywolaj api pobierajace liste danych
-                    $.ajax({
-                        url: "http://run.metadetron.com/Biegi/month/"
-                    }).then(function(months) {
-                        data.addRows(months);
-                        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-                        chart.draw(data, options);
-                    });
+                    function drawAxisTickColors() {
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('string', 'Month');
+                        data.addColumn('number', 'Distance');
+                        var options = {
+                            title: 'Distance per month'
+                        };
+                        // wywolaj api pobierajace liste danych
+                        $.ajax({
+                            url: "http://run.metadetron.com/Biegi/month/"
+                        }).then(function(months) {
+                            data.addRows(months);
+                            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                            chart.draw(data, options);
+                        });
+                    }
                 }            
             }
         });
