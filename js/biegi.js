@@ -3,6 +3,17 @@
 var biegiApp = (function($){
     var _isAuthenticated = null;
 
+    var isAuthenticated = function() {
+        if (_isAuthenticated == -1) {
+            isAuthenticated(function() {
+                _isAuthenticated = 1;
+            }, function() {
+                _isAuthenticated = 0;
+            });            
+        }
+        return _isAuthenticated == 1;
+    }
+
     ////////////////////////////// M O D E L S ////////////////////////////////////
     var StatsModel = Backbone.Model.extend({
         urlRoot: 'http://run.metadetron.com/Biegi/stats/', 
@@ -50,7 +61,7 @@ var biegiApp = (function($){
             this.render();  
         },
         render: function(){
-            if (isAuthenticated()) {
+            if (isAuthenticated() == 1) {
                 var that = this;
                 $.get('tpl/chart.html', 
                     function(data) {
@@ -191,17 +202,6 @@ var biegiApp = (function($){
                 onNo();
             }
         });
-    }
-
-    function isAuthenticated() {
-        if (_isAuthenticated == -1) {
-            isAuthenticated(function() {
-                _isAuthenticated = 1;
-            }, function() {
-                _isAuthenticated = 0;
-            });            
-        }
-        return _isAuthenticated == 1;
     }
 
     return {
