@@ -50,13 +50,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script>
-$(document).ready(function() {
-    $.ajax({
-        url: "http://run.metadetron.com/Biegi/auth"
-    }).then(function(data) {
-       console.log(data);
-    });
-});
+            isAuthenticated(function() {
+                alert(":-)");
+            }, function() {
+                alert(":-(");
+            });
         </script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="js/biegi.js"></script>

@@ -184,7 +184,20 @@ var biegiApp = (function(){
         console.log("ID Token: " + id_token); */
     };
 
+    function isAuthenticated(onYes, onNo) {
+        $.ajax({
+            url: "http://run.metadetron.com/Biegi/auth"
+        }).then(function(data) {
+            if (data == 1) {
+                onYes();
+            } else {
+                onNo();
+            }
+        });
+    }
+
     return {
+        isAuthenticated: isAuthenticated,
         onSignIn: onSignIn
     };
 })();
