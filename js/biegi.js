@@ -60,7 +60,7 @@ var biegiApp = (function($){
             this.render();  
         },
         render: function(){
-            if (isAuthenticated() == 1) {
+            if (isAuthenticated()) {
                 var that = this;
                 $.get('tpl/chart.html', 
                     function(data) {
