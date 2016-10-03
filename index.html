@@ -52,11 +52,11 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="js/biegi.js"></script>
         <script>
-            biegiApp.isAuthenticated(function() {
-                alert(":-)");
-            }, function() {
-                alert(":-(");
-            });
+            if (biegiApp.isAuthenticated()) {
+                alert("TAK!");
+            } else {
+                alert("NIE");
+            }
         </script>
     </body>
 </html>

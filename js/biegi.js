@@ -1,6 +1,7 @@
 // UWAGA! Ta wersja jeszcze nie keszuje templateow!
 
 var biegiApp = (function(){
+    var _isAuthenticated = null;
 
     ////////////////////////////// M O D E L S ////////////////////////////////////
     var StatsModel = Backbone.Model.extend({
@@ -184,7 +185,7 @@ var biegiApp = (function(){
         console.log("ID Token: " + id_token); */
     };
 
-    function isAuthenticated(onYes, onNo) {
+    function authenticated(onYes, onNo) {
         $.ajax({
             url: "http://run.metadetron.com/Biegi/auth"
         }).then(function(data) {
@@ -194,6 +195,17 @@ var biegiApp = (function(){
                 onNo();
             }
         });
+    }
+
+    function isAuthenticated() {
+        if (_isAuthenticated == -1) {
+            isAuthenticated(function() {
+                _isAuthenticated = 1;
+            }, function() {
+                _isAuthenticated = 0;
+            });            
+        }
+        return _isAuthenticated == 1;
     }
 
     return {
