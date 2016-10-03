@@ -52,7 +52,7 @@ $.ajax({
                 this.render();  
             },
             render: function(){
-                if (isAuthenticated()) {
+                if (isAuthenticated) {
                     var that = this;
                     $.get('tpl/chart.html', 
                         function(data) {
@@ -92,14 +92,16 @@ $.ajax({
                 this.render(); // samorenderujacego sie na starcie 
             },
             render: function(){
-                var that = this;
-                $.get('tpl/stats.html', 
-                    function(data) {
-                        var compiledTemplate = _.template(data);
-                        $(that.el).append(compiledTemplate(that.model.toJSON()));
-                    }, 
-                    'html'
-                );
+                if (isAuthenticated) {
+                    var that = this;
+                    $.get('tpl/stats.html', 
+                        function(data) {
+                            var compiledTemplate = _.template(data);
+                            $(that.el).append(compiledTemplate(that.model.toJSON()));
+                        }, 
+                        'html'
+                    );
+                }
             }
         });
         var stats = new StatsModel({id: 0});
@@ -139,17 +141,19 @@ $.ajax({
                 this.render(); // samorenderujacego sie na starcie 
             },
             render: function(){
-                var that = this;
-                $.get('tpl/pbs.html', 
-                    function(data) {
-                        var compiledTemplate = _.template(data);
-                        $(that.el).append(compiledTemplate());
-                        _.each(that.model.models, function (pbModel) {
-                            new PBView({model: pbModel}).render($('tbody.body#pbs'));
-                        }, this);                    
-                    }, 
-                    'html'
-                );
+                if (isAuthenticated) {                
+                    var that = this;
+                    $.get('tpl/pbs.html', 
+                        function(data) {
+                            var compiledTemplate = _.template(data);
+                            $(that.el).append(compiledTemplate());
+                            _.each(that.model.models, function (pbModel) {
+                                new PBView({model: pbModel}).render($('tbody.body#pbs'));
+                            }, this);                    
+                        }, 
+                        'html'
+                    );
+                }
             }
         });
         var pbCollection = new PBCollection();
