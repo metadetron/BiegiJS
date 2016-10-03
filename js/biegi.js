@@ -3,26 +3,13 @@
 var biegiApp = (function($){
     var _isAuthenticated = null;
 
-    var askServerIfAuthenticated = function(onYes, onNo) {
-        $.ajax({
-            url: "http://run.metadetron.com/Biegi/auth"
-        }).then(function(data) {
-            if (data == 1) {
-                onYes();
-            } else {
-                onNo();
-            }
-        });
-    }
+    $.ajax({
+        url: "http://run.metadetron.com/Biegi/auth"
+    }).then(function(data) {
+        _isAuthenticated = data;
+    });
 
     var isAuthenticated = function() {
-        if (_isAuthenticated === null) {
-            askServerIfAuthenticated(function() {
-                _isAuthenticated = 1;
-            }, function() {
-                _isAuthenticated = 0;
-            });            
-        }
         return _isAuthenticated == 1;
     }
 
