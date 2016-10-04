@@ -1,9 +1,11 @@
 // UWAGA! Ta wersja jeszcze nie keszuje templateow!
 
+var biegiApp = null;
+
 $.ajax({
     url: "http://run.metadetron.com/Biegi/auth"
 }).then(function(data) {    
-    var biegiApp = (function($){
+    biegiApp = (function($){
 
         ////////////////////////////// M O D E L S ////////////////////////////////////
         var StatsModel = Backbone.Model.extend({
@@ -163,7 +165,7 @@ $.ajax({
         );
 
         ///////////////////////// UTILS ///////////////////////////
-        function onSignIn(googleUser) {
+        var onSignIn = function (googleUser) {
             // Useful data for your client-side scripts:
             var profile = googleUser.getBasicProfile();
             $("#profilePhoto").attr("src", profile.getImageUrl());
