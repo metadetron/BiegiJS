@@ -191,4 +191,7 @@ $.ajax({
             onSignIn: onSignIn
         };
     })(jQuery, data == 1);
+}, function(data) {
+    console.log(data);
+    alert("No access");
 });
