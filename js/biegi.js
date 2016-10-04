@@ -3,7 +3,7 @@
 $.ajax({
     url: "http://run.metadetron.com/Biegi/auth"
 }).then(function(data) {    
-    var biegiApp = (function($, isAuthenticated){
+    var biegiApp = (function($){
 
         ////////////////////////////// M O D E L S ////////////////////////////////////
         var StatsModel = Backbone.Model.extend({
@@ -52,34 +52,32 @@ $.ajax({
                 this.render();  
             },
             render: function(){
-                if (isAuthenticated) {
-                    var that = this;
-                    $.get('tpl/chart.html', 
-                        function(data) {
-                            $(that.el).append( _.template(data));
-                        }, 
-                        'html'
-                    );
-                    google.charts.load('current', {packages: ['corechart', 'bar']});
-                    google.charts.setOnLoadCallback(drawAxisTickColors);
+                var that = this;
+                $.get('tpl/chart.html', 
+                    function(data) {
+                        $(that.el).append( _.template(data));
+                    }, 
+                    'html'
+                );
+                google.charts.load('current', {packages: ['corechart', 'bar']});
+                google.charts.setOnLoadCallback(drawAxisTickColors);
 
-                    function drawAxisTickColors() {
-                        var data = new google.visualization.DataTable();
-                        data.addColumn('string', 'Month');
-                        data.addColumn('number', 'Distance');
-                        var options = {
-                            title: 'Distance per month'
-                        };
-                        // wywolaj api pobierajace liste danych
-                        $.ajax({
-                            url: "http://run.metadetron.com/Biegi/month/"
-                        }).then(function(months) {
-                            data.addRows(months);
-                            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-                            chart.draw(data, options);
-                        });
-                    }
-                }            
+                function drawAxisTickColors() {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'Month');
+                    data.addColumn('number', 'Distance');
+                    var options = {
+                        title: 'Distance per month'
+                    };
+                    // wywolaj api pobierajace liste danych
+                    $.ajax({
+                        url: "http://run.metadetron.com/Biegi/month/"
+                    }).then(function(months) {
+                        data.addRows(months);
+                        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                        chart.draw(data, options);
+                    });
+                }
             }
         });
         new ChartView();
@@ -92,16 +90,14 @@ $.ajax({
                 this.render(); // samorenderujacego sie na starcie 
             },
             render: function(){
-                if (isAuthenticated) {
-                    var that = this;
-                    $.get('tpl/stats.html', 
-                        function(data) {
-                            var compiledTemplate = _.template(data);
-                            $(that.el).append(compiledTemplate(that.model.toJSON()));
-                        }, 
-                        'html'
-                    );
-                }
+                var that = this;
+                $.get('tpl/stats.html', 
+                    function(data) {
+                        var compiledTemplate = _.template(data);
+                        $(that.el).append(compiledTemplate(that.model.toJSON()));
+                    }, 
+                    'html'
+                );
             }
         });
         var stats = new StatsModel({id: 0});
@@ -141,19 +137,17 @@ $.ajax({
                 this.render(); // samorenderujacego sie na starcie 
             },
             render: function(){
-                if (isAuthenticated) {                
-                    var that = this;
-                    $.get('tpl/pbs.html', 
-                        function(data) {
-                            var compiledTemplate = _.template(data);
-                            $(that.el).append(compiledTemplate());
-                            _.each(that.model.models, function (pbModel) {
-                                new PBView({model: pbModel}).render($('tbody.body#pbs'));
-                            }, this);                    
-                        }, 
-                        'html'
-                    );
-                }
+                var that = this;
+                $.get('tpl/pbs.html', 
+                    function(data) {
+                        var compiledTemplate = _.template(data);
+                        $(that.el).append(compiledTemplate());
+                        _.each(that.model.models, function (pbModel) {
+                            new PBView({model: pbModel}).render($('tbody.body#pbs'));
+                        }, this);                    
+                    }, 
+                    'html'
+                );
             }
         });
         var pbCollection = new PBCollection();
@@ -190,8 +184,25 @@ $.ajax({
         return {
             onSignIn: onSignIn
         };
-    })(jQuery, data == 1);
+    })(jQuery);
 }, function(data) {
-    console.log(data);
-    alert("No access");
+    // definicja widoku
+    var LogInView = Backbone.View.extend({
+        el: $('#col_middle'), // renderowanego w tym elemencie
+        initialize: function(){
+            _.bindAll(this, 'render'); // zeby metody znaly "this" 
+            this.render(); // samorenderujacego sie na starcie 
+        },
+        render: function(){
+            var that = this;
+            $.get('tpl/login.html', 
+                function(data) {
+                    var compiledTemplate = _.template(data);
+                    $(that.el).append(compiledTemplate());
+                }, 
+                'html'
+            );
+        }
+    });
+    new LogInView();
 });
