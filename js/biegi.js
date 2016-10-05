@@ -1,4 +1,20 @@
 // UWAGA! Ta wersja jeszcze nie keszuje templateow!
+var AppRouter = Backbone.Router.extend({
+    routes: {
+        "login": "login",
+        "": "dashboard",
+        "dashboard": "dashboard"
+    },
+    login: function() {
+alert("login");
+    },
+    dashboard: function() {
+alert("dashboard");        
+    }
+    
+});
+new AppRouter();
+Backbone.history.start();
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
