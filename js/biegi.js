@@ -1,7 +1,12 @@
 // UWAGA! Ta wersja jeszcze nie keszuje templateow!
 
 function onSignIn(googleUser) {
-    location.reload();
+    var profile = googleUser.getBasicProfile();
+    console.log(profile);
+    var authResponse = googleUser.getAuthResponse();
+    console.log(authResponse);
+    // location.reload();
+
     // Useful data for your client-side scripts:
 //    var profile = googleUser.getBasicProfile();
 //    $("#profilePhoto").attr("src", profile.getImageUrl());
