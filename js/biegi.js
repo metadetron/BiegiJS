@@ -116,9 +116,6 @@ var StatsView = Backbone.View.extend({
                 var compiledTemplate = _.template(data);
                 $(that.el).empty();
                 $(that.el).append(compiledTemplate(that.model.toJSON()));
-                var profile = googleUser.getBasicProfile();
-                $("#profilePhoto").attr("src", profile.getImageUrl());
-                $("#fullName").text(profile.getName());                
             }, 
             'html'
         );
@@ -222,6 +219,8 @@ function onSignIn(googleUser) {
     $.post("http://run.metadetron.com/Biegi/auth", { google_id: authResponse.id_token}).done(function( data ) {
         console.log(data);
         appRouter.navigate("dashboard", {trigger: true});
+        $("#profilePhoto").attr("src", profile.getImageUrl());
+        $("#fullName").text(profile.getName());                
     });
     // location.reload();
 
