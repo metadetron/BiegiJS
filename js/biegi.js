@@ -169,6 +169,7 @@ var AppRouter = Backbone.Router.extend({
         new LogInView();
     },
     dashboard: function() {
+        console.log("dashboard called");
         $.ajax({
             url: "http://run.metadetron.com/Biegi/auth"
         }).then(function(data) {    
