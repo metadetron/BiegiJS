@@ -41,6 +41,7 @@ var LogInView = Backbone.View.extend({
                 var compiledTemplate = _.template(data);
                 $('#col_left').empty();
                 $('#col_right').empty();
+                $(that.el).empty();
                 $(that.el).append(compiledTemplate());
             }, 
             'html'
