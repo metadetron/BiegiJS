@@ -208,7 +208,10 @@ function onSignIn(googleUser) {
     console.log(profile);
     var authResponse = googleUser.getAuthResponse();
     console.log(authResponse);
-    appRouter.navigate("dashboard", {trigger: true});
+    $.post("http://run.metadetron.com/Biegi/auth", { google_id: authResponse.id_token}).done(function( data ) {
+        console.log(data);
+        appRouter.navigate("dashboard", {trigger: true});
+    });
     // location.reload();
 
     // Useful data for your client-side scripts:
