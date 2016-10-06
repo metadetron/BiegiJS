@@ -32,8 +32,14 @@
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-      console.log('User signed out.');
-      appRouter.navigate("login", {trigger: true});
+        console.log('User signed out.');
+        $.ajax({
+            url: "http://run.metadetron.com/Biegi/auth",
+            type: 'DELETE',
+            success: function(result) {
+                appRouter.navigate("login", {trigger: true});
+            }
+        });            
     });
   }
 </script>                
