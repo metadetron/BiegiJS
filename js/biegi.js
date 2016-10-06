@@ -203,7 +203,7 @@ function onSignIn(googleUser) {
     console.log(profile);
     var authResponse = googleUser.getAuthResponse();
     console.log(authResponse);
-    appRouter.navigate("dashboard");
+    appRouter.navigate("dashboard", {trigger: true});
     // location.reload();
 
     // Useful data for your client-side scripts:
