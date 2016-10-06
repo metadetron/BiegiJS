@@ -36,6 +36,7 @@
         $.ajax({
             url: "http://run.metadetron.com/Biegi/auth",
             type: 'DELETE',
+            data: {id: 0},
             success: function(result) {
                 appRouter.navigate("login", {trigger: true});
             }
