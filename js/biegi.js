@@ -35,6 +35,7 @@ var LogInView = Backbone.View.extend({
         this.render(); // samorenderujacego sie na starcie 
     },
     render: function(){
+        console.log("Rendering LogInView...");
         $('#loginout').empty().append('<div class="g-signin2 navbar-right" data-onsuccess="onSignIn" data-theme="dark" data-width="wide"></div>');        
         var that = this;
         $.get('tpl/login.html', 
