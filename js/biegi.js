@@ -190,7 +190,7 @@ var AppRouter = Backbone.Router.extend({
                 }
             );
         }, function(data) {
-            this.login();
+            new LogInView();
         });
     }
     
