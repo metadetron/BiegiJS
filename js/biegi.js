@@ -174,6 +174,7 @@ var AppRouter = Backbone.Router.extend({
         $.ajax({
             url: "http://run.metadetron.com/Biegi/auth"
         }).then(function(data) {    
+            $('#loginout').empty().append('<button type="button" class="btn btn-default navbar-right" aria-label="Left Align" onclick="signOut();"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sign out</button>');
             new ChartView();
             var stats = new StatsModel({id: 0});
             stats.fetch(
@@ -198,6 +199,7 @@ var AppRouter = Backbone.Router.extend({
                 }
             );
         }, function(data) {
+            $('#loginout').empty().append('<div class="g-signin2 navbar-right" data-onsuccess="onSignIn" data-theme="dark" data-width="wide"></div>');
             new LogInView();
         });
     }
