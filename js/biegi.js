@@ -1,4 +1,5 @@
 // UWAGA! Ta wersja jeszcze nie keszuje templateow!
+
 ////////////////////////////// M O D E L S ////////////////////////////////////
 var StatsModel = Backbone.Model.extend({
     urlRoot: 'http://run.metadetron.com/Biegi/stats/', 
@@ -151,7 +152,7 @@ var PBSView = Backbone.View.extend({
     }
 });
 
-
+//////////////////////////////// R O U T E R ////////////////////////////////////
 var AppRouter = Backbone.Router.extend({
     routes: {
         "login": "login",
@@ -162,29 +163,35 @@ var AppRouter = Backbone.Router.extend({
         new LogInView();
     },
     dashboard: function() {
-        new ChartView();
-        var stats = new StatsModel({id: 0});
-        stats.fetch(
-            {
-                success: function() {
-                    new StatsView({model: stats});
-                },
-                error: function(collection, response, options) {
-                    new ErrorView({model: response});
+        $.ajax({
+            url: "http://run.metadetron.com/Biegi/auth"
+        }).then(function(data) {    
+            new ChartView();
+            var stats = new StatsModel({id: 0});
+            stats.fetch(
+                {
+                    success: function() {
+                        new StatsView({model: stats});
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
                 }
-            }
-        );
-        var pbCollection = new PBCollection();
-        pbCollection.fetch(
-            {
-                success: function() {
-                    new PBSView({model: pbCollection});
-                },
-                error: function(collection, response, options) {
-                    new ErrorView({model: response});
+            );
+            var pbCollection = new PBCollection();
+            pbCollection.fetch(
+                {
+                    success: function() {
+                        new PBSView({model: pbCollection});
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
                 }
-            }
-        );
+            );
+        }, function(data) {
+            this.login();
+        });
     }
     
 });
@@ -214,19 +221,3 @@ function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token); */
 };
-
-
-$.ajax({
-    url: "http://run.metadetron.com/Biegi/auth"
-}).then(function(data) {    
-    var biegiApp = (function($){
-
-
-        ////////////////////////////// V I E W S /////////////////////////////////
-
-        return {
-        };
-    })(jQuery);
-}, function(data) {
-    // definicja widoku
-});
