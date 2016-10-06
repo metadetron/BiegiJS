@@ -1,4 +1,22 @@
 // UWAGA! Ta wersja jeszcze nie keszuje templateow!
+var LogInView = Backbone.View.extend({
+    el: $('#col_middle'), // renderowanego w tym elemencie
+    initialize: function(){
+        _.bindAll(this, 'render'); // zeby metody znaly "this" 
+        this.render(); // samorenderujacego sie na starcie 
+    },
+    render: function(){
+        var that = this;
+        $.get('tpl/login.html', 
+            function(data) {
+                var compiledTemplate = _.template(data);
+                $(that.el).append(compiledTemplate());
+            }, 
+            'html'
+        );
+    }
+});
+
 var AppRouter = Backbone.Router.extend({
     routes: {
         "login": "login",
@@ -6,7 +24,7 @@ var AppRouter = Backbone.Router.extend({
         "dashboard": "dashboard"
     },
     login: function() {
-alert("login");
+        new LogInView();
     },
     dashboard: function() {
 alert("dashboard");        
@@ -208,22 +226,4 @@ $.ajax({
     })(jQuery);
 }, function(data) {
     // definicja widoku
-    var LogInView = Backbone.View.extend({
-        el: $('#col_middle'), // renderowanego w tym elemencie
-        initialize: function(){
-            _.bindAll(this, 'render'); // zeby metody znaly "this" 
-            this.render(); // samorenderujacego sie na starcie 
-        },
-        render: function(){
-            var that = this;
-            $.get('tpl/login.html', 
-                function(data) {
-                    var compiledTemplate = _.template(data);
-                    $(that.el).append(compiledTemplate());
-                }, 
-                'html'
-            );
-        }
-    });
-    new LogInView();
 });
