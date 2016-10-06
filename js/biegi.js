@@ -36,7 +36,8 @@ var LogInView = Backbone.View.extend({
     },
     render: function(){
         console.log("Rendering LogInView...");
-        $('#loginout').empty().append('<div class="g-signin2 navbar-right" data-onsuccess="onSignIn" data-theme="dark" data-width="wide"></div>');        
+        $('#login').hide();
+        $('#logout').show();
         var that = this;
         $.get('tpl/login.html', 
             function(data) {
@@ -176,7 +177,8 @@ var AppRouter = Backbone.Router.extend({
         $.ajax({
             url: "http://run.metadetron.com/Biegi/auth"
         }).then(function(data) {    
-            $('#loginout').empty().append('<button type="button" class="btn btn-default navbar-right" aria-label="Left Align" onclick="signOut();"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sign out</button>');
+            $('#login').hide();
+            $('#logout').show();
             new ChartView();
             var stats = new StatsModel({id: 0});
             stats.fetch(
