@@ -39,6 +39,7 @@ var LogInView = Backbone.View.extend({
         $.get('tpl/login.html', 
             function(data) {
                 var compiledTemplate = _.template(data);
+                $(that.el).empty();
                 $(that.el).append(compiledTemplate());
             }, 
             'html'
@@ -54,6 +55,7 @@ var ErrorView = Backbone.View.extend({
     },
     render: function(){
         var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= responseText %></div>');
+        $(this.el).empty();
         $(this.el).append(compiledTemplate(this.model));
     }
 });
@@ -68,6 +70,7 @@ var ChartView = Backbone.View.extend({
         var that = this;
         $.get('tpl/chart.html', 
             function(data) {
+                $(that.el).empty();
                 $(that.el).append( _.template(data));
             }, 
             'html'
@@ -106,6 +109,7 @@ var StatsView = Backbone.View.extend({
         $.get('tpl/stats.html', 
             function(data) {
                 var compiledTemplate = _.template(data);
+                $(that.el).empty();
                 $(that.el).append(compiledTemplate(that.model.toJSON()));
             }, 
             'html'
@@ -142,6 +146,7 @@ var PBSView = Backbone.View.extend({
         $.get('tpl/pbs.html', 
             function(data) {
                 var compiledTemplate = _.template(data);
+                $(that.el).empty();
                 $(that.el).append(compiledTemplate());
                 _.each(that.model.models, function (pbModel) {
                     new PBView({model: pbModel}).render($('tbody.body#pbs'));
