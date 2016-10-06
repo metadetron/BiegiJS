@@ -195,7 +195,7 @@ var AppRouter = Backbone.Router.extend({
     }
     
 });
-new AppRouter();
+var appRouter = new AppRouter();
 Backbone.history.start();
 
 function onSignIn(googleUser) {
@@ -203,6 +203,7 @@ function onSignIn(googleUser) {
     console.log(profile);
     var authResponse = googleUser.getAuthResponse();
     console.log(authResponse);
+    appRouter.navigate("dashboard");
     // location.reload();
 
     // Useful data for your client-side scripts:
