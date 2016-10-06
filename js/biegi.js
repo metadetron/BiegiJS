@@ -203,7 +203,7 @@ var AppRouter = Backbone.Router.extend({
                 }
             );
         }, function(data) {
-            new LogInView();
+            signOut();
         });
     }
     
@@ -238,3 +238,17 @@ function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token); */
 };
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+        $.ajax({
+            url: "http://run.metadetron.com/Biegi/auth/0",
+            type: 'DELETE',
+            success: function(result) {
+                appRouter.navigate("login", {trigger: true});
+            }
+        });            
+    });
+}

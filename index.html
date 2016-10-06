@@ -28,21 +28,6 @@
                 </ul>
                 <div id="login" class="g-signin2 navbar-right" data-onsuccess="onSignIn" data-theme="dark" data-width="wide"></div>
                 <button id="logout" type="button" class="btn btn-default navbar-right" aria-label="Left Align" onclick="signOut();"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sign out</button>
-<script>
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        console.log('User signed out.');
-        $.ajax({
-            url: "http://run.metadetron.com/Biegi/auth/0",
-            type: 'DELETE',
-            success: function(result) {
-                appRouter.navigate("login", {trigger: true});
-            }
-        });            
-    });
-  }
-</script>                
             </div><!--/.nav-collapse -->
         </div>
         </nav>
