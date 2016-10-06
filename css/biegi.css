@@ -36,3 +36,7 @@ div#fullName {
     padding: 5px;
     font-weight: bold;
 }
+
+#pbs tr td {
+    padding: 1px 5px;
+}
