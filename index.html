@@ -34,9 +34,8 @@
     auth2.signOut().then(function () {
         console.log('User signed out.');
         $.ajax({
-            url: "http://run.metadetron.com/Biegi/auth",
+            url: "http://run.metadetron.com/Biegi/auth/0",
             type: 'DELETE',
-            data: {id: 0},
             success: function(result) {
                 appRouter.navigate("login", {trigger: true});
             }
