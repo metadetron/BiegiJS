@@ -116,6 +116,9 @@ var StatsView = Backbone.View.extend({
                 var compiledTemplate = _.template(data);
                 $(that.el).empty();
                 $(that.el).append(compiledTemplate(that.model.toJSON()));
+                var profile = googleUser.getBasicProfile();
+                $("#profilePhoto").attr("src", profile.getImageUrl());
+                $("#fullName").text(profile.getName());                
             }, 
             'html'
         );
