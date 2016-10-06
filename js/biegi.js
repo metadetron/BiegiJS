@@ -36,8 +36,8 @@ var LogInView = Backbone.View.extend({
     },
     render: function(){
         console.log("Rendering LogInView...");
-        $('#login').hide();
-        $('#logout').show();
+        $('#login').show();
+        $('#logout').hide();
         var that = this;
         $.get('tpl/login.html', 
             function(data) {
