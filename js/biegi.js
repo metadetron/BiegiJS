@@ -36,15 +36,15 @@ var BiegiModule = (function(){
 
     var BiegModel = Backbone.Model.extend({
         defaults: {
-            dzien: null,
-            buty: null, 	
-            temperatura: null, 	
-            miejsce: null, 	
-            opad: null, 	
-            wiatr: null, 	
-            rodzajBiegu: null, 	
-            dystans: null,	
-            czas: null	
+            bgg_dzien: null, 
+  	        bgg_bty_id: null,
+  	        bgg_tmp_id: null,
+            bgg_mjs_id: null,
+            bgg_opd_id: null,
+            bgg_wtr_id: null,
+            bgg_rbg_id: null,
+            bgg_dystans: null,
+            bgg_sekundy: null	
         },
         initialize: function(){        
         }
