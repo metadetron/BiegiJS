@@ -139,7 +139,7 @@ var BiegiModule = (function(){
         },
         render: function(elem){
             var that = this;
-            fillTemplate('tpl/pb.html',
+            fillTemplate('pb',
                 function (compiledTemplate) {
                     elem.append(compiledTemplate(that.model.toJSON()));
                 } 
@@ -218,19 +218,15 @@ var BiegiModule = (function(){
     Backbone.history.start();
 
     /////////////////////////// U T I L S //////////////////////////
-    function fillTemplate(templateUrl, callback) {
+    function fillTemplate(templateId, callback) {
         if (!(templateUrl in compiledTemplateCache)) {
-            $.get(templateUrl, 
-                function(data) {
-                    var compiledTemplate = _.template(data);
-                    compiledTemplateCache[templateUrl] = compiledTemplate;
-                    fillTemplate(templateUrl, callback);
-                }, 
-                'html'
-            );
+            data = $('#' + templateId).html();
+            var compiledTemplate = _.template(data);
+            compiledTemplateCache[templateId] = compiledTemplate;
+            fillTemplate(templateId, callback);
             return;         
         }
-        callback(compiledTemplateCache[templateUrl]);
+        callback(compiledTemplateCache[templateId]);
     }
 
     function onSignIn(googleUser) {
