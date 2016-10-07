@@ -213,7 +213,7 @@ var BiegiModule = (function(){
     /////////////////////////// U T I L S //////////////////////////
     function fillTemplate(templateId, callback) {
         if (!(templateId in compiledTemplateCache)) {
-            data = $('#' + templateId).html();
+            var data = $('#' + templateId).html();
             var compiledTemplate = _.template(data);
             compiledTemplateCache[templateId] = compiledTemplate;
             fillTemplate(templateId, callback);
