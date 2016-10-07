@@ -78,7 +78,7 @@ var BiegiModule = (function(){
         },
         render: function(){
             var that = this;
-            fillTemplate('stats',
+            fillTemplate('chart',
                 function (compiledTemplate) {
                     $(that.el).empty();
                     $(that.el).append( _.template(data));
