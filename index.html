@@ -130,8 +130,13 @@
                 </span>
             </small>
         </h3>                
-        <span class="sekundy"><%= bgg_sekundy %></span>
-        <span class="opis"><%= bgg_opis %></span>
+        <span class="sekundy">
+            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            <%= bgg_sekundy %>
+        </span>
+        <p class="text-primary">
+            <%= bgg_opis %>
+        </p>
         <span><a class="btn btn-default btn-xs" href="#biegi/view/<%= bgg_id %>" role="button"><span class="glyphicon glyphicon-search"></span></a></span>
     </div>
 </script>  
