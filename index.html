@@ -5,7 +5,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://lipis.github.io/bootstrap-social/bootstrap-social.css"/>
         <link rel="stylesheet" href="https://lipis.github.io/bootstrap-social/assets/css/font-awesome.css"/>
-        <link href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/biegi.css"/>
         <meta charset="utf-8" /> 
         <meta name="google-signin-scope" content="profile email">
@@ -56,7 +55,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
 <script id="pb" type="text/template">
         <tr>
@@ -110,34 +108,21 @@
 </script>
 
 <script id="bieg" type="text/template">
-    <tr>
-        <td><%= bgg_dzien %></td>
-        <td><%= miejsce %></td>
-        <td><%= bgg_dystans %></td>
-        <td><%= bgg_sekundy %></td>
-        <td><a class="btn btn-default btn-xs" href="#biegi/view/<%= bgg_id %>" role="button"><span class="glyphicon glyphicon-search"></span></a></td>
-    </tr>
+    <div>
+        <span><%= bgg_dzien %></span>
+        <span><%= miejsce %></span>
+        <span><%= bgg_dystans %></span>
+        <span><%= bgg_sekundy %></span>
+        <span><a class="btn btn-default btn-xs" href="#biegi/view/<%= bgg_id %>" role="button"><span class="glyphicon glyphicon-search"></span></a></span>
+    </div>
 </script>  
 
 <script id="biegi" type="text/template">
         <div class="portlet">
-            <div class="title">Biegi</div>
+            <div class="title">Ostatnie biegi</div>
             <div class="body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Dzień</th>
-                                <th>Miejsce</th>
-                                <th>Dystans</th>
-                                <th>Czas</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                        <tbody id="biegi"></tbody>
-                    </table>
+                <div id="biegi">
                 </div>
-                <a class="btn btn-default" href="#zaproszeni/add" role="button"><span class="glyphicon glyphicon-edit"></span> <span data-i18n='dodaj'></span></a>
             </div>
         </div>
 </script>
