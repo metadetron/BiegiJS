@@ -155,16 +155,14 @@ var BiegiModule = (function(){
         },
         render: function(){
             var that = this;
-            $.get('tpl/pbs.html', 
-                function(data) {
-                    var compiledTemplate = _.template(data);
+            fillTemplate('pb',
+                function (compiledTemplate) {
                     $(that.el).empty();
                     $(that.el).append(compiledTemplate());
                     _.each(that.model.models, function (pbModel) {
                         new PBView({model: pbModel}).render($('tbody.body#pbs'));
                     }, this);                    
-                }, 
-                'html'
+                } 
             );
         }
     });
