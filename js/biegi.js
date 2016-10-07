@@ -52,7 +52,7 @@ var BiegiModule = (function(){
     });
 
     var BiegCollection = Backbone.Collection.extend({
-        url: 'http://run.metadetron.com/Biegi/bieg/',
+        url: 'http://run.metadetron.com/Biegi/biegjs/',
         model: BiegModel 
     });
 
@@ -72,6 +72,7 @@ var BiegiModule = (function(){
                 function (compiledTemplate) {
                     $('#col_left').empty();
                     $('#col_right').empty();
+                    $('#col_middle #top_2').empty();
                     $(that.el).empty();
                     $(that.el).append(compiledTemplate());
                 } 
