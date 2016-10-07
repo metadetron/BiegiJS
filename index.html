@@ -118,8 +118,18 @@
 
 <script id="bieg" type="text/template">
     <div class="thumbnail">
-        <h3 class="dzien"><%= bgg_dzien %><small class="miejsce pull-right"><%= miejsce %></small></h3>        
-        <span class="dystans"><%= bgg_dystans %></span>
+        <h3 class="dzien">
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            <%= bgg_dzien %>
+            <small class="miejsce pull-right">
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                <%= miejsce %> 
+                <span class="dystans">
+                    <span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
+                    <%= bgg_dystans %>
+                </span>
+            </small>
+        </h3>                
         <span class="sekundy"><%= bgg_sekundy %></span>
         <span class="opis"><%= bgg_opis %></span>
         <span><a class="btn btn-default btn-xs" href="#biegi/view/<%= bgg_id %>" role="button"><span class="glyphicon glyphicon-search"></span></a></span>
