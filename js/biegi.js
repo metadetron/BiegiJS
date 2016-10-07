@@ -138,12 +138,10 @@ var BiegiModule = (function(){
         },
         render: function(elem){
             var that = this;
-            $.get('tpl/pb.html', 
-                function(data) {
-                    var compiledTemplate = _.template(data);
+            fillTemplate('tpl/pb.html',
+                function (compiledTemplate) {
                     elem.append(compiledTemplate(that.model.toJSON()));
-                }, 
-                'html'
+                } 
             );
         }
     });
@@ -217,6 +215,17 @@ var BiegiModule = (function(){
     });
     var appRouter = new AppRouter();
     Backbone.history.start();
+
+    /////////////////////////// U T I L S //////////////////////////
+    function fillTemplate(templateUrl, callback) {
+        $.get(templateUrl, 
+            function(data) {
+                var compiledTemplate = _.template(data);
+                callback(compiledTemplate);
+            }, 
+            'html'
+        );         
+    }
 
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
