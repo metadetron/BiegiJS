@@ -51,12 +51,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <script id="pb" type="text/template">
         <tr>
             <td><strong><%= location %></strong> <%= track %></td>
             <td><%= time %></td>
         </tr>
 </script>        
+
 <script id="pbs" type="text/template">
         <table class="table table-striped portlet small">
             <thead class="title">
@@ -69,6 +71,7 @@
             </tbody>
         </table>
 </script>        
+
 <script id="stats" type="text/template">
         <div class="portlet">
             <div class="title">Statystyki</div>
@@ -86,15 +89,20 @@
             </div>
         </div>
 </script>        
+
 <script id="login" type="text/template">
         <div>Witamy na portalu biegi. Zaloguj się za pomocą konta Google</div>
+</script>        
+
+<script id="chart" type="text/template">
         <div class="portlet">
             <div class="title">Wykres miesięczny</div>
             <div class="body">
                 <div id="chart_div"></div>
             </div>
         </div>
-</script>        
+</script>
+
         <script src="js/biegi.js"></script>
     </body>
 </html>
