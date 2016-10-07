@@ -258,6 +258,17 @@ var BiegiModule = (function(){
                         }
                     }
                 );
+                var biegCollection = new BiegCollection();
+                biegCollection.fetch(
+                    {
+                        success: function() {
+                            new BiegiView({model: biegCollection});
+                        },
+                        error: function(collection, response, options) {
+                            new ErrorView({model: response});
+                        }
+                    }
+                );
             }, function(data) {
                 signOut();
             });
