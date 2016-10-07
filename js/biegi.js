@@ -243,11 +243,14 @@ var BiegiModule = (function(){
                 }
             });            
         });
-    }
+    };
 
     return {
         signOut: signOut,
         onSignIn: onSignIn
     };
 }());
+
+// for google data-onsuccess :-/
+window.onSignIn = BiegiModule.onSignIn;
 
