@@ -45,7 +45,8 @@ var BiegiModule = (function(){
             bgg_wtr_id: null,
             bgg_rbg_id: null,
             bgg_dystans: null,
-            bgg_sekundy: null	
+            bgg_sekundy: null,
+            bgg_opis: null	
         },
         initialize: function(){        
         }
