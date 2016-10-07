@@ -213,7 +213,7 @@ var BiegiModule = (function(){
                     $(that.el).empty();
                     $(that.el).append(compiledTemplate());
                     _.each(that.model.models, function (biegModel) {
-                        new BiegView({model: biegModel}).render($('tbody#biegi'));
+                        new BiegView({model: biegModel}).render($('div#biegi'));
                     }, this);
                     $('table', that.el).DataTable();                    
                 } 
