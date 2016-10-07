@@ -40,7 +40,7 @@ var BiegiModule = (function(){
             bgg_dzien: null, 
   	        bgg_bty_id: null,
   	        bgg_tmp_id: null,
-            bgg_mjs_id: null,
+            miejsce: null,
             bgg_opd_id: null,
             bgg_wtr_id: null,
             bgg_rbg_id: null,
