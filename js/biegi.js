@@ -244,5 +244,9 @@ var BiegiModule = (function(){
             });            
         });
     }
+
+    return {
+        signOut: signOut
+    };
 }());
 
