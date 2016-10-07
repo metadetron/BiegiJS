@@ -58,7 +58,7 @@ var BiegiModule = (function(){
 
     //////////////////////////////// V I E W S ///////////////////////////////////////
     var LogInView = Backbone.View.extend({
-        el: $('#col_middle'), // renderowanego w tym elemencie
+        el: $('#col_middle #top_1'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
@@ -93,7 +93,7 @@ var BiegiModule = (function(){
     });
 
     var ChartView = Backbone.View.extend({
-        el: $('#col_middle'), 
+        el: $('#col_middle #top_1'), 
         initialize: function(){
             _.bindAll(this, 'render');  
             this.render();  
@@ -200,7 +200,7 @@ var BiegiModule = (function(){
     });    
 
     var BiegiView = Backbone.View.extend({
-        el: $('#col_middle'), // renderowanego w tym elemencie
+        el: $('#col_middle #top_2'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
