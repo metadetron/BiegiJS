@@ -36,6 +36,7 @@ var BiegiModule = (function(){
 
     var BiegModel = Backbone.Model.extend({
         defaults: {
+            bgg_id: null,
             bgg_dzien: null, 
   	        bgg_bty_id: null,
   	        bgg_tmp_id: null,
