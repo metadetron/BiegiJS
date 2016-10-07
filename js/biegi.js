@@ -155,7 +155,7 @@ var BiegiModule = (function(){
         },
         render: function(){
             var that = this;
-            fillTemplate('pb',
+            fillTemplate('pbs',
                 function (compiledTemplate) {
                     $(that.el).empty();
                     $(that.el).append(compiledTemplate());
