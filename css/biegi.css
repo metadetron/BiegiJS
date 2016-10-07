@@ -3,29 +3,6 @@ body {
     background-color: lemonchiffon;
 }
 
-.portlet {
-    border: 1px solid lightgray;
-    margin-bottom: 30px;
-    border-radius: 4px;
-}
-
-.portlet div.title, .portlet .body {
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.portlet .title {
-    border-bottom: 1px solid lightgrey;
-    background-color: #FAFAFA;
-    border-radius: 4px 4px 0px 0px;
-    font-weight: bold;
-}
-
-.portlet .body {
-    background-color: #FFFFFF;
-    border-radius: 0px 0px 4px 4px;
-}
-
 #profilePhoto {
     border-radius: 10px;
 }
