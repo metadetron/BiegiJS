@@ -81,7 +81,7 @@ var BiegiModule = (function(){
             fillTemplate('chart',
                 function (compiledTemplate) {
                     $(that.el).empty();
-                    $(that.el).append( _.template(data));
+                    $(that.el).append(compiledTemplate());
                 } 
             );            
             google.charts.load('current', {packages: ['corechart', 'bar']});
