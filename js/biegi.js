@@ -50,6 +50,11 @@ var BiegiModule = (function(){
         }
     });
 
+    var BiegCollection = Backbone.Collection.extend({
+        url: 'http://run.metadetron.com/Biegi/bieg/',
+        model: BiegModel 
+    });
+
     //////////////////////////////// V I E W S ///////////////////////////////////////
     var LogInView = Backbone.View.extend({
         el: $('#col_middle'), // renderowanego w tym elemencie
