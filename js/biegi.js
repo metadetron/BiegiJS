@@ -227,7 +227,8 @@ var BiegiModule = (function(){
                     fillTemplate(templateUrl, callback);
                 }, 
                 'html'
-            );         
+            );
+            return;         
         }
         callback(compiledTemplateCache[templateUrl]);
     }
