@@ -19,6 +19,7 @@ var StatsModel = Backbone.Model.extend({
 
 var PBModel = Backbone.Model.extend({
     defaults: {
+        location: null,
         track: null,
         time: null
     },
