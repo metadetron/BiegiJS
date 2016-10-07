@@ -246,7 +246,8 @@ var BiegiModule = (function(){
     }
 
     return {
-        signOut: signOut
+        signOut: signOut,
+        onSignIn: onSignIn
     };
 }());
 
