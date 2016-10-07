@@ -46,16 +46,14 @@ var BiegiModule = (function(){
             $('#login').show();
             $('#logout').hide();
             var that = this;
-            $.get('tpl/login.html', 
-                function(data) {
-                    var compiledTemplate = _.template(data);
+            fillTemplate('login',
+                function (compiledTemplate) {
                     $('#col_left').empty();
                     $('#col_right').empty();
                     $(that.el).empty();
                     $(that.el).append(compiledTemplate());
-                }, 
-                'html'
-            );
+                } 
+            );            
         }
     });
 
@@ -80,13 +78,12 @@ var BiegiModule = (function(){
         },
         render: function(){
             var that = this;
-            $.get('tpl/chart.html', 
-                function(data) {
+            fillTemplate('stats',
+                function (compiledTemplate) {
                     $(that.el).empty();
                     $(that.el).append( _.template(data));
-                }, 
-                'html'
-            );
+                } 
+            );            
             google.charts.load('current', {packages: ['corechart', 'bar']});
             google.charts.setOnLoadCallback(drawAxisTickColors);
 
@@ -118,15 +115,13 @@ var BiegiModule = (function(){
         },
         render: function(){
             var that = this;
-            $.get('tpl/stats.html', 
-                function(data) {
-                    var compiledTemplate = _.template(data);
+            fillTemplate('stats',
+                function (compiledTemplate) {
                     $(that.el).empty();
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
                     $("#profilePhoto").attr("src", profilePictureUrl);
                     $("#fullName").text(profileName);                                
-                }, 
-                'html'
+                } 
             );
         }
     });
