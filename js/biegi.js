@@ -4,6 +4,7 @@
 var BiegiModule = (function(){
     var profilePictureUrl = null;
     var profileName = null;
+    var compiledTemplateCache = {};
 
     ////////////////////////////// M O D E L S ////////////////////////////////////
     var StatsModel = Backbone.Model.extend({
@@ -218,13 +219,17 @@ var BiegiModule = (function(){
 
     /////////////////////////// U T I L S //////////////////////////
     function fillTemplate(templateUrl, callback) {
-        $.get(templateUrl, 
-            function(data) {
-                var compiledTemplate = _.template(data);
-                callback(compiledTemplate);
-            }, 
-            'html'
-        );         
+        if (!(templateUrl in compiledTemplateCache)) {
+            $.get(templateUrl, 
+                function(data) {
+                    var compiledTemplate = _.template(data);
+                    compiledTemplateCache[templateUrl] = compiledTemplate;
+                    fillTemplate(templateUrl, callback);
+                }, 
+                'html'
+            );         
+        }
+        callback(compiledTemplateCache[templateUrl]);
     }
 
     function onSignIn(googleUser) {
