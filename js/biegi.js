@@ -34,6 +34,22 @@ var BiegiModule = (function(){
         model: PBModel 
     });
 
+    var BiegModel = Backbone.Model.extend({
+        defaults: {
+            dzien: null,
+            buty: null, 	
+            temperatura: null, 	
+            miejsce: null, 	
+            opad: null, 	
+            wiatr: null, 	
+            rodzajBiegu: null, 	
+            dystans: null,	
+            czas: null	
+        },
+        initialize: function(){        
+        }
+    });
+
     //////////////////////////////// V I E W S ///////////////////////////////////////
     var LogInView = Backbone.View.extend({
         el: $('#col_middle'), // renderowanego w tym elemencie
@@ -156,6 +172,41 @@ var BiegiModule = (function(){
                     $(that.el).append(compiledTemplate());
                     _.each(that.model.models, function (pbModel) {
                         new PBView({model: pbModel}).render($('tbody.body#pbs'));
+                    }, this);                    
+                } 
+            );
+        }
+    });
+
+    var BiegView = Backbone.View.extend({
+        el: null, // renderowanego w tym elemencie
+        initialize: function(){
+            _.bindAll(this, 'render'); // zeby metody znaly "this" 
+        },
+        render: function(elem){
+            var that = this;
+            fillTemplate('bieg',
+                function (compiledTemplate) {
+                    elem.append(compiledTemplate(that.model.toJSON()));
+                } 
+            );
+        }
+    });    
+
+    var BiegiView = Backbone.View.extend({
+        el: $('#col_middle'), // renderowanego w tym elemencie
+        initialize: function(){
+            _.bindAll(this, 'render'); // zeby metody znaly "this" 
+            this.render(); // samorenderujacego sie na starcie 
+        },
+        render: function(){
+            var that = this;
+            fillTemplate('biegi',
+                function (compiledTemplate) {
+                    $(that.el).empty();
+                    $(that.el).append(compiledTemplate());
+                    _.each(that.model.models, function (pbModel) {
+                        new BiegView({model: pbModel}).render($('tbody.body#biegi'));
                     }, this);                    
                 } 
             );

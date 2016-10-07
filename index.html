@@ -53,6 +53,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
 <script id="pb" type="text/template">
         <tr>
@@ -90,7 +91,7 @@
                 <div><strong>Łącznie przebiegniętych: <%= totalDistance %> kilometrów!</strong></div>
             </div>
         </div>
-</script>        
+</script>      
 
 <script id="login" type="text/template">
         <div>Witamy na portalu biegi. Zaloguj się za pomocą konta Google</div>
@@ -101,6 +102,37 @@
             <div class="title">Wykres miesięczny</div>
             <div class="body">
                 <div id="chart_div"></div>
+            </div>
+        </div>
+</script>
+
+<script id="bieg" type="text/template">
+  	<td><%= zpr_imie %></td>
+  	<td><%= zpr_nazwisko %></td>
+  	<td><%= zpr_email %></td>
+    <td><%= status_zaproszenia %></td>
+    <td><a class="btn btn-default btn-xs" href="#zaproszeni/view/<%= zpr_id %>" role="button"><span class="glyphicon glyphicon-search"></span> Szczegóły</a></td>
+</script>  
+
+<script id="biegi" type="text/template">
+        <div class="portlet">
+            <div class="title">Biegi</div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th data-i18n='imie'></th>
+                                <th data-i18n='nazwisko'></th>
+                                <th data-i18n='email'></th>
+                                <th data-i18n='status_zaproszenia'></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                        <tbody id="biegi"></tbody>
+                    </table>
+                </div>
+                <a class="btn btn-default" href="#zaproszeni/add" role="button"><span class="glyphicon glyphicon-edit"></span> <span data-i18n='dodaj'></span></a>
             </div>
         </div>
 </script>
