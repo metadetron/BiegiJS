@@ -211,8 +211,8 @@ var BiegiModule = (function(){
                 function (compiledTemplate) {
                     $(that.el).empty();
                     $(that.el).append(compiledTemplate());
-                    _.each(that.model.models, function (pbModel) {
-                        new BiegView({model: pbModel}).render($('tbody.body#biegi'));
+                    _.each(that.model.models, function (biegModel) {
+                        new BiegView({model: biegModel}).render($('tbody#biegi'));
                     }, this);                    
                 } 
             );
