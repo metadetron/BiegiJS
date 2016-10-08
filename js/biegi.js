@@ -258,6 +258,7 @@ var BiegiModule = (function(){
             }).then(function(data) {    
                 $('#login').hide();
                 $('#logout').show();
+                $("#modalDialog").empty();
                 new ChartView();
                 var stats = new StatsModel({id: 0});
                 stats.fetch(
