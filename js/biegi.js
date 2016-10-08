@@ -222,6 +222,21 @@ var BiegiModule = (function(){
         }
     });
 
+    var BiegDetailsView = Backbone.View.extend({
+        el: $("#modalDialog"), // renderowanego w tym elemencie
+        initialize: function(){
+            _.bindAll(this, 'render'); // zeby metody znaly "this" 
+        },
+        render: function(elem){
+            var that = this;
+            fillTemplate('biegDetails',
+                function (compiledTemplate) {
+                    elem.append(compiledTemplate(that.model.toJSON()));
+                } 
+            );
+        }
+    });    
+
     //////////////////////////////// R O U T E R ////////////////////////////////////
     var AppRouter = Backbone.Router.extend({
         routes: {
