@@ -298,7 +298,7 @@ var BiegiModule = (function(){
                         }
                     }
                 );
-                new BiegAddView();
+                new BiegAddView({model: new BiegModel()});
                 var pbCollection = new PBCollection();
                 pbCollection.fetch(
                     {
