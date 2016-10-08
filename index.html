@@ -183,11 +183,11 @@
           <div class="col-md-1 text-right">
               <label>Buty</label>
           </div>
-          <div class="col-md-4"><%= buty %></div>
+          <div class="col-md-3"><%= buty %></div>
           <div class="col-md-3 text-right">
               <label>Rodzaj biegu</label>
           </div>
-          <div class="col-md-4"><%= rodzajBiegu %></div>
+          <div class="col-md-5"><%= rodzajBiegu %></div>
         </div>
         <div class="row">
           <div class="col-md-2 text-right">
@@ -212,6 +212,32 @@
   </div>
 </div>        
 </script>
+
+<script id="biegAdd" type="text/template">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Nowy bieg</h3>
+            </div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-1" for="bgg_dzien">Dzien/label>
+                        <div class="col-sm-5"><input type="text" class="form-control" id="bgg_dzien" name="bgg_dzien" value="<%= bgg_dzien %>"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1" for="godziny">Godziny</label>
+                        <div class="col-sm-5"><input type="text" class="form-control" id="godziny" name="godziny" value="<%= godziny %>"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <a href="#" class="btn btn-primary save pull-left"><span class="glyphicon glyphicon-floppy-save"></span> Save</a>
+                            <a href="#" class="btn pull-right cancel"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+</script>      
 
         <script src="js/biegi.js"></script>
     </body>

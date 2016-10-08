@@ -51,7 +51,10 @@ var BiegiModule = (function(){
             buty: null,
             wiatr: null,
             temperatura: null,
-            opad: null	
+            opad: null,
+            godziny: null,
+            minuty: null,
+            sekundy: null	
         },
         urlRoot: 'http://run.metadetron.com/Biegi/biegjs/',
         initialize: function(){        
@@ -247,6 +250,22 @@ var BiegiModule = (function(){
             );
         }
     });    
+
+    var BiegAddView = Backbone.View.extend({
+        el: $('#col_left'), // renderowanego w tym elemencie
+        initialize: function(){
+            _.bindAll(this, 'render'); // zeby metody znaly "this" 
+            this.render(); // samorenderujacego sie na starcie 
+        },
+        render: function(){
+            var that = this;
+            fillTemplate('biegAdd',
+                function (compiledTemplate) {
+                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                } 
+            );
+        }
+    });
 
     //////////////////////////////// R O U T E R ////////////////////////////////////
     var AppRouter = Backbone.Router.extend({
