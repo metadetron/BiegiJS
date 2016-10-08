@@ -169,50 +169,44 @@
         <h4 class="modal-title" id="myModalLabel">Szczegóły biegu</h4>
       </div>
       <div class="modal-body">
-        <dl>            
-            <dt>Data</dt>
-            <dd><%= bgg_dzien %></dd>
-            <dt>Miejsce</dt>
-            <dd><%= miejsce %></dd>
-            <dt>Opis</dt>
-            <dd><%= bgg_opis %></dd>
-            <dt>Buty</dt>
-            <dd><%= buty %></dd>
-            <dt>Temperatura</dt>
-            <dd><%= temperatura %></dd>
-            <dt>Opad</dt>
-            <dd><%= opad %></dd>
-            <dt>Wiatr</dt>
-            <dd><%= wiatr %></dd>
-            <dt>Rodzaj biegu</dt>
-            <dd><%= rodzajBiegu %></dd>
-        </dl>
         <div class="row">
           <div class="col-md-4">
               <label>Data</label>
           </div>
-          <div class="col-md-4"><%= bdd_dzien %></div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-          <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
-        </div>
-        <div class="row">
-          <div class="col-sm-9">
-            Level 1: .col-sm-9
-            <div class="row">
-              <div class="col-xs-8 col-sm-6">
-                Level 2: .col-xs-8 .col-sm-6
-              </div>
-              <div class="col-xs-4 col-sm-6">
-                Level 2: .col-xs-4 .col-sm-6
-              </div>
-            </div>
+          <div class="col-md-4"><%= bgg_dzien %></div>
+          <div class="col-md-4">
+              <label>Miejsce</label>
           </div>
+          <div class="col-md-4"><%= miejsce %></div>
         </div>
+        <div class="row">
+          <div class="col-md-4">
+              <label>Buty</label>
+          </div>
+          <div class="col-md-4"><%= buty %></div>
+          <div class="col-md-4">
+              <label>Rodzaj biegu</label>
+          </div>
+          <div class="col-md-4"><%= rodzajBiegu %></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <label>Temperatura</label>
+          </div>
+          <div class="col-md-6"><%= temperatura %></div>
+          <div class="col-md-6">
+              <label>Opad</label>
+          </div>
+          <div class="col-md-6"><%= opad %></div>
+          <div class="col-md-6">
+              <label>Wiatr</label>
+          </div>
+          <div class="col-md-6"><%= wiatr %></div>
+        </div>
+        <dl>
+            <dd>Opis</dd>
+            <dt><%= bgg_opis %></dt>
+        </dl>
       </div>
     </div>
   </div>
