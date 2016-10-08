@@ -294,7 +294,17 @@ var BiegiModule = (function(){
             });
         },
         biegDetails: function(id) {
-            alert("id to show = " + id);
+            var bieg = new BiegModel({id: id});
+            stats.fetch(
+                {
+                    success: function() {
+                        new BiegDetailsView({model: bieg});
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );
         }        
     });
     var appRouter = new AppRouter();
