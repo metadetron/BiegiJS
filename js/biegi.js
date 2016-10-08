@@ -298,6 +298,7 @@ var BiegiModule = (function(){
                         }
                     }
                 );
+                new BiegAddView();
                 var pbCollection = new PBCollection();
                 pbCollection.fetch(
                     {
