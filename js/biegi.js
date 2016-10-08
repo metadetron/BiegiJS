@@ -46,7 +46,12 @@ var BiegiModule = (function(){
             bgg_rbg_id: null,
             bgg_dystans: null,
             bgg_sekundy: null,
-            bgg_opis: null	
+            bgg_opis: null,
+            rodzajBiegu: null,
+            buty: null,
+            wiatr: null,
+            temperatura: null,
+            opad: null	
         },
         urlRoot: 'http://run.metadetron.com/Biegi/biegjs/',
         initialize: function(){        
