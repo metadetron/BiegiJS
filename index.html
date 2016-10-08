@@ -121,27 +121,29 @@
 </script>
 
 <script id="bieg" type="text/template">
-    <div class="thumbnail">
-        <h3 class="dzien">
-            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-            <%= bgg_dzien %>
-            <small class="miejsce pull-right">
-                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                <%= miejsce %> 
-                <span class="dystans">
-                    <span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
-                    <%= bgg_dystans %> km
-                </span>
-            </small>
-        </h3>                
-        <span class="sekundy">
-            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-            <%= bgg_sekundy %>
-        </span>
-        <p class="text-primary">
-            <%= bgg_opis %>
-        </p>
-    </div>
+    <a href="#biegi/details">
+        <div class="thumbnail">
+            <h3 class="dzien">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <%= bgg_dzien %>
+                <small class="miejsce pull-right">
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                    <%= miejsce %> 
+                    <span class="dystans">
+                        <span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
+                        <%= bgg_dystans %> km
+                    </span>
+                </small>
+            </h3>                
+            <span class="sekundy">
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                <%= bgg_sekundy %>
+            </span>
+            <p class="text-primary">
+                <%= bgg_opis %>
+            </p>
+        </div>
+    </a>
 </script>  
 
 <script id="biegi" type="text/template">
