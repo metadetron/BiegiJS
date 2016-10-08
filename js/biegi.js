@@ -227,7 +227,8 @@ var BiegiModule = (function(){
         routes: {
             "login": "login",
             "": "dashboard",
-            "dashboard": "dashboard"
+            "dashboard": "dashboard",
+            "biegi/details/:id": "biegDetails"
         },
         login: function() {
             new LogInView();
@@ -276,6 +277,9 @@ var BiegiModule = (function(){
             }, function(data) {
                 signOut();
             });
+        },
+        biegDetails: function(id) {
+            alert("id to show = " + id);
         }        
     });
     var appRouter = new AppRouter();
