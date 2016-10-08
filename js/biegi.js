@@ -234,7 +234,10 @@ var BiegiModule = (function(){
                 function (compiledTemplate) {
                     $(that.el).empty();
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
-                    $('#myModal').modal('show');
+                    $('#myModal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
                 } 
             );
         }
