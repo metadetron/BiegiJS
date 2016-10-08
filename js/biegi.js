@@ -225,13 +225,15 @@ var BiegiModule = (function(){
     var BiegDetailsView = Backbone.View.extend({
         el: $("#modalDialog"), // renderowanego w tym elemencie
         initialize: function(){
-            _.bindAll(this, 'render'); // zeby metody znaly "this" 
+            _.bindAll(this, 'render'); // zeby metody znaly "this"
+            this.render(); 
         },
-        render: function(elem){
+        render: function(){
             var that = this;
             fillTemplate('biegDetails',
                 function (compiledTemplate) {
-                    elem.append(compiledTemplate(that.model.toJSON()));
+                    $(that.el).empty();
+                    $(that.el).append(compiledTemplate(that.model.toJSON()));
                     $('#myModal').modal('show');
                 } 
             );
