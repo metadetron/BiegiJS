@@ -295,7 +295,7 @@ var BiegiModule = (function(){
         },
         biegDetails: function(id) {
             var bieg = new BiegModel({id: id});
-            stats.fetch(
+            bieg.fetch(
                 {
                     success: function() {
                         new BiegDetailsView({model: bieg});
