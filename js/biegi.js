@@ -48,6 +48,7 @@ var BiegiModule = (function(){
             bgg_sekundy: null,
             bgg_opis: null	
         },
+        urlRoot: 'http://run.metadetron.com/Biegi/biegjs/',
         initialize: function(){        
         }
     });
@@ -216,7 +217,6 @@ var BiegiModule = (function(){
                     _.each(that.model.models, function (biegModel) {
                         new BiegView({model: biegModel}).render($('div#biegi'));
                     }, this);
-                    $('table', that.el).DataTable();                    
                 } 
             );
         }
