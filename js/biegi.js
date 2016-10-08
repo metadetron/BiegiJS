@@ -232,6 +232,7 @@ var BiegiModule = (function(){
             fillTemplate('biegDetails',
                 function (compiledTemplate) {
                     elem.append(compiledTemplate(that.model.toJSON()));
+                    $('#myModal').modal('show');
                 } 
             );
         }
