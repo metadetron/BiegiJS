@@ -276,8 +276,7 @@ var BiegiModule = (function(){
                     alert("stored!");
                 },
                 error: function (model, response) {
-                    alert(response.statusText);
-                    // directory.showAlert('Error', response.statusText, 'alert-danger');
+                    new ErrorView({model: response});
                 }
             });
             event.preventDefault();
