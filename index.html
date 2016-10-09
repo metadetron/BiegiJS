@@ -229,7 +229,7 @@
                             <td>
                                 <label for="bgg_dzien">Dzien</label>
                             </td>
-                            <td>
+                            <td colspan="2">
                                 <input type="date" class="form-control" id="bgg_dzien" name="bgg_dzien" value="<%= bgg_dzien %>">
                             </td>
                         </tr>
@@ -238,7 +238,19 @@
                                 <label for="godziny">Godziny</label>
                             </td>
                             <td>
+                                <label for="minuty">Minuty</label>
+                            </td>
+                            <td>
+                                <label for="sekundy">Sekundy</label>
+                            </td>
+                            <td>
                                 <input type="number" class="form-control" id="godziny" name="godziny" value="<%= godziny %>">
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" id="minuty" name="minuty" value="<%= minuty %>">
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" id="sekundy" name="sekundy" value="<%= sekundy %>">
                             </td>
                         </tr>
                     </table>
