@@ -224,20 +224,23 @@
             </div>
             <div class="panel-body">
                 <form role="form" class="form-horizontal">
-                    <div class="form-group">
-                        <label for="bgg_dzien">Dzien</label>
-                        <div><input type="date" class="form-control" id="bgg_dzien" name="bgg_dzien" value="<%= bgg_dzien %>"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="godziny">Godziny</label>
-                        <div><input type="number" class="form-control" id="godziny" name="godziny" value="<%= godziny %>"></div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-6">
-                            <a href="#" class="btn btn-primary save pull-left"><span class="glyphicon glyphicon-floppy-save"></span> Save</a>
-                            <a href="#" class="btn pull-right cancel"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</a>
-                        </div>
-                    </div>
+                    <table class="table table-striped small">
+                        <tr>
+                            <td>
+                                <label for="bgg_dzien">Dzien</label>
+                            </td>
+                            <td>
+                                <input type="date" class="form-control" id="bgg_dzien" name="bgg_dzien" value="<%= bgg_dzien %>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="godziny">Godziny</label>
+                                <input type="number" class="form-control" id="godziny" name="godziny" value="<%= godziny %>">
+                            </td>
+                        </tr>
+                    </table>
+                    <a href="#" class="btn btn-primary save pull-right"><span class="glyphicon glyphicon-floppy-save"></span> Save</a>
                 </form>
             </div>
         </div>
