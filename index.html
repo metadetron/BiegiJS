@@ -224,38 +224,14 @@
             </div>
             <div class="panel-body">
                 <form role="form" class="form-horizontal">
-                    <table class="table table-striped small">
-                        <tr>
-                            <td>
-                                <label for="bgg_dzien">Dzien</label>
-                            </td>
-                            <td colspan="2">
-                                <input type="date" size="8" class="form-control" id="bgg_dzien" name="bgg_dzien" value="<%= bgg_dzien %>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="godziny">Godziny</label>
-                            </td>
-                            <td>
-                                <label for="minuty">Minuty</label>
-                            </td>
-                            <td>
-                                <label for="sekundy">Sekundy</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="number" size="2" class="form-control" id="godziny" name="godziny" value="<%= godziny %>">
-                            </td>
-                            <td>
-                                <input type="number" size="2" class="form-control" id="minuty" name="minuty" value="<%= minuty %>">
-                            </td>
-                            <td>
-                                <input type="number" size="2" class="form-control" id="sekundy" name="sekundy" value="<%= sekundy %>">
-                            </td>
-                        </tr>
-                    </table>
+                    <label for="bgg_dzien">Dzien</label>
+                    <input type="date" size="8" class="form-control" id="bgg_dzien" name="bgg_dzien" value="<%= bgg_dzien %>">
+                    <label for="godziny">Godziny</label>
+                    <label for="minuty">Minuty</label>
+                    <label for="sekundy">Sekundy</label>
+                    <input type="number" size="2" class="form-control" id="godziny" name="godziny" value="<%= godziny %>">
+                    <input type="number" size="2" class="form-control" id="minuty" name="minuty" value="<%= minuty %>">
+                    <input type="number" size="2" class="form-control" id="sekundy" name="sekundy" value="<%= sekundy %>">
                     <a href="#" class="btn btn-primary save pull-right"><span class="glyphicon glyphicon-floppy-save"></span> Save</a>
                 </form>
             </div>
