@@ -100,6 +100,7 @@ var BiegiModule = (function(){
             var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= responseText %> <%= statusText %></div>');
             $(this.el).empty();
             $(this.el).append(compiledTemplate(this.model));
+            $(this.el).modal();
         }
     });
 
