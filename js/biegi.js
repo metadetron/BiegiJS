@@ -265,6 +265,22 @@ var BiegiModule = (function(){
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
                 } 
             );
+        },
+        events: {
+            "click .save"   : "persist"
+        },
+        persist: function (event) {
+            var self = this;
+            this.model.save(null, {
+                success: function (model) {
+                    alert("stored!");
+                },
+                error: function (model, response) {
+                    alert(response.statusText);
+                    // directory.showAlert('Error', response.statusText, 'alert-danger');
+                }
+            });
+            event.preventDefault();
         }
     });
 
