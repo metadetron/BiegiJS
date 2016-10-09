@@ -259,6 +259,7 @@ var BiegiModule = (function(){
         },
         render: function(){
             var that = this;
+            this.model = new BiegModel({bgg_dzien: utc = new Date().toJSON().slice(0,10)});
             fillTemplate('biegAdd',
                 function (compiledTemplate) {
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
