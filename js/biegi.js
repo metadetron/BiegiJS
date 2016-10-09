@@ -141,7 +141,7 @@ var BiegiModule = (function(){
 
     // definicja widoku
     var StatsView = Backbone.View.extend({
-        el: $('#col_left'), // renderowanego w tym elemencie
+        el: $('#col_left #left_top_1'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
@@ -176,7 +176,7 @@ var BiegiModule = (function(){
     });
 
     var PBSView = Backbone.View.extend({
-        el: $('#col_right'), // renderowanego w tym elemencie
+        el: $('#col_right #right_top_1'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
@@ -252,7 +252,7 @@ var BiegiModule = (function(){
     });    
 
     var BiegAddView = Backbone.View.extend({
-        el: $('#col_left'), // renderowanego w tym elemencie
+        el: $('#col_left #left_top_2'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
