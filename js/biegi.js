@@ -110,16 +110,14 @@ var BiegiModule = (function(){
     });
 
     var DictionarySelectionView = Backbone.View.extend({        
-        initialize: function(el){
-            this.el = el;  
+        initialize: function(){
             _.bindAll(this, 'render');
-            this.render();  
         },        
-        render: function(){
-                var that = this;
+        render: function(el){
+            var that = this;
             fillTemplate('dictionarySelect',
                 function (compiledTemplate) {
-                    elem.append(compiledTemplate(that.model.toJSON()));
+                    $(el).append(compiledTemplate(that.model.toJSON()));
                 } 
             );
         }
@@ -299,7 +297,7 @@ var BiegiModule = (function(){
             fillTemplate('biegAdd',
                 function (compiledTemplate) {
                     $(that.el).append(compiledTemplate(that.model.toJSON()));                                         
-                    new DictionarySelectionView($("#bgg_tmp_id", that.el).first());
+                    new DictionarySelectionView({model: null}).render($("#bgg_tmp_id", that.el).first());
                 } 
             );
         },
