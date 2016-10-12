@@ -7,6 +7,25 @@ var BiegiModule = (function(){
     var compiledTemplateCache = {};
 
     ////////////////////////////// M O D E L S ////////////////////////////////////
+    var DictionaryModel = Backbone.Model.extend({
+        defaults: {
+            value: null,
+            title: null
+        },
+        initialize: function(){        
+        }
+    });
+
+    var DictionaryCollection = Backbone.Collection.extend({
+        url: function() {
+            return 'http://run.metadetron.com/Biegi/' + this.entityName + '/';
+        },
+        model: DictionaryModel,
+        initialize: function(entityName) {
+            this.entityName = entityName;
+        }, 
+    });    
+    
     var StatsModel = Backbone.Model.extend({
         urlRoot: 'http://run.metadetron.com/Biegi/stats/', 
         defaults: {
@@ -87,6 +106,22 @@ var BiegiModule = (function(){
                     $(that.el).append(compiledTemplate());
                 } 
             );            
+        }
+    });
+
+    var DictionarySelectionView = Backbone.View.extend({        
+        initialize: function(el){
+            this.el = el;  
+            _.bindAll(this, 'render');
+            this.render();  
+        },        
+        render: function(){
+                var that = this;
+            fillTemplate('dictionarySelect',
+                function (compiledTemplate) {
+                    elem.append(compiledTemplate(that.model.toJSON()));
+                } 
+            );
         }
     });
 
