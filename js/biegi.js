@@ -298,7 +298,8 @@ var BiegiModule = (function(){
             this.model = new BiegModel({bgg_dzien: utc = new Date().toJSON().slice(0,10)});
             fillTemplate('biegAdd',
                 function (compiledTemplate) {
-                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                    $(that.el).append(compiledTemplate(that.model.toJSON()));                                         
+                    new DictionarySelectionView($("#bgg_tmp_id", that.el).first());
                 } 
             );
         },
