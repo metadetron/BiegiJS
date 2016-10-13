@@ -1,7 +1,5 @@
-// UWAGA! Ta wersja jeszcze nie keszuje templateow!
-// I nie chowa kodu w module
-
 var BiegiModule = (function(){
+
     var profilePictureUrl = null;
     var profileName = null;
     var compiledTemplateCache = {};
@@ -115,11 +113,13 @@ var BiegiModule = (function(){
         },        
         render: function(el){
             var that = this;
-            fillTemplate('dictionarySelect',
-                function (compiledTemplate) {
-                    $(el).append(compiledTemplate(that.model.toJSON()));
-                } 
-            );
+            _.each(that.model.models, function (dictionaryModel) {
+                fillTemplate('dictionarySelect',
+                    function (compiledTemplate) {
+                        $(el).append(compiledTemplate(dictionaryModel.toJSON()));
+                    } 
+                );
+            }, this);                    
         }
     });
 
@@ -296,8 +296,18 @@ var BiegiModule = (function(){
             this.model = new BiegModel({bgg_dzien: utc = new Date().toJSON().slice(0,10)});
             fillTemplate('biegAdd',
                 function (compiledTemplate) {
-                    $(that.el).append(compiledTemplate(that.model.toJSON()));                                         
-                    new DictionarySelectionView({model: null}).render($("#bgg_tmp_id", that.el).first());
+                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                    var dictionaryCollection = new DictionaryCollection('temperatura'); 
+                    dictionaryCollection.fetch(
+                        {
+                            success: function() {
+                                new DictionarySelectionView({model: dictionaryCollection}).render($("#bgg_tmp_id", that.el).first());
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );
                 } 
             );
         },
