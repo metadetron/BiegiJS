@@ -16,7 +16,7 @@ var BiegiModule = (function(){
 
     var DictionaryCollection = Backbone.Collection.extend({
         url: function() {
-            return 'http://run.metadetron.com/Biegi/' + this.entityName + '/';
+            return 'http://run.metadetron.com/Biegi/dictionary/' + this.entityName + '/';
         },
         model: DictionaryModel,
         initialize: function(entityName) {
