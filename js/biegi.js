@@ -308,6 +308,17 @@ var BiegiModule = (function(){
                             }
                         }
                     );
+                    var dictionaryCollection = new DictionaryCollection('buty'); 
+                    dictionaryCollection.fetch(
+                        {
+                            success: function() {
+                                new DictionarySelectionView({model: dictionaryCollection}).render($("#bgg_bty_id", that.el).first());
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );
                 } 
             );
         },
