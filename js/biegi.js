@@ -331,6 +331,17 @@ var BiegiModule = (function(){
                             }
                         }
                     );
+                    var opadCollection = new DictionaryCollection('opad'); 
+                    opadCollection.fetch(
+                        {
+                            success: function() {
+                                new DictionarySelectionView({model: opadCollection}).render($("#bgg_opd_id", that.el).first());
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );
                 } 
             );
         },
