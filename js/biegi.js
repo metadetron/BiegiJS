@@ -297,22 +297,22 @@ var BiegiModule = (function(){
             fillTemplate('biegAdd',
                 function (compiledTemplate) {
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
-                    var dictionaryCollection = new DictionaryCollection('temperatura'); 
-                    dictionaryCollection.fetch(
+                    var temperaturaCollection = new DictionaryCollection('temperatura'); 
+                    temperaturaCollection.fetch(
                         {
                             success: function() {
-                                new DictionarySelectionView({model: dictionaryCollection}).render($("#bgg_tmp_id", that.el).first());
+                                new DictionarySelectionView({model: temperaturaCollection}).render($("#bgg_tmp_id", that.el).first());
                             },
                             error: function(collection, response, options) {
                                 new ErrorView({model: response});
                             }
                         }
                     );
-                    var dictionaryCollection = new DictionaryCollection('buty'); 
-                    dictionaryCollection.fetch(
+                    var butyCollection = new DictionaryCollection('buty'); 
+                    butyCollection.fetch(
                         {
                             success: function() {
-                                new DictionarySelectionView({model: dictionaryCollection}).render($("#bgg_bty_id", that.el).first());
+                                new DictionarySelectionView({model: butyCollection}).render($("#bgg_bty_id", that.el).first());
                             },
                             error: function(collection, response, options) {
                                 new ErrorView({model: response});
@@ -323,9 +323,16 @@ var BiegiModule = (function(){
             );
         },
         events: {
+            "change"        : "change",
             "click .save"   : "persist"
         },
-        persist: function (event) {
+        change: function (event) {
+            var target = event.target;
+            var change = {};
+            change[target.name] = target.value;
+            this.model.set(change); //, {validate : true}); bo nie mamy validatorow indywidualnych w modelu jeszcze(?)
+        },
+            persist: function (event) {
             var self = this;
             this.model.save(null, {
                 success: function (model) {
