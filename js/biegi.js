@@ -57,6 +57,7 @@ var BiegiModule = (function(){
             bgg_dzien: null, 
   	        bgg_bty_id: null,
   	        bgg_tmp_id: null,
+            bgg_mjs_id: null,
             miejsce: null,
             bgg_opd_id: null,
             bgg_wtr_id: null,
@@ -297,6 +298,17 @@ var BiegiModule = (function(){
             fillTemplate('biegAdd',
                 function (compiledTemplate) {
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
+                    var miejsceCollection = new DictionaryCollection('miejsce'); 
+                    miejsceCollection.fetch(
+                        {
+                            success: function() {
+                                new DictionarySelectionView({model: miejsceCollection}).render($("#bgg_mjs_id", that.el).first());
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );
                     var temperaturaCollection = new DictionaryCollection('temperatura'); 
                     temperaturaCollection.fetch(
                         {
