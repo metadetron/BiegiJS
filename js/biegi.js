@@ -381,7 +381,7 @@ var BiegiModule = (function(){
             event.preventDefault();
         },
         miejsceSelected: function(event) {
-console.log(event);
+console.log(event.target.value);
             var odcinekCollection = new DictionaryCollection('odcinek'); 
             odcinekCollection.fetch(
                 {
