@@ -397,7 +397,7 @@ var BiegiModule = (function(){
             var self = this;
             this.model.save(null, {
                 success: function (model) {
-                    alert("stored!");
+                    appRouter.navigate("dashboard", {trigger: true});
                 },
                 error: function (model, response) {
                     new ErrorView({model: response});
