@@ -397,7 +397,7 @@ var BiegiModule = (function(){
             var self = this;
             this.model.save(null, {
                 success: function (model) {
-                    appRouter.navigate("dashboard", {trigger: true});
+                    appRouter.dashboard();
                 },
                 error: function (model, response) {
                     new ErrorView({model: response});
@@ -504,7 +504,7 @@ var BiegiModule = (function(){
         var profile = googleUser.getBasicProfile();
         var authResponse = googleUser.getAuthResponse();
         $.post("http://run.metadetron.com/Biegi/auth", { google_id: authResponse.id_token}).done(function( data ) {
-            appRouter.navigate("dashboard", {trigger: true});
+            appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
             profilePictureUrl = profile.getImageUrl();
             profileName = profile.getName();
         });
