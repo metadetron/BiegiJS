@@ -310,17 +310,6 @@ var BiegiModule = (function(){
                             }
                         }
                     );
-                    var odcinekCollection = new DictionaryCollection('odcinek'); 
-                    odcinekCollection.fetch(
-                        {
-                            success: function() {
-                                new DictionarySelectionView({model: miejsceCollection}).render($("#odc_id", that.el).first());
-                            },
-                            error: function(collection, response, options) {
-                                new ErrorView({model: response});
-                            }
-                        }
-                    );
                     var temperaturaCollection = new DictionaryCollection('temperatura'); 
                     temperaturaCollection.fetch(
                         {
@@ -370,7 +359,8 @@ var BiegiModule = (function(){
         },
         events: {
             "change"        : "change",
-            "click .save"   : "persist"
+            "change #bgg_mjs_id": "miejsceSelected",
+             "click .save"   : "persist"
         },
         change: function (event) {
             var target = event.target;
@@ -378,7 +368,7 @@ var BiegiModule = (function(){
             change[target.name] = target.value;
             this.model.set(change); //, {validate : true}); bo nie mamy validatorow indywidualnych w modelu jeszcze(?)
         },
-            persist: function (event) {
+        persist: function (event) {
             var self = this;
             this.model.save(null, {
                 success: function (model) {
@@ -389,6 +379,20 @@ var BiegiModule = (function(){
                 }
             });
             event.preventDefault();
+        },
+        miejsceSelected: function(event) {
+console.log(event);
+            var odcinekCollection = new DictionaryCollection('odcinek'); 
+            odcinekCollection.fetch(
+                {
+                    success: function() {
+                        new DictionarySelectionView({model: miejsceCollection}).render($("#odc_id", that.el).first());
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );                        
         }
     });
 
