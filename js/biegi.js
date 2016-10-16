@@ -301,6 +301,7 @@ var BiegiModule = (function(){
             this.model = new BiegModel({bgg_dzien: utc = new Date().toJSON().slice(0,10)});
             fillTemplate('biegAdd',
                 function (compiledTemplate) {
+                    $(that.el).empty();
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
                     var miejsceCollection = new DictionaryCollection('miejsce'); 
                     miejsceCollection.fetch(
