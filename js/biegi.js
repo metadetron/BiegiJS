@@ -367,6 +367,17 @@ var BiegiModule = (function(){
                             }
                         }
                     );
+                    var rodzajBieguCollection = new DictionaryCollection('rodzajBiegu'); 
+                    rodzajBieguCollection.fetch(
+                        {
+                            success: function() {
+                                new DictionarySelectionView({model: rodzajBieguCollection}).render($("#bgg_rbg_id", that.el).first());
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );
                 } 
             );
         },
