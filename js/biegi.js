@@ -16,11 +16,12 @@ var BiegiModule = (function(){
 
     var DictionaryCollection = Backbone.Collection.extend({
         url: function() {
-            return 'http://run.metadetron.com/Biegi/dictionary/' + this.entityName + '/';
+            return 'http://run.metadetron.com/Biegi/dictionary/' + this.entityName + '/' + this.parentId;
         },
         model: DictionaryModel,
-        initialize: function(entityName) {
+        initialize: function(entityName, parentId) {
             this.entityName = entityName;
+            this.parentId = parentId;
         }, 
     });    
     
@@ -381,12 +382,11 @@ var BiegiModule = (function(){
             event.preventDefault();
         },
         miejsceSelected: function(event) {
-console.log(event.target.value);
-            var odcinekCollection = new DictionaryCollection('odcinek'); 
+            var odcinekCollection = new DictionaryCollection('odcinek', event.target.value); 
             odcinekCollection.fetch(
                 {
                     success: function() {
-                        new DictionarySelectionView({model: miejsceCollection}).render($("#odc_id", that.el).first());
+                        new DictionarySelectionView({model: odcinekCollection}).render($("#odc_id", that.el).first());
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
