@@ -16,12 +16,11 @@ var BiegiModule = (function(){
 
     var DictionaryCollection = Backbone.Collection.extend({
         url: function() {
-            return 'http://run.metadetron.com/Biegi/dictionary/' + this.entityName + '/' + this.parentId;
+            return 'http://run.metadetron.com/Biegi/dictionary/' + this.entityName + '/';
         },
         model: DictionaryModel,
-        initialize: function(entityName, parentId) {
+        initialize: function(entityName) {
             this.entityName = entityName;
-            this.parentId = parentId;
         }, 
     });    
     
@@ -311,6 +310,16 @@ var BiegiModule = (function(){
                             }
                         }
                     );
+                    var odcinekCollection = new DictionaryCollection('odcinek'); 
+                    odcinekCollection.fetch(
+                        {
+                            success: function() {
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );                        
                     var temperaturaCollection = new DictionaryCollection('temperatura'); 
                     temperaturaCollection.fetch(
                         {
@@ -382,17 +391,12 @@ var BiegiModule = (function(){
             event.preventDefault();
         },
         miejsceSelected: function(event) {
-            var odcinekCollection = new DictionaryCollection('odcinek', event.target.value); 
-            odcinekCollection.fetch(
-                {
-                    success: function() {
-                        new DictionarySelectionView({model: odcinekCollection}).render($("#odc_id", that.el).first());
-                    },
-                    error: function(collection, response, options) {
-                        new ErrorView({model: response});
-                    }
+            // event.target.value
+            var filteredOdcinekCollection = _.filter(odcinekCollection, function(odcinek) { 
+                    return odcinek.value % 2 == 0; 
                 }
-            );                        
+            );
+            new DictionarySelectionView({model: filteredOdcinekCollection}).render($("#odc_id", that.el).first());
         }
     });
 
