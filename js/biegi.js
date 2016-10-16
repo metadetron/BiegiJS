@@ -117,6 +117,7 @@ var BiegiModule = (function(){
         },        
         render: function(el){
             var that = this;
+            $(el).empty(); 
             _.each(that.model.models, function (dictionaryModel) {
                 fillTemplate('dictionarySelect',
                     function (compiledTemplate) {
@@ -393,7 +394,7 @@ var BiegiModule = (function(){
             event.preventDefault();
         },
         miejsceSelected: function(event) {
-            var filteredOdcinekCollection = odcinekCollection.filter({parentId: event.target.value});
+            var filteredOdcinekCollection = new Backbone.Collection(odcinekCollection.filter({parentId: event.target.value}));
             new DictionarySelectionView({model: filteredOdcinekCollection}).render($("#odc_id").first());
         }
     });
