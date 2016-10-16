@@ -9,7 +9,8 @@ var BiegiModule = (function(){
     var DictionaryModel = Backbone.Model.extend({
         defaults: {
             value: null,
-            title: null
+            title: null,
+            parentId: null
         },
         initialize: function(){        
         }
@@ -392,9 +393,8 @@ var BiegiModule = (function(){
             event.preventDefault();
         },
         miejsceSelected: function(event) {
-            // event.target.value
             var filteredOdcinekCollection = odcinekCollection.filter(function(odcinek) { 
-                    return odcinek.get('value') % 2 == 0; 
+                    return odcinek.get('parentId') == event.target.value; 
                 }
             );
             new DictionarySelectionView({model: filteredOdcinekCollection}).render($("#odc_id").first());
