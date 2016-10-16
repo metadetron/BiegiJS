@@ -394,10 +394,10 @@ var BiegiModule = (function(){
         miejsceSelected: function(event) {
             // event.target.value
             var filteredOdcinekCollection = _.filter(odcinekCollection, function(odcinek) { 
-                    return odcinek.value % 2 == 0; 
+                    return odcinek.get('value') % 2 == 0; 
                 }
             );
-            new DictionarySelectionView({model: filteredOdcinekCollection}).render($("#odc_id", that.el).first());
+            new DictionarySelectionView({model: filteredOdcinekCollection}).render($("#odc_id").first());
         }
     });
 
