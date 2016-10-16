@@ -342,6 +342,17 @@ var BiegiModule = (function(){
                             }
                         }
                     );
+                    var wiatrCollection = new DictionaryCollection('wiatr'); 
+                    wiatrCollection.fetch(
+                        {
+                            success: function() {
+                                new DictionarySelectionView({model: wiatrCollection}).render($("#bgg_wtr_id", that.el).first());
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );
                 } 
             );
         },
