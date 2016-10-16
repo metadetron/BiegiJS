@@ -395,7 +395,7 @@ var BiegiModule = (function(){
         },
         miejsceSelected: function(event) {
             var filteredOdcinekCollection = new Backbone.Collection(odcinekCollection.filter(function (odcinek) {
-                if (!odcinek.parentId) return true;
+                if (odcinek.parentId == null) return true;
                 return odcinek.parentId == event.target.value;
             }));
             new DictionarySelectionView({model: filteredOdcinekCollection}).render($("#odc_id").first());
