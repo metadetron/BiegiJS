@@ -393,10 +393,7 @@ var BiegiModule = (function(){
             event.preventDefault();
         },
         miejsceSelected: function(event) {
-            var filteredOdcinekCollection = odcinekCollection.filter(function(odcinek) { 
-                    return odcinek.get('parentId') == event.target.value; 
-                }
-            );
+            var filteredOdcinekCollection = odcinekCollection.filter({parentId: event.target.value});
             new DictionarySelectionView({model: filteredOdcinekCollection}).render($("#odc_id").first());
         }
     });
