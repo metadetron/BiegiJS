@@ -410,7 +410,6 @@ var BiegiModule = (function(){
             new LogInView();
         },
         dashboard: function() {
-            console.log("dashboard called");
             $.ajax({
                 url: "http://run.metadetron.com/Biegi/auth"
             }).then(function(data) {    
@@ -487,11 +486,8 @@ var BiegiModule = (function(){
 
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
-        console.log(profile);
         var authResponse = googleUser.getAuthResponse();
-        console.log(authResponse);
         $.post("http://run.metadetron.com/Biegi/auth", { google_id: authResponse.id_token}).done(function( data ) {
-            console.log(data);
             appRouter.navigate("dashboard", {trigger: true});
             profilePictureUrl = profile.getImageUrl();
             profileName = profile.getName();
