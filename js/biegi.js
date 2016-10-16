@@ -59,6 +59,7 @@ var BiegiModule = (function(){
   	        bgg_tmp_id: null,
             bgg_mjs_id: null,
             miejsce: null,
+            odc_id: null,
             bgg_opd_id: null,
             bgg_wtr_id: null,
             bgg_rbg_id: null,
@@ -303,6 +304,17 @@ var BiegiModule = (function(){
                         {
                             success: function() {
                                 new DictionarySelectionView({model: miejsceCollection}).render($("#bgg_mjs_id", that.el).first());
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );
+                    var odcinekCollection = new DictionaryCollection('odcinek'); 
+                    odcinekCollection.fetch(
+                        {
+                            success: function() {
+                                new DictionarySelectionView({model: miejsceCollection}).render($("#odc_id", that.el).first());
                             },
                             error: function(collection, response, options) {
                                 new ErrorView({model: response});
