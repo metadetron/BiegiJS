@@ -3,6 +3,7 @@ var BiegiModule = (function(){
     var profilePictureUrl = null;
     var profileName = null;
     var compiledTemplateCache = {};
+    var odcinekCollection = null; 
 
     ////////////////////////////// M O D E L S ////////////////////////////////////
     var DictionaryModel = Backbone.Model.extend({
@@ -310,7 +311,7 @@ var BiegiModule = (function(){
                             }
                         }
                     );
-                    var odcinekCollection = new DictionaryCollection('odcinek'); 
+                    odcinekCollection = new DictionaryCollection('odcinek'); 
                     odcinekCollection.fetch(
                         {
                             success: function() {
