@@ -393,7 +393,7 @@ var BiegiModule = (function(){
         },
         miejsceSelected: function(event) {
             // event.target.value
-            var filteredOdcinekCollection = _.filter(odcinekCollection, function(odcinek) { 
+            var filteredOdcinekCollection = odcinekCollection.filter(function(odcinek) { 
                     return odcinek.get('value') % 2 == 0; 
                 }
             );
