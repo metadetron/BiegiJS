@@ -87,6 +87,24 @@ var BiegiModule = (function(){
         model: BiegModel 
     });
 
+    var WiatrModel = Backbone.Model.extend({
+        defaults: {
+            wtr_id: null,
+	        wtr_opis: null,
+	        wtr_date_created: null,
+	        wtr_date_modified: null,
+		    wtr_usr_created_id: null,
+	        wtr_usr_modified_id: null,
+	        wtr_display_order: null
+        },
+        initialize: function(){        
+        }
+    });
+
+    var WiatrCollection = Backbone.Collection.extend({
+        url: 'http://run.metadetron.com/Biegi/wiatr/',
+        model: WiatrModel 
+    });
     //////////////////////////////// V I E W S ///////////////////////////////////////
     var LogInView = Backbone.View.extend({
         el: $('#col_middle #top_1'), // renderowanego w tym elemencie
