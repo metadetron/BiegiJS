@@ -128,6 +128,24 @@ var BiegiModule = (function(){
         }
     });
 
+    var WiatrTableView = Backbone.View.extend({
+        el: $('#col_left'),
+        initialize: function(){
+            _.bindAll(this, 'render');
+        },        
+        render: function(el){
+            var that = this;
+            $(el).empty(); 
+            _.each(that.model.models, function (wiatrModel) {
+                fillTemplate('wiatrTable', 
+                    function (compiledTemplate) {
+                        $(el).append(compiledTemplate(wiatrModel.toJSON()));
+                    } 
+                );
+            }, this);                    
+        }
+    });
+
     var ErrorView = Backbone.View.extend({
         el: $('#error'), 
         initialize: function(){
@@ -420,6 +438,7 @@ var BiegiModule = (function(){
             "login": "login",
             "": "dashboard",
             "dashboard": "dashboard",
+            "config": "config",
             "biegi/details/:id": "biegDetails"
         },
         login: function() {
@@ -483,7 +502,20 @@ var BiegiModule = (function(){
                     }
                 }
             );
-        }        
+        },
+        config: function() {
+            var wiatrCollection = new WiatrCollection('wiatr'); 
+            wiatrCollection.fetch(
+                {
+                    success: function() {
+                        new WiatrTableView({model: wiatrCollection}).render();
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );            
+        }       
     });
     var appRouter = new AppRouter();
     Backbone.history.start();
