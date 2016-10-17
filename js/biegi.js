@@ -149,7 +149,7 @@ var BiegiModule = (function(){
     });
 
     var WiatrTableView = Backbone.View.extend({
-        el: $('#col_left'),
+        el: $('#col_left #left_top_1'),
         initialize: function(){
             _.bindAll(this, 'render');
         },        
