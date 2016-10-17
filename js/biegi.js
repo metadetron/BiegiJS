@@ -156,13 +156,19 @@ var BiegiModule = (function(){
         render: function(){
             var that = this;
             $(this.el).empty(); 
-            _.each(this.model.models, function (wiatrModel) {
-                fillTemplate('wiatrTable', 
-                    function (compiledTemplate) {
-                        $(that.el).append(compiledTemplate(wiatrModel.toJSON()));
-                    } 
-                );
-            }, this);                    
+            fillTemplate('wiatrTable', 
+                function (compiledTemplate) {
+                    $(that.el).empty();
+                    $(that.el).append(compiledTemplate());
+                    _.each(that.model.models, function (wiatrModel) {
+                        fillTemplate('wiatrTableRow', 
+                            function (compiledTemplate) {
+                                $(that.el).append(compiledTemplate(wiatrModel.toJSON()));
+                            } 
+                        );
+                    }, that);                    
+                } 
+            );
         }
     });
 
