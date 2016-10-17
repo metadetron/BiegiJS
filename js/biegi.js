@@ -153,13 +153,13 @@ var BiegiModule = (function(){
         initialize: function(){
             _.bindAll(this, 'render');
         },        
-        render: function(el){
+        render: function(){
             var that = this;
-            $(el).empty(); 
-            _.each(that.model.models, function (wiatrModel) {
+            $(this.el).empty(); 
+            _.each(this.model.models, function (wiatrModel) {
                 fillTemplate('wiatrTable', 
                     function (compiledTemplate) {
-                        $(el).append(compiledTemplate(wiatrModel.toJSON()));
+                        $(that.el).append(compiledTemplate(wiatrModel.toJSON()));
                     } 
                 );
             }, this);                    
