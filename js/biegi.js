@@ -119,8 +119,10 @@ var BiegiModule = (function(){
             var that = this;
             fillTemplate('login',
                 function (compiledTemplate) {
-                    $('#col_left').empty();
-                    $('#col_right').empty();
+                    $('#col_left #left_top_1').empty();
+                    $('#col_left #left_top_2').empty();
+                    $('#col_right #right_top_1').empty();
+                    $('#col_right #right_top_2').empty();
                     $('#col_middle #top_2').empty();
                     $(that.el).empty();
                     $(that.el).append(compiledTemplate());
@@ -522,17 +524,27 @@ var BiegiModule = (function(){
             );
         },
         config: function() {
-            var wiatrCollection = new WiatrCollection('wiatr'); 
-            wiatrCollection.fetch(
-                {
-                    success: function() {
-                        new WiatrTableView({model: wiatrCollection}).render();
-                    },
-                    error: function(collection, response, options) {
-                        new ErrorView({model: response});
+            $.ajax({
+                url: "http://run.metadetron.com/Biegi/auth"
+            }).then(function(data) {    
+                $('#col_left #left_top_1').empty();
+                $('#col_left #left_top_2').empty();
+                $('#col_right #right_top_1').empty();
+                $('#col_right #right_top_2').empty();
+                $('#col_middle #top_1').empty();
+                $('#col_middle #top_2').empty();
+                var wiatrCollection = new WiatrCollection('wiatr'); 
+                wiatrCollection.fetch(
+                    {
+                        success: function() {
+                            new WiatrTableView({model: wiatrCollection}).render();
+                        },
+                        error: function(collection, response, options) {
+                            new ErrorView({model: response});
+                        }
                     }
-                }
-            );            
+                );            
+            });
         }       
     });
     var appRouter = new AppRouter();
