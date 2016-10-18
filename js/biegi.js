@@ -97,9 +97,9 @@ var BiegiModule = (function(){
 	        wtr_usr_modified_id: null,
 	        wtr_display_order: null
         },
-        initialize: function(){        
-        },
         urlRoot: 'http://run.metadetron.com/Biegi/wiatr/',
+        initialize: function(){        
+        }
     });
 
     var WiatrCollection = Backbone.Collection.extend({
@@ -573,7 +573,7 @@ var BiegiModule = (function(){
         },
         wiatrEdit: function(id) {
             $('#col_left #left_top_1').empty();
-            var wiatr = new WiatrModel({wtr_id: id});
+            var wiatr = new WiatrModel({id: id});
             wiatr.fetch(
                 {
                     success: function() {
