@@ -465,7 +465,8 @@ var BiegiModule = (function(){
             "": "dashboard",
             "dashboard": "dashboard",
             "config": "config",
-            "biegi/details/:id": "biegDetails"
+            "biegi/details/:id": "biegDetails",
+            "wiatr/edit/:id": "wiatrEdit"
         },
         login: function() {
             new LogInView();
@@ -551,6 +552,9 @@ var BiegiModule = (function(){
                     }
                 );            
             });
+        },
+        wiatrEdit: function(id) {
+            $('#col_middle #top_1').empty();
         }       
     });
     var appRouter = new AppRouter();
