@@ -98,7 +98,8 @@ var BiegiModule = (function(){
 	        wtr_display_order: null
         },
         initialize: function(){        
-        }
+        },
+        urlRoot: 'http://run.metadetron.com/Biegi/wiatr/',
     });
 
     var WiatrCollection = Backbone.Collection.extend({
