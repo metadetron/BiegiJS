@@ -187,7 +187,39 @@ var BiegiModule = (function(){
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
                 } 
             );
-        }
+        },
+        events: {
+            "change"        : "change",
+             "click .save"   : "persist"
+        },
+        change: function (event) {
+            var target = event.target;
+            var change = {};
+            change[target.name] = target.value;
+            this.model.set(change); //, {validate : true}); bo nie mamy validatorow indywidualnych w modelu jeszcze(?)
+        },
+        persist: function (event) {
+            var self = this;
+            this.model.save(null, {
+                success: function (model) {
+                    var wiatrCollection = new WiatrCollection('wiatr'); 
+                    wiatrCollection.fetch(
+                        {
+                            success: function() {
+                                new WiatrTableView({model: wiatrCollection}).render();
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );            
+                },
+                error: function (model, response) {
+                    new ErrorView({model: response});
+                }
+            });
+            event.preventDefault();
+        },
     });
 
     var ErrorView = Backbone.View.extend({
