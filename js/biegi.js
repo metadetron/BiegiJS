@@ -177,6 +177,7 @@ var BiegiModule = (function(){
         el: $('#col_left #left_top_1'),
         initialize: function(){
             _.bindAll(this, 'render');
+            this.render();
         },        
         render: function(){
             var that = this;
