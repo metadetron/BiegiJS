@@ -184,7 +184,7 @@ var BiegiModule = (function(){
             fillTemplate('wiatrEdit', 
                 function (compiledTemplate) {
                     $(that.el).empty();
-                    $(that.el).append(compiledTemplate(this.model.toJSON()));
+                    $(that.el).append(compiledTemplate(that.model.toJSON()));
                 } 
             );
         }
