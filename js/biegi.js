@@ -179,11 +179,10 @@ var BiegiModule = (function(){
         },        
         render: function(){
             var that = this;
-            $(this.el).empty(); 
             fillTemplate('wiatrEdit', 
                 function (compiledTemplate) {
                     $(that.el).empty();
-                    $(that.el).append(compiledTemplate());
+                    $(that.el).append(compiledTemplate(this.model.toJSON()));
                 } 
             );
         }
