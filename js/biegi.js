@@ -163,7 +163,7 @@ var BiegiModule = (function(){
                     _.each(that.model.models, function (wiatrModel) {
                         fillTemplate('wiatrTableRow', 
                             function (compiledTemplate) {
-                                $(that.el).append(compiledTemplate(wiatrModel.toJSON()));
+                                $("tbody", that.el).append(compiledTemplate(wiatrModel.toJSON()));
                             } 
                         );
                     }, that);                    
