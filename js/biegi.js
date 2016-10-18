@@ -554,7 +554,7 @@ var BiegiModule = (function(){
             });
         },
         wiatrEdit: function(id) {
-            $('#col_middle #top_1').empty();
+            $('#col_left #left_top_1').empty();
         }       
     });
     var appRouter = new AppRouter();
