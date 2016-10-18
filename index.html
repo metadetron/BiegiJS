@@ -312,6 +312,21 @@ $(document).ready(function() {
     </tr>
 </script>
 
+<script id="wiatrEdit" type="text/template">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Nowy bieg</h3>
+            </div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal">
+                    <label for="wtr_opis">Opis</label>
+                    <input type="text" class="form-control" id="wtr_opis" name="wtr_opis" value="<%= wtr_opis %>">
+                    <a href="#" class="btn btn-primary save pull-right"><span class="glyphicon glyphicon-floppy-save"></span> Save</a>
+                </form>
+            </div>
+        </div>
+</script>
+
         <script src="js/biegi.js"></script>
     </body>
 </html>

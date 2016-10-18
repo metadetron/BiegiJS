@@ -172,6 +172,23 @@ var BiegiModule = (function(){
         }
     });
 
+    var WiatrEditView = Backbone.View.extend({
+        el: $('#col_left #left_top_1'),
+        initialize: function(){
+            _.bindAll(this, 'render');
+        },        
+        render: function(){
+            var that = this;
+            $(this.el).empty(); 
+            fillTemplate('wiatrEdit', 
+                function (compiledTemplate) {
+                    $(that.el).empty();
+                    $(that.el).append(compiledTemplate());
+                } 
+            );
+        }
+    });
+
     var ErrorView = Backbone.View.extend({
         el: $('#error'), 
         initialize: function(){
@@ -555,6 +572,17 @@ var BiegiModule = (function(){
         },
         wiatrEdit: function(id) {
             $('#col_left #left_top_1').empty();
+            var wiatr = new WiatrModel({wtr_id: id});
+            wiatr.fetch(
+                {
+                    success: function() {
+                        new WiatrEditView({model: wiatr});
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );
         }       
     });
     var appRouter = new AppRouter();
