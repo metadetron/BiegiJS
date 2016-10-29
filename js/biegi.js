@@ -2,6 +2,7 @@ var BiegiModule = (function(){
 
     var profilePictureUrl = null;
     var profileName = null;
+    var sessionToken = null;
     var compiledTemplateCache = {};
     var odcinekCollection = null; 
 
@@ -522,50 +523,44 @@ var BiegiModule = (function(){
             new LogInView();
         },
         dashboard: function() {
-            $.ajax({
-                url: "http://run.metadetron.com/Biegi/auth"
-            }).then(function(data) {    
-                $('#login').hide();
-                $('#logout').show();
-                $('#myModal').modal('hide');
-                new ChartView();
-                var stats = new StatsModel({id: 0});
-                stats.fetch(
-                    {
-                        success: function() {
-                            new StatsView({model: stats});
-                        },
-                        error: function(collection, response, options) {
-                            new ErrorView({model: response});
-                        }
+            $('#login').hide();
+            $('#logout').show();
+            $('#myModal').modal('hide');
+            new ChartView();
+            var stats = new StatsModel({id: 0});
+            stats.fetch(
+                {
+                    success: function() {
+                        new StatsView({model: stats});
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
                     }
-                );
-                new BiegAddView({model: new BiegModel()});
-                var pbCollection = new PBCollection();
-                pbCollection.fetch(
-                    {
-                        success: function() {
-                            new PBSView({model: pbCollection});
-                        },
-                        error: function(collection, response, options) {
-                            new ErrorView({model: response});
-                        }
+                }
+            );
+            new BiegAddView({model: new BiegModel()});
+            var pbCollection = new PBCollection();
+            pbCollection.fetch(
+                {
+                    success: function() {
+                        new PBSView({model: pbCollection});
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
                     }
-                );
-                var biegCollection = new BiegCollection();
-                biegCollection.fetch(
-                    {
-                        success: function() {
-                            new BiegiView({model: biegCollection});
-                        },
-                        error: function(collection, response, options) {
-                            new ErrorView({model: response});
-                        }
+                }
+            );
+            var biegCollection = new BiegCollection();
+            biegCollection.fetch(
+                {
+                    success: function() {
+                        new BiegiView({model: biegCollection});
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
                     }
-                );
-            }, function(data) {
-                signOut();
-            });
+                }
+            );
         },
         biegDetails: function(id) {
             var bieg = new BiegModel({id: id});
@@ -581,27 +576,23 @@ var BiegiModule = (function(){
             );
         },
         config: function() {
-            $.ajax({
-                url: "http://run.metadetron.com/Biegi/auth"
-            }).then(function(data) {    
-                $('#col_left #left_top_1').empty();
-                $('#col_left #left_top_2').empty();
-                $('#col_right #right_top_1').empty();
-                $('#col_right #right_top_2').empty();
-                $('#col_middle #top_1').empty();
-                $('#col_middle #top_2').empty();
-                var wiatrCollection = new WiatrCollection('wiatr'); 
-                wiatrCollection.fetch(
-                    {
-                        success: function() {
-                            new WiatrTableView({model: wiatrCollection}).render();
-                        },
-                        error: function(collection, response, options) {
-                            new ErrorView({model: response});
-                        }
+            $('#col_left #left_top_1').empty();
+            $('#col_left #left_top_2').empty();
+            $('#col_right #right_top_1').empty();
+            $('#col_right #right_top_2').empty();
+            $('#col_middle #top_1').empty();
+            $('#col_middle #top_2').empty();
+            var wiatrCollection = new WiatrCollection('wiatr'); 
+            wiatrCollection.fetch(
+                {
+                    success: function() {
+                        new WiatrTableView({model: wiatrCollection}).render();
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
                     }
-                );            
-            });
+                }
+            );            
         },
         wiatrEdit: function(id) {
             $('#col_left #left_top_1').empty();
@@ -640,6 +631,7 @@ var BiegiModule = (function(){
             appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
             profilePictureUrl = profile.getImageUrl();
             profileName = profile.getName();
+            sessionToken = authResponse.id_token;
         });
     };
 
