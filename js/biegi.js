@@ -1,5 +1,5 @@
 $.ajaxSetup({
-    data: { 'token' :'Bearer lolz' }
+    headers : { 'Cookie' :'lolz' }
 });
 
 var BiegiModule = (function(){
