@@ -1,3 +1,7 @@
+$.ajaxSetup({
+    headers: { 'Authorization' :'Bearer lolz' }
+});
+
 var BiegiModule = (function(){
 
     var profilePictureUrl = null;
