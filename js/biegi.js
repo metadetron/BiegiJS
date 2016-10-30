@@ -637,7 +637,7 @@ var BiegiModule = (function(){
         var authResponse = googleUser.getAuthResponse();
         profilePictureUrl = profile.getImageUrl();
         profileName = profile.getName();
-        sessionToken = authResponse.id_token;
+        this.sessionToken = authResponse.id_token;
         appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
     };
 
