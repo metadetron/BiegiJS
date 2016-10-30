@@ -4,11 +4,15 @@ var BiegiModule = (function(){
     var profileName = null;
     var sessionToken = null;
     var compiledTemplateCache = {};
-    var odcinekCollection = null; 
+    var odcinekCollection = null;
+
+    var getSessionToken = function() {
+        return this.sessionToken;
+    } 
 
     $.ajaxSetup({
-        data: {'token': sessionToken }
-    });            
+        data: {'token': getSessionToken }
+    });          
 
     ////////////////////////////// M O D E L S ////////////////////////////////////
     var DictionaryModel = Backbone.Model.extend({
@@ -631,12 +635,10 @@ var BiegiModule = (function(){
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
         var authResponse = googleUser.getAuthResponse();
-//        $.post("http://run.metadetron.com/Biegi/auth", { google_id: authResponse.id_token}).done(function( data ) {
-            appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
-            profilePictureUrl = profile.getImageUrl();
-            profileName = profile.getName();
-            sessionToken = authResponse.id_token;
-//        });
+        profilePictureUrl = profile.getImageUrl();
+        profileName = profile.getName();
+        sessionToken = authResponse.id_token;
+        appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
     };
 
     function signOut() {
