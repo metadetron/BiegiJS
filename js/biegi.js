@@ -1,5 +1,5 @@
 $.ajaxSetup({
-    data: { 'token' :'lolz' }
+    data: {'token': BiegiModule.getSessionToken() }
 });
 
 var BiegiModule = (function(){
