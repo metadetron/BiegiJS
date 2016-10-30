@@ -6,8 +6,8 @@ var BiegiModule = (function(){
     var compiledTemplateCache = {};
     var odcinekCollection = null; 
 
-    $.ajaxSetup({
-        data: {'token': this.sessionToken}
+    $.ajaxSend(function(event, request) {
+        request.setRequestHeader("token", sessionToken);
     });
 
     ////////////////////////////// M O D E L S ////////////////////////////////////
