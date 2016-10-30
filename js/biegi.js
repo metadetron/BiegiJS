@@ -1,5 +1,5 @@
-$.ajaxSend(function(event, request) {
-    request.setRequestHeader("token", sessionToken);
+$.ajaxSetup({
+    data: { 'token' :'lolz' }
 });
 
 var BiegiModule = (function(){
