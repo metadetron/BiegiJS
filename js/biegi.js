@@ -1,3 +1,7 @@
+$.ajaxSend(function(event, request) {
+    request.setRequestHeader("token", sessionToken);
+});
+
 var BiegiModule = (function(){
 
     var profilePictureUrl = null;
@@ -5,10 +9,6 @@ var BiegiModule = (function(){
     var sessionToken = null;
     var compiledTemplateCache = {};
     var odcinekCollection = null; 
-
-    $.ajaxSend(function(event, request) {
-        request.setRequestHeader("token", sessionToken);
-    });
 
     ////////////////////////////// M O D E L S ////////////////////////////////////
     var DictionaryModel = Backbone.Model.extend({
