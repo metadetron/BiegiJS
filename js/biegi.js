@@ -6,6 +6,10 @@ var BiegiModule = (function(){
     var compiledTemplateCache = {};
     var odcinekCollection = null; 
 
+    $.ajaxSetup({
+        data: {'token': sessionToken }
+    });            
+
     ////////////////////////////// M O D E L S ////////////////////////////////////
     var DictionaryModel = Backbone.Model.extend({
         defaults: {
@@ -632,9 +636,6 @@ var BiegiModule = (function(){
             profilePictureUrl = profile.getImageUrl();
             profileName = profile.getName();
             sessionToken = authResponse.id_token;
-            $.ajaxSetup({
-                data: {'token': sessionToken }
-            });            
         });
     };
 
