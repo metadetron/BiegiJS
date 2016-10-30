@@ -659,4 +659,5 @@ var BiegiModule = (function(){
 
 // for google data-onsuccess :-/
 window.onSignIn = BiegiModule.onSignIn;
+window.signOut = BiegiModule.signOut;
 
