@@ -521,7 +521,7 @@ var BiegiModule = (function(){
     var AppRouter = Backbone.Router.extend({
         routes: {
             "login": "login",
-            "": "dashboard",
+            "": "login",
             "dashboard": "dashboard",
             "config": "config",
             "biegi/details/:id": "biegDetails",
