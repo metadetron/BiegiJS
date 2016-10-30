@@ -643,15 +643,11 @@ var BiegiModule = (function(){
 
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
+        var that = this;
         auth2.signOut().then(function () {
             console.log('User signed out.');
-            $.ajax({
-                url: "http://run.metadetron.com/Biegi/auth/0",
-                type: 'DELETE',
-                success: function(result) {
-                    appRouter.navigate("login", {trigger: true});
-                }
-            });            
+            that.sessionToken = null;
+            appRouter.navigate("login", {trigger: true});
         });
     };
 
