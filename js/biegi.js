@@ -1,7 +1,3 @@
-$.ajaxSetup({
-    data: {'token': BiegiModule.getSessionToken() }
-});
-
 var BiegiModule = (function(){
 
     var profilePictureUrl = null;
@@ -663,6 +659,10 @@ var BiegiModule = (function(){
         getSessionToken: getSessionToken
     };
 }());
+
+$.ajaxSetup({
+    data: {'token': BiegiModule.getSessionToken() }
+});
 
 // for google data-onsuccess :-/
 window.onSignIn = BiegiModule.onSignIn;
