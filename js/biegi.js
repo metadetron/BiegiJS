@@ -2,7 +2,7 @@ var BiegiModule = (function(){
 
     var profilePictureUrl = null;
     var profileName = null;
-    var sessionToken = null;
+    var sessionToken = "tmp"; // remove me null;
     var compiledTemplateCache = {};
     var odcinekCollection = null; 
 
