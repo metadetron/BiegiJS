@@ -1,7 +1,3 @@
-$.ajaxSetup({
-    data: { 'token' :'lolz' }
-});
-
 var BiegiModule = (function(){
 
     var profilePictureUrl = null;
@@ -9,6 +5,10 @@ var BiegiModule = (function(){
     var sessionToken = null;
     var compiledTemplateCache = {};
     var odcinekCollection = null; 
+
+    $.ajaxSetup({
+        data: {'token': this.sessionToken}
+    });
 
     ////////////////////////////// M O D E L S ////////////////////////////////////
     var DictionaryModel = Backbone.Model.extend({
