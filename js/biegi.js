@@ -653,9 +653,14 @@ var BiegiModule = (function(){
         });
     };
 
+    function getSessionToken() {
+        return sessionToken;
+    }
+
     return {
         signOut: signOut,
-        onSignIn: onSignIn
+        onSignIn: onSignIn,
+        getSessionToken: getSessionToken
     };
 }());
 
