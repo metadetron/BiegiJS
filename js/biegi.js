@@ -10,17 +10,18 @@ var BiegiModule = (function(){
         return this.sessionToken;
     } 
 
+    $.ajaxSetup({
+        data: {'token': getSessionToken }
+    });          
+
     var _sync = Backbone.sync;
     Backbone.sync = function(method, model, options) {
 
         if( model && (method === 'create' || method === 'update' || method === 'patch') ) {
             options.contentType = 'application/json';
             options.data = JSON.stringify(options.attrs || model.toJSON());
+            options.url = model.urlRoot + "?token=" + getSessionToken();
         }
-
-        _.extend( options.data, {
-            "token": getSessionToken
-        });
 
         return _sync.call( this, method, model, options );
     }
