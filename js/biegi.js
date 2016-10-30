@@ -631,12 +631,12 @@ var BiegiModule = (function(){
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
         var authResponse = googleUser.getAuthResponse();
-        $.post("http://run.metadetron.com/Biegi/auth", { google_id: authResponse.id_token}).done(function( data ) {
+//        $.post("http://run.metadetron.com/Biegi/auth", { google_id: authResponse.id_token}).done(function( data ) {
             appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
             profilePictureUrl = profile.getImageUrl();
             profileName = profile.getName();
             sessionToken = authResponse.id_token;
-        });
+//        });
     };
 
     function signOut() {
