@@ -632,6 +632,9 @@ var BiegiModule = (function(){
             profilePictureUrl = profile.getImageUrl();
             profileName = profile.getName();
             sessionToken = authResponse.id_token;
+            $.ajaxSetup({
+                data: {'token': sessionToken }
+            });            
         });
     };
 
@@ -649,20 +652,11 @@ var BiegiModule = (function(){
         });
     };
 
-    function getSessionToken() {
-        return sessionToken;
-    }
-
     return {
         signOut: signOut,
-        onSignIn: onSignIn,
-        getSessionToken: getSessionToken
+        onSignIn: onSignIn
     };
 }());
-
-$.ajaxSetup({
-    data: {'token': BiegiModule.getSessionToken() }
-});
 
 // for google data-onsuccess :-/
 window.onSignIn = BiegiModule.onSignIn;
