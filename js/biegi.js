@@ -227,7 +227,7 @@ var BiegiModule = (function(){
                     wiatrCollection.fetch(
                         {
                             success: function() {
-                                this.undelegateEvents();
+                                self.undelegateEvents();
                                 appRouter.navigate("config", {trigger: true});                                
                             },
                             error: function(collection, response, options) {
