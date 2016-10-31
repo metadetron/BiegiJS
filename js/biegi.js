@@ -8,7 +8,9 @@ var BiegiModule = (function(){
 
     var getSessionToken = function() {
         return this.sessionToken;
-    } 
+    }
+
+    var wiatrTableView = null; 
 
     $.ajaxSetup({
         data: {'token': getSessionToken }
@@ -602,11 +604,12 @@ var BiegiModule = (function(){
             $('#col_right #right_top_2').empty();
             $('#col_middle #top_1').empty();
             $('#col_middle #top_2').empty();
-            var wiatrCollection = new WiatrCollection('wiatr'); 
+            var wiatrCollection = new WiatrCollection('wiatr');
+            var that = this; 
             wiatrCollection.fetch(
                 {
                     success: function() {
-                        new WiatrTableView({model: wiatrCollection}).render();
+                        that.wiatrTableView = WiatrTableView({model: wiatrCollection}).render();
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
@@ -615,7 +618,10 @@ var BiegiModule = (function(){
             );            
         },
         wiatrEdit: function(id) {
+            console.log("wiatrEdit navigation called");
             $('#col_left #left_top_1').empty();
+            this.wiatrTableView.remove();
+            this.wiatrTableView.unbind();
             var wiatr = new WiatrModel({id: id});
             wiatr.fetch(
                 {
