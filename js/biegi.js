@@ -609,7 +609,7 @@ var BiegiModule = (function(){
             wiatrCollection.fetch(
                 {
                     success: function() {
-                        that.wiatrTableView = WiatrTableView({model: wiatrCollection}).render();
+                        that.wiatrTableView = new WiatrTableView({model: wiatrCollection}).render();
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
