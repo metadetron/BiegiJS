@@ -10,8 +10,6 @@ var BiegiModule = (function(){
         return this.sessionToken;
     }
 
-    var wiatrTableView = null; 
-
     $.ajaxSetup({
         data: {'token': getSessionToken }
     });          
@@ -533,6 +531,7 @@ var BiegiModule = (function(){
 
     //////////////////////////////// R O U T E R ////////////////////////////////////
     var AppRouter = Backbone.Router.extend({
+        wiatrTableView: null, 
         routes: {
             "login": "login",
             "": "login",
