@@ -227,7 +227,7 @@ var BiegiModule = (function(){
                     wiatrCollection.fetch(
                         {
                             success: function() {
-                                new WiatrTableView({model: wiatrCollection}).render();
+                                appRouter.navigate("config", {trigger: true});                                
                             },
                             error: function(collection, response, options) {
                                 new ErrorView({model: response});
