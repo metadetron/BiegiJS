@@ -620,8 +620,7 @@ var BiegiModule = (function(){
         wiatrEdit: function(id) {
             console.log("wiatrEdit navigation called");
             $('#col_left #left_top_1').empty();
-            this.wiatrTableView.remove();
-            this.wiatrTableView.unbind();
+            this.wiatrTableView.undelegateEvents();
             var wiatr = new WiatrModel({id: id});
             wiatr.fetch(
                 {
