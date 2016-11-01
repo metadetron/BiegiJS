@@ -679,6 +679,7 @@ console.log('WiatrTableView.render() called');
                 }
             }
         );
+        views.biegAddView.render();
 
         appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
     };
