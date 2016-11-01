@@ -271,17 +271,15 @@ console.log('WiatrTableView.render() called');
     });
 
     var ChartView = Backbone.View.extend({
-        el: $('#page_dashboard #col_middle #top_1'), 
+        el: $('#chart_view'), 
         initialize: function(){
             _.bindAll(this, 'render');  
-            this.render();  
         },
         render: function(){
             var that = this;
             fillTemplate('chart',
                 function (compiledTemplate) {
-                    // $(that.el).empty();
-                    $(that.el).append(compiledTemplate());
+                    $(that.el).html(compiledTemplate());
                 } 
             );            
             google.charts.load('current', {packages: ['corechart', 'bar']});
@@ -658,6 +656,7 @@ console.log('WiatrTableView.render() called');
         profileName = profile.getName();
         this.sessionToken = authResponse.id_token;
 
+        views.chartView.render();
         var stats = new StatsModel({id: 0});
         stats.fetch(
             {
