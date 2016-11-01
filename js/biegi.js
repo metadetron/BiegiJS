@@ -5,6 +5,10 @@ var BiegiModule = (function(){
     var sessionToken = null;
     var compiledTemplateCache = {};
     var odcinekCollection = null;
+    var views = {
+        chartView: null,
+        wiatrTableView: null 
+    };
 
     var getSessionToken = function() {
         return this.sessionToken;
@@ -177,7 +181,8 @@ var BiegiModule = (function(){
             // this.listenTo(this.model, 'sync', this.render);
             this.listenTo(appEvents, 'WiatrEditView:persisted', this.render);
         },        
-        render: function(){
+        render: function(m){
+            this.model = m;
 console.log('WiatrTableView.render() called');            
             var that = this;
             // $(this.el).empty(); 
@@ -534,9 +539,10 @@ console.log('WiatrTableView.render() called');
         }
     });
 
+    var app = this;
+
     //////////////////////////////// R O U T E R ////////////////////////////////////
     var AppRouter = Backbone.Router.extend({
-        wiatrTableView: null, 
         routes: {
             "login": "login",
             "": "login",
@@ -552,7 +558,7 @@ console.log('WiatrTableView.render() called');
             $('#login').hide();
             $('#logout').show();
             $('#myModal').modal('hide');
-            new ChartView();
+            // this.views.chartView.render(); // ???
             var stats = new StatsModel({id: 0});
             stats.fetch(
                 {
@@ -613,7 +619,7 @@ console.log('WiatrTableView.render() called');
             wiatrCollection.fetch(
                 {
                     success: function() {
-                        that.wiatrTableView = new WiatrTableView({model: wiatrCollection});
+                        app.views.wiatrTableView = render(wiatrCollection);
                         that.wiatrTableView.render();
                     },
                     error: function(collection, response, options) {
@@ -639,6 +645,9 @@ console.log('WiatrTableView.render() called');
             );
         }       
     });
+    this.views.chartView = new ChartView();
+    this.views.wiatrTableView = new WiatrTableView(); 
+
     var appRouter = new AppRouter();
     var appEvents = _.extend({}, Backbone.Events);
     Backbone.history.start();
