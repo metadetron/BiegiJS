@@ -315,8 +315,7 @@ console.log('WiatrTableView.render() called');
             var that = this;
             fillTemplate('stats',
                 function (compiledTemplate) {
-                    // $(that.el).empty();
-                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                    $(that.el).html(compiledTemplate(that.model.toJSON()));
                     $("#profilePhoto").attr("src", profilePictureUrl);
                     $("#fullName").text(profileName);                                
                 } 
