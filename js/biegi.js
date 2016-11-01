@@ -595,7 +595,8 @@ var BiegiModule = (function(){
         profilePictureUrl = profile.getImageUrl();
         profileName = profile.getName();
         this.sessionToken = authResponse.id_token;
-
+        $("button#logout").hide();
+        
         views.chartView.render();
         var stats = new StatsModel({id: 0});
         stats.fetch(
@@ -653,6 +654,7 @@ var BiegiModule = (function(){
         auth2.signOut().then(function () {
             console.log('User signed out.');
             that.sessionToken = null;
+            $("button#logout").hide();
             appRouter.navigate("login", {trigger: true});
         });
     };
