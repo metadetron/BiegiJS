@@ -564,17 +564,6 @@ console.log('WiatrTableView.render() called');
             $('#logout').show();
             $('#myModal').modal('hide');
             // this.views.chartView.render(); // ???
-            var stats = new StatsModel({id: 0});
-            stats.fetch(
-                {
-                    success: function() {
-                        views.statsView.render(stats);
-                    },
-                    error: function(collection, response, options) {
-                        new ErrorView({model: response});
-                    }
-                }
-            );
             new BiegAddView({model: new BiegModel()});
             var pbCollection = new PBCollection();
             pbCollection.fetch(
@@ -656,6 +645,18 @@ console.log('WiatrTableView.render() called');
     views.chartView = new ChartView();
     views.wiatrTableView = new WiatrTableView();
     views.statsView = new StatsView(); 
+
+    var stats = new StatsModel({id: 0});
+    stats.fetch(
+        {
+            success: function() {
+                views.statsView.render(stats);
+            },
+            error: function(collection, response, options) {
+                new ErrorView({model: response});
+            }
+        }
+    );
 
     var appRouter = new AppRouter();
     var appEvents = _.extend({}, Backbone.Events);
