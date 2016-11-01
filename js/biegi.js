@@ -174,9 +174,10 @@ var BiegiModule = (function(){
         el: $('#col_left #left_top_1'),
         initialize: function(){
             _.bindAll(this, 'render');
-            this.listenTo(appEvents, 'WiatrEditView:persisted', this.render);
+            this.listenTo(this.model, 'sync', this.render);
         },        
         render: function(){
+console.log('WiatrTableView.render() called');            
             var that = this;
             // $(this.el).empty(); 
             fillTemplate('wiatrTable', 
@@ -230,7 +231,7 @@ var BiegiModule = (function(){
                             success: function() {
                                 self.undelegateEvents(); // potrzebne?
                                 // appRouter.navigate("config", {trigger: true});
-                                appEvents.trigger('WiatrEditView:persisted');                                
+                                // appEvents.trigger('WiatrEditView:persisted'); model.sync event???                                
                             },
                             error: function(collection, response, options) {
                                 new ErrorView({model: response});
