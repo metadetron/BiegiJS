@@ -7,7 +7,8 @@ var BiegiModule = (function(){
     var odcinekCollection = null;
     var views = {
         chartView: null,
-        wiatrTableView: null 
+        wiatrTableView: null,
+        statsView: null 
     };
 
     var getSessionToken = function() {
@@ -305,12 +306,12 @@ console.log('WiatrTableView.render() called');
 
     // definicja widoku
     var StatsView = Backbone.View.extend({
-        el: $('#page_dashboard #col_left #left_top_1'), // renderowanego w tym elemencie
+        el: $('#stats_view'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
-            this.render(); // samorenderujacego sie na starcie 
         },
-        render: function(){
+        render: function(m){
+            this.model = m;
             var that = this;
             fillTemplate('stats',
                 function (compiledTemplate) {
@@ -568,7 +569,7 @@ console.log('WiatrTableView.render() called');
             stats.fetch(
                 {
                     success: function() {
-                        new StatsView({model: stats});
+                        new StatsView({model: stats}); // tutaj
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
@@ -654,7 +655,8 @@ console.log('WiatrTableView.render() called');
         }       
     });
     views.chartView = new ChartView();
-    views.wiatrTableView = new WiatrTableView(); 
+    views.wiatrTableView = new WiatrTableView();
+    views.statsView = new StatsView(); 
 
     var appRouter = new AppRouter();
     var appEvents = _.extend({}, Backbone.Events);
