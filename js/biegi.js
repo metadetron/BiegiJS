@@ -595,8 +595,8 @@ var BiegiModule = (function(){
         profilePictureUrl = profile.getImageUrl();
         profileName = profile.getName();
         this.sessionToken = authResponse.id_token;
-        $("button#logout").hide();
-        
+        $("button#logout").show();
+
         views.chartView.render();
         var stats = new StatsModel({id: 0});
         stats.fetch(
