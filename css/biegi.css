@@ -21,3 +21,7 @@ div#fullName {
 #backbone_page {
     display: none;
 }
+
+#chart_div {
+    height: 200px;
+}
