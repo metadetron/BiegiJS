@@ -136,30 +136,6 @@ var BiegiModule = (function(){
         model: WiatrModel 
     });
     //////////////////////////////// V I E W S ///////////////////////////////////////
-    var LogInView = Backbone.View.extend({
-        el: $('#page_login #col_middle #top_1'), // renderowanego w tym elemencie
-        initialize: function(){
-            _.bindAll(this, 'render'); // zeby metody znaly "this" 
-            this.render(); // samorenderujacego sie na starcie 
-        },
-        render: function(){
-            console.log("Rendering LogInView...");
-            $('#login').show();
-            $('#logout').hide();
-            var that = this;
-            fillTemplate('login',
-                function (compiledTemplate) {
-                    // $('#col_left #left_top_1').empty();
-                    // $('#col_left #left_top_2').empty();
-                    // $('#col_right #right_top_1').empty();
-                    // $('#col_right #right_top_2').empty();
-                    // $('#col_middle #top_2').empty();
-                    // $(that.el).empty();
-                    $(that.el).append(compiledTemplate());
-                } 
-            );            
-        }
-    });
 
     var DictionarySelectionView = Backbone.View.extend({        
         initialize: function(){
@@ -551,7 +527,6 @@ var BiegiModule = (function(){
         login: function() {
             $(".backbone_page").hide();
             $("#page_login.backbone_page").show();
-            // new LogInView(); TODO
         },
         dashboard: function() {
             $(".backbone_page").hide();
