@@ -141,12 +141,12 @@ var BiegiModule = (function(){
             var that = this;
             fillTemplate('login',
                 function (compiledTemplate) {
-                    $('#col_left #left_top_1').empty();
-                    $('#col_left #left_top_2').empty();
-                    $('#col_right #right_top_1').empty();
-                    $('#col_right #right_top_2').empty();
-                    $('#col_middle #top_2').empty();
-                    $(that.el).empty();
+                    // $('#col_left #left_top_1').empty();
+                    // $('#col_left #left_top_2').empty();
+                    // $('#col_right #right_top_1').empty();
+                    // $('#col_right #right_top_2').empty();
+                    // $('#col_middle #top_2').empty();
+                    // $(that.el).empty();
                     $(that.el).append(compiledTemplate());
                 } 
             );            
@@ -159,7 +159,7 @@ var BiegiModule = (function(){
         },        
         render: function(el){
             var that = this;
-            $(el).empty(); 
+            // $(el).empty(); 
             _.each(that.model.models, function (dictionaryModel) {
                 fillTemplate('dictionarySelect',
                     function (compiledTemplate) {
@@ -177,10 +177,10 @@ var BiegiModule = (function(){
         },        
         render: function(){
             var that = this;
-            $(this.el).empty(); 
+            // $(this.el).empty(); 
             fillTemplate('wiatrTable', 
                 function (compiledTemplate) {
-                    $(that.el).empty();
+                    // $(that.el).empty();
                     $(that.el).append(compiledTemplate());
                     _.each(that.model.models, function (wiatrModel) {
                         fillTemplate('wiatrTableRow', 
@@ -204,7 +204,7 @@ var BiegiModule = (function(){
             var that = this;
             fillTemplate('wiatrEdit', 
                 function (compiledTemplate) {
-                    $(that.el).empty();
+                    // $(that.el).empty();
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
                 } 
             );
@@ -252,7 +252,7 @@ var BiegiModule = (function(){
         },
         render: function(){
             var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= responseText %> <%= statusText %></div>');
-            $("div.modal-body", this.el).empty();
+            // $("div.modal-body", this.el).empty();
             $("div.modal-body", this.el).append(compiledTemplate(this.model));
             $(this.el).modal();
         }
@@ -268,7 +268,7 @@ var BiegiModule = (function(){
             var that = this;
             fillTemplate('chart',
                 function (compiledTemplate) {
-                    $(that.el).empty();
+                    // $(that.el).empty();
                     $(that.el).append(compiledTemplate());
                 } 
             );            
@@ -305,7 +305,7 @@ var BiegiModule = (function(){
             var that = this;
             fillTemplate('stats',
                 function (compiledTemplate) {
-                    $(that.el).empty();
+                    // $(that.el).empty();
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
                     $("#profilePhoto").attr("src", profilePictureUrl);
                     $("#fullName").text(profileName);                                
@@ -340,7 +340,7 @@ var BiegiModule = (function(){
             var that = this;
             fillTemplate('pbs',
                 function (compiledTemplate) {
-                    $(that.el).empty();
+                    // $(that.el).empty();
                     $(that.el).append(compiledTemplate());
                     _.each(that.model.models, function (pbModel) {
                         new PBView({model: pbModel}).render($('tbody.body#pbs'));
@@ -375,7 +375,7 @@ var BiegiModule = (function(){
             var that = this;
             fillTemplate('biegi',
                 function (compiledTemplate) {
-                    $(that.el).empty();
+                    // $(that.el).empty();
                     $(that.el).append(compiledTemplate());
                     _.each(that.model.models, function (biegModel) {
                         new BiegView({model: biegModel}).render($('div#biegi'));
@@ -395,7 +395,7 @@ var BiegiModule = (function(){
             var that = this;
             fillTemplate('biegDetails',
                 function (compiledTemplate) {
-                    $(that.el).empty();
+                    // $(that.el).empty();
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
                     $('#myModal').modal({
                         backdrop: 'static',
@@ -417,7 +417,7 @@ var BiegiModule = (function(){
             this.model = new BiegModel({bgg_dzien: utc = new Date().toJSON().slice(0,10)});
             fillTemplate('biegAdd',
                 function (compiledTemplate) {
-                    $(that.el).empty();
+                    // $(that.el).empty();
                     $(that.el).append(compiledTemplate(that.model.toJSON()));
                     var miejsceCollection = new DictionaryCollection('miejsce'); 
                     miejsceCollection.fetch(
@@ -598,12 +598,12 @@ var BiegiModule = (function(){
             );
         },
         config: function() {
-            $('#col_left #left_top_1').empty();
-            $('#col_left #left_top_2').empty();
-            $('#col_right #right_top_1').empty();
-            $('#col_right #right_top_2').empty();
-            $('#col_middle #top_1').empty();
-            $('#col_middle #top_2').empty();
+            // $('#col_left #left_top_1').empty();
+            // $('#col_left #left_top_2').empty();
+            // $('#col_right #right_top_1').empty();
+            // $('#col_right #right_top_2').empty();
+            // $('#col_middle #top_1').empty();
+            // $('#col_middle #top_2').empty();
             var wiatrCollection = new WiatrCollection('wiatr');
             var that = this; 
             wiatrCollection.fetch(
@@ -620,7 +620,7 @@ var BiegiModule = (function(){
         },
         wiatrEdit: function(id) {
             console.log("wiatrEdit navigation called");
-            $('#col_left #left_top_1').empty();
+            // $('#col_left #left_top_1').empty();
             this.wiatrTableView.undelegateEvents();
             var wiatr = new WiatrModel({id: id});
             wiatr.fetch(
