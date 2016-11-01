@@ -669,3 +669,7 @@ var BiegiModule = (function(){
 window.onSignIn = BiegiModule.onSignIn;
 window.signOut = BiegiModule.signOut;
 
+$(".nav a").on("click", function(){
+   $(".nav").find(".active").removeClass("active");
+   $(this).parent().addClass("active");
+});
