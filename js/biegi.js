@@ -646,18 +646,6 @@ console.log('WiatrTableView.render() called');
     views.wiatrTableView = new WiatrTableView();
     views.statsView = new StatsView(); 
 
-    var stats = new StatsModel({id: 0});
-    stats.fetch(
-        {
-            success: function() {
-                views.statsView.render(stats);
-            },
-            error: function(collection, response, options) {
-                new ErrorView({model: response});
-            }
-        }
-    );
-
     var appRouter = new AppRouter();
     var appEvents = _.extend({}, Backbone.Events);
     Backbone.history.start();
@@ -680,6 +668,19 @@ console.log('WiatrTableView.render() called');
         profilePictureUrl = profile.getImageUrl();
         profileName = profile.getName();
         this.sessionToken = authResponse.id_token;
+
+        var stats = new StatsModel({id: 0});
+        stats.fetch(
+            {
+                success: function() {
+                    views.statsView.render(stats);
+                },
+                error: function(collection, response, options) {
+                    new ErrorView({model: response});
+                }
+            }
+        );
+
         appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
     };
 
