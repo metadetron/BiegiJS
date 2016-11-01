@@ -227,8 +227,9 @@ var BiegiModule = (function(){
                     wiatrCollection.fetch(
                         {
                             success: function() {
-                                self.undelegateEvents();
-                                appRouter.navigate("config", {trigger: true});                                
+                                self.undelegateEvents(); // potrzebne?
+                                // appRouter.navigate("config", {trigger: true});
+                                appEvents.trigger('WiatrEditView:persisted');                                
                             },
                             error: function(collection, response, options) {
                                 new ErrorView({model: response});
@@ -636,6 +637,7 @@ var BiegiModule = (function(){
         }       
     });
     var appRouter = new AppRouter();
+    var appEvents = _.extend({}, Backbone.Events);
     Backbone.history.start();
 
     /////////////////////////// U T I L S //////////////////////////
