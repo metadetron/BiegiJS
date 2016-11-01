@@ -9,7 +9,8 @@ var BiegiModule = (function(){
         chartView: null,
         wiatrTableView: null,
         statsView: null,
-        biegAddView: null 
+        biegAddView: null,
+        biegiView: null 
     };
 
     var getSessionToken = function() {
@@ -376,17 +377,16 @@ console.log('WiatrTableView.render() called');
     });    
 
     var BiegiView = Backbone.View.extend({
-        el: $('#page_dashboard #col_middle #top_2'), // renderowanego w tym elemencie
+        el: $('#biegi_view'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
-            this.render(); // samorenderujacego sie na starcie 
         },
-        render: function(){
+        render: function(m){
+            this.model = m;
             var that = this;
             fillTemplate('biegi',
                 function (compiledTemplate) {
-                    // $(that.el).empty();
-                    $(that.el).append(compiledTemplate());
+                    $(that.el).html(compiledTemplate());
                     _.each(that.model.models, function (biegModel) {
                         new BiegView({model: biegModel}).render($('div#biegi'));
                     }, this);
@@ -574,17 +574,6 @@ console.log('WiatrTableView.render() called');
                     }
                 }
             );
-            var biegCollection = new BiegCollection();
-            biegCollection.fetch(
-                {
-                    success: function() {
-                        new BiegiView({model: biegCollection});
-                    },
-                    error: function(collection, response, options) {
-                        new ErrorView({model: response});
-                    }
-                }
-            );
         },
         biegDetails: function(id) {
             var bieg = new BiegModel({id: id});
@@ -644,6 +633,7 @@ console.log('WiatrTableView.render() called');
     views.wiatrTableView = new WiatrTableView();
     views.statsView = new StatsView(); 
     views.biegAddView = new BiegAddView({model: new BiegModel()});
+    views.biegiView = new BiegiView();
 
     var appRouter = new AppRouter();
     var appEvents = _.extend({}, Backbone.Events);
@@ -680,6 +670,17 @@ console.log('WiatrTableView.render() called');
             }
         );
         views.biegAddView.render();
+        var biegCollection = new BiegCollection();
+        biegCollection.fetch(
+            {
+                success: function() {
+                    views.biegiView.render(biegCollection);
+                },
+                error: function(collection, response, options) {
+                    new ErrorView({model: response});
+                }
+            }
+        );
 
         appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
     };
