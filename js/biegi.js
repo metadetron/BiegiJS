@@ -573,26 +573,6 @@ var BiegiModule = (function(){
         config: function() {
             $(".backbone_page").hide();
             $("#page_config.backbone_page").show();
-
-            // $('#col_left #left_top_1').empty();
-            // $('#col_left #left_top_2').empty();
-            // $('#col_right #right_top_1').empty();
-            // $('#col_right #right_top_2').empty();
-            // $('#col_middle #top_1').empty();
-            // $('#col_middle #top_2').empty();
-            var wiatrCollection = new WiatrCollection('wiatr');
-            var that = this; 
-            wiatrCollection.fetch(
-                {
-                    success: function() {
-                        views.wiatrTableView.render(wiatrCollection);
-                        // that.wiatrTableView.render();
-                    },
-                    error: function(collection, response, options) {
-                        new ErrorView({model: response});
-                    }
-                }
-            );            
         },
         wiatrEdit: function(id) {
             console.log("wiatrEdit navigation called");
@@ -676,6 +656,18 @@ var BiegiModule = (function(){
                 }
             }
         );
+        var wiatrCollection = new WiatrCollection('wiatr');
+        var that = this; 
+        wiatrCollection.fetch(
+            {
+                success: function() {
+                    views.wiatrTableView.render(wiatrCollection);
+                },
+                error: function(collection, response, options) {
+                    new ErrorView({model: response});
+                }
+            }
+        );            
 
         appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
     };
