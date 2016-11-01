@@ -552,9 +552,14 @@ console.log('WiatrTableView.render() called');
             "wiatr/edit/:id": "wiatrEdit"
         },
         login: function() {
-            new LogInView();
+            $(".backbone_page").hide();
+            $("#page_login.backbone_page").show();
+            // new LogInView(); TODO
         },
         dashboard: function() {
+            $(".backbone_page").hide();
+            $("#page_dashboard.backbone_page").show();
+
             $('#login').hide();
             $('#logout').show();
             $('#myModal').modal('hide');
@@ -608,6 +613,9 @@ console.log('WiatrTableView.render() called');
             );
         },
         config: function() {
+            $(".backbone_page").hide();
+            $("#page_config.backbone_page").show();
+
             // $('#col_left #left_top_1').empty();
             // $('#col_left #left_top_2').empty();
             // $('#col_right #right_top_1').empty();

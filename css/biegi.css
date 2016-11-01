@@ -17,3 +17,7 @@ div#fullName {
 #pbs tr td {
     padding: 1px 5px;
 }
+
+#backbone_page {
+    display: none;
+}
