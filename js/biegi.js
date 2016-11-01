@@ -133,7 +133,7 @@ var BiegiModule = (function(){
     });
     //////////////////////////////// V I E W S ///////////////////////////////////////
     var LogInView = Backbone.View.extend({
-        el: $('#col_middle #top_1'), // renderowanego w tym elemencie
+        el: $('#page_login #col_middle #top_1'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
@@ -175,7 +175,7 @@ var BiegiModule = (function(){
     });
 
     var WiatrTableView = Backbone.View.extend({
-        el: $('#col_left #left_top_1'),
+        el: $('#page_config #col_left #left_top_1'),
         initialize: function(){
             _.bindAll(this, 'render');
             // this.listenTo(this.model, 'sync', this.render);
@@ -203,7 +203,7 @@ console.log('WiatrTableView.render() called');
     });
 
     var WiatrEditView = Backbone.View.extend({
-        el: $('#col_left #left_top_1'),
+        el: $('#page_config #col_left #left_top_1'),
         initialize: function(){
             _.bindAll(this, 'render');
             this.render();
@@ -268,7 +268,7 @@ console.log('WiatrTableView.render() called');
     });
 
     var ChartView = Backbone.View.extend({
-        el: $('#col_middle #top_1'), 
+        el: $('#page_dashboard #col_middle #top_1'), 
         initialize: function(){
             _.bindAll(this, 'render');  
             this.render();  
@@ -305,7 +305,7 @@ console.log('WiatrTableView.render() called');
 
     // definicja widoku
     var StatsView = Backbone.View.extend({
-        el: $('#col_left #left_top_1'), // renderowanego w tym elemencie
+        el: $('#page_dashboard #col_left #left_top_1'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
@@ -340,7 +340,7 @@ console.log('WiatrTableView.render() called');
     });
 
     var PBSView = Backbone.View.extend({
-        el: $('#col_right #right_top_1'), // renderowanego w tym elemencie
+        el: $('#page_dashboard #col_right #right_top_1'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
@@ -375,7 +375,7 @@ console.log('WiatrTableView.render() called');
     });    
 
     var BiegiView = Backbone.View.extend({
-        el: $('#col_middle #top_2'), // renderowanego w tym elemencie
+        el: $('#page_dashboard #col_middle #top_2'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
@@ -416,7 +416,7 @@ console.log('WiatrTableView.render() called');
     });    
 
     var BiegAddView = Backbone.View.extend({
-        el: $('#col_left #left_top_2'), // renderowanego w tym elemencie
+        el: $('#page_dashboard #col_left #left_top_2'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
             this.render(); // samorenderujacego sie na starcie 
