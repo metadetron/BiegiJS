@@ -10,7 +10,8 @@ var BiegiModule = (function(){
         wiatrTableView: null,
         statsView: null,
         biegAddView: null,
-        biegiView: null 
+        biegiView: null,
+        pBSView: null 
     };
 
     var getSessionToken = function() {
@@ -343,9 +344,9 @@ console.log('WiatrTableView.render() called');
         el: $('#page_dashboard #col_right #right_top_1'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
-            this.render(); // samorenderujacego sie na starcie 
         },
-        render: function(){
+        render: function(m){
+            this.model = m;
             var that = this;
             fillTemplate('pbs',
                 function (compiledTemplate) {
@@ -556,22 +557,6 @@ console.log('WiatrTableView.render() called');
         dashboard: function() {
             $(".backbone_page").hide();
             $("#page_dashboard.backbone_page").show();
-
-            $('#login').hide();
-            $('#logout').show();
-            $('#myModal').modal('hide');
-            // this.views.chartView.render(); // ???
-            var pbCollection = new PBCollection();
-            pbCollection.fetch(
-                {
-                    success: function() {
-                        new PBSView({model: pbCollection});
-                    },
-                    error: function(collection, response, options) {
-                        new ErrorView({model: response});
-                    }
-                }
-            );
         },
         biegDetails: function(id) {
             var bieg = new BiegModel({id: id});
@@ -674,6 +659,17 @@ console.log('WiatrTableView.render() called');
             {
                 success: function() {
                     views.biegiView.render(biegCollection);
+                },
+                error: function(collection, response, options) {
+                    new ErrorView({model: response});
+                }
+            }
+        );
+        var pbCollection = new PBCollection();
+        pbCollection.fetch(
+            {
+                success: function() {
+                    views.pBSView.render(pbCollection);
                 },
                 error: function(collection, response, options) {
                     new ErrorView({model: response});
