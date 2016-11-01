@@ -617,6 +617,7 @@ console.log('WiatrTableView.render() called');
     views.statsView = new StatsView(); 
     views.biegAddView = new BiegAddView({model: new BiegModel()});
     views.biegiView = new BiegiView();
+    views.pBSView = new PBSView();
 
     var appRouter = new AppRouter();
     var appEvents = _.extend({}, Backbone.Events);
