@@ -174,13 +174,14 @@ var BiegiModule = (function(){
         el: $('#col_left #left_top_1'),
         initialize: function(){
             _.bindAll(this, 'render');
+            this.listenTo(appEvents, 'WiatrEditView:persisted', this.render);
         },        
         render: function(){
             var that = this;
             // $(this.el).empty(); 
             fillTemplate('wiatrTable', 
                 function (compiledTemplate) {
-                    // $(that.el).empty();
+                    $(that.el).empty();
                     $(that.el).append(compiledTemplate());
                     _.each(that.model.models, function (wiatrModel) {
                         fillTemplate('wiatrTableRow', 
