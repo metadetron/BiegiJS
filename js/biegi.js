@@ -619,7 +619,7 @@ console.log('WiatrTableView.render() called');
             wiatrCollection.fetch(
                 {
                     success: function() {
-                        app.views.wiatrTableView = render(wiatrCollection);
+                        views.wiatrTableView = render(wiatrCollection);
                         that.wiatrTableView.render();
                     },
                     error: function(collection, response, options) {
@@ -645,8 +645,8 @@ console.log('WiatrTableView.render() called');
             );
         }       
     });
-    this.views.chartView = new ChartView();
-    this.views.wiatrTableView = new WiatrTableView(); 
+    views.chartView = new ChartView();
+    views.wiatrTableView = new WiatrTableView(); 
 
     var appRouter = new AppRouter();
     var appEvents = _.extend({}, Backbone.Events);
