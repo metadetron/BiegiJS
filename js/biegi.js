@@ -569,7 +569,7 @@ console.log('WiatrTableView.render() called');
             stats.fetch(
                 {
                     success: function() {
-                        new StatsView({model: stats}); // tutaj
+                        views.statsView.render(stats);
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
