@@ -179,7 +179,7 @@ var BiegiModule = (function(){
     });
 
     var WiatrTableView = Backbone.View.extend({
-        el: $('#page_config #col_left #left_top_1'),
+        el: $('#wiatr_table_view'),
         initialize: function(){
             _.bindAll(this, 'render');
             // this.listenTo(this.model, 'sync', this.render);
@@ -187,13 +187,12 @@ var BiegiModule = (function(){
         },        
         render: function(m){
             this.model = m;
-console.log('WiatrTableView.render() called');            
             var that = this;
             // $(this.el).empty(); 
             fillTemplate('wiatrTable', 
                 function (compiledTemplate) {
-                    $(that.el).empty();
-                    $(that.el).append(compiledTemplate());
+                    $(that.el).html(compiledTemplate());
+                    $("tbody", that.el).empty();
                     _.each(that.model.models, function (wiatrModel) {
                         fillTemplate('wiatrTableRow', 
                             function (compiledTemplate) {
