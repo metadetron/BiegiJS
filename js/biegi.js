@@ -619,8 +619,8 @@ console.log('WiatrTableView.render() called');
             wiatrCollection.fetch(
                 {
                     success: function() {
-                        views.wiatrTableView = render(wiatrCollection);
-                        that.wiatrTableView.render();
+                        views.wiatrTableView.render(wiatrCollection);
+                        // that.wiatrTableView.render();
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
