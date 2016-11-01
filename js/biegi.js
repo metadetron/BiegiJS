@@ -8,7 +8,8 @@ var BiegiModule = (function(){
     var views = {
         chartView: null,
         wiatrTableView: null,
-        statsView: null 
+        statsView: null,
+        biegAddView: null 
     };
 
     var getSessionToken = function() {
@@ -416,18 +417,16 @@ console.log('WiatrTableView.render() called');
     });    
 
     var BiegAddView = Backbone.View.extend({
-        el: $('#page_dashboard #col_left #left_top_2'), // renderowanego w tym elemencie
+        el: $('#bieg_add_view'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
-            this.render(); // samorenderujacego sie na starcie 
         },
         render: function(){
             var that = this;
             this.model = new BiegModel({bgg_dzien: utc = new Date().toJSON().slice(0,10)});
             fillTemplate('biegAdd',
                 function (compiledTemplate) {
-                    // $(that.el).empty();
-                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                    $(that.el).html(compiledTemplate(that.model.toJSON()));
                     var miejsceCollection = new DictionaryCollection('miejsce'); 
                     miejsceCollection.fetch(
                         {
@@ -564,7 +563,6 @@ console.log('WiatrTableView.render() called');
             $('#logout').show();
             $('#myModal').modal('hide');
             // this.views.chartView.render(); // ???
-            new BiegAddView({model: new BiegModel()});
             var pbCollection = new PBCollection();
             pbCollection.fetch(
                 {
@@ -645,6 +643,7 @@ console.log('WiatrTableView.render() called');
     views.chartView = new ChartView();
     views.wiatrTableView = new WiatrTableView();
     views.statsView = new StatsView(); 
+    views.biegAddView = new BiegAddView({model: new BiegModel()});
 
     var appRouter = new AppRouter();
     var appEvents = _.extend({}, Backbone.Events);
