@@ -298,7 +298,8 @@ var BiegiModule = (function(){
         },
         events: {
             "change"        : "change",
-             "click .save"   : "persist"
+             "click .save"   : "persist",
+             "click .cancel"   : "cancel"
         },
         change: function (event) {
             var target = event.target;
@@ -315,7 +316,8 @@ var BiegiModule = (function(){
                         {
                             success: function() {
                                 self.undelegateEvents(); // potrzebne?
-                                appEvents.trigger('ButyEditView:persisted');                                
+                                appEvents.trigger('ButyEditView:persisted');
+                                appRouter.navigate("config", {trigger: true});                                
                             },
                             error: function(collection, response, options) {
                                 new ErrorView({model: response});
@@ -329,6 +331,10 @@ var BiegiModule = (function(){
             });
             event.preventDefault();
         },
+        cancel: function(event) {
+            // TODO sprawdz zmiany
+            appRouter.navigate("config", {trigger: true}); 
+        }
     });
 
     var ErrorView = Backbone.View.extend({
