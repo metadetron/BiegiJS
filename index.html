@@ -253,37 +253,61 @@
             </div>
             <div class="panel-body">
                 <form role="form" class="form-horizontal">
-                    <label for="bgg_dzien">Dzien</label>
-                    <input type="date" size="8" class="form-control" id="bgg_dzien" name="bgg_dzien" value="<%= bgg_dzien %>">
-                    <label for="godziny">Godziny</label>
-                    <input type="number" size="2" class="form-control" id="godziny" name="godziny" value="<%= godziny %>">
-                    <label for="minuty">Minuty</label>
-                    <input type="number" size="2" class="form-control" id="minuty" name="minuty" value="<%= minuty %>">
-                    <label for="sekundy">Sekundy</label>
-                    <input type="number" size="2" class="form-control" id="sekundy" name="sekundy" value="<%= sekundy %>">
-                    <label for="bgg_mjs_id">Miejsce</label>
-                    <select class="form-control" id="bgg_mjs_id" name="bgg_mjs_id">
-                    </select>
-                    <label for="odc_id">Odcinek</label>
-                    <select class="form-control" id="odc_id" name="odc_id">
-                    </select>
-                    <label for="bgg_bty_id">Buty</label>
-                    <select class="form-control" id="bgg_bty_id" name="bgg_bty_id">
-                    </select>
-                    <label for="bgg_tmp_id">Temperatura</label>
-                    <select class="form-control" id="bgg_tmp_id" name="bgg_tmp_id">
-                    </select>
-                    <label for="bgg_opd_id">Opad</label>
-                    <select class="form-control" id="bgg_opd_id" name="bgg_opd_id">
-                    </select>
-                    <label for="bgg_wtr_id">Wiatr</label>
-                    <select class="form-control" id="bgg_wtr_id" name="bgg_wtr_id">
-                    </select>
-                    <label for="bgg_rbg_id">Rodzaj biegu</label>
-                    <select class="form-control" id="bgg_rbg_id" name="bgg_rbg_id">
-                    </select>
-                    <label for="bgg_opis">Opis</label>
-                    <textarea class="form-control" rows="3" id="bgg_opis" name="bgg_opis"></textarea>
+                    <div class="form-group">
+                        <label for="bgg_dzien">Dzien</label>
+                        <input type="date" size="8" class="form-control" id="bgg_dzien" name="bgg_dzien" value="<%= bgg_dzien %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="godziny">Godziny</label>
+                        <input type="number" size="2" class="form-control" id="godziny" name="godziny" value="<%= godziny %>">
+                    </div>
+                    <div class="form-group">                        
+                        <label for="minuty">Minuty</label>
+                        <input type="number" size="2" class="form-control" id="minuty" name="minuty" value="<%= minuty %>">
+                    </div>
+                    <div class="form-group">                        
+                        <label for="sekundy">Sekundy</label>
+                        <input type="number" size="2" class="form-control" id="sekundy" name="sekundy" value="<%= sekundy %>">
+                    </div>
+                    <div class="form-group">                        
+                        <label for="bgg_mjs_id">Miejsce</label>
+                        <select class="form-control" id="bgg_mjs_id" name="bgg_mjs_id">
+                        </select>
+                    </div>
+                    <div class="form-group">                        
+                        <label for="odc_id">Odcinek</label>
+                        <select class="form-control" id="odc_id" name="odc_id">
+                        </select>
+                    </div>
+                    <div class="form-group">                        
+                        <label for="bgg_bty_id">Buty</label>
+                        <select class="form-control" id="bgg_bty_id" name="bgg_bty_id">
+                        </select>
+                    </div>
+                    <div class="form-group">                        
+                        <label for="bgg_tmp_id">Temperatura</label>
+                        <select class="form-control" id="bgg_tmp_id" name="bgg_tmp_id">
+                        </select>
+                    </div>
+                    <div class="form-group">                        
+                        <label for="bgg_opd_id">Opad</label>
+                        <select class="form-control" id="bgg_opd_id" name="bgg_opd_id">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bgg_wtr_id">Wiatr</label>
+                        <select class="form-control" id="bgg_wtr_id" name="bgg_wtr_id">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bgg_rbg_id">Rodzaj biegu</label>
+                        <select class="form-control" id="bgg_rbg_id" name="bgg_rbg_id">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bgg_opis">Opis</label>
+                        <textarea class="form-control" rows="3" id="bgg_opis" name="bgg_opis"></textarea>
+                    </div>
                     <a href="#" class="btn btn-primary save pull-right"><span class="glyphicon glyphicon-floppy-save"></span> Save</a>
                 </form>
             </div>
@@ -330,8 +354,10 @@ $(document).ready(function() {
             </div>
             <div class="panel-body">
                 <form role="form" class="form-horizontal">
-                    <label for="bty_nazwa">Opis</label>
-                    <input type="text" class="form-control" id="bty_nazwa" name="bty_nazwa" value="<%= bty_nazwa %>">
+                    <div class="form-group">
+                        <label for="bty_nazwa">Opis</label>
+                        <input type="text" class="form-control" id="bty_nazwa" name="bty_nazwa" value="<%= bty_nazwa %>">
+                    </div>
                     <a href="#" class="btn btn-primary save pull-right"><span class="glyphicon glyphicon-floppy-save"></span> Save</a>
                 </form>
             </div>
