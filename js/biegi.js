@@ -293,7 +293,27 @@ var BiegiModule = (function(){
                     }
                 }
             );            
-        }        
+        },
+        events: {
+             "click .edit"   : "edit"
+        },                
+        edit: function(event) {
+console.log(event);            
+            $(".config_panel").hide();
+            views.butyTableView.undelegateEvents();
+            var buty = new ButyModel({id: 1});
+            buty.fetch(
+                {
+                    success: function() {
+                        views.butyEditView.render(buty);
+                        $("#page_config #buty_edit_view").show();
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );
+        }
     });
 
     var ButyEditView = Backbone.View.extend({
@@ -687,20 +707,6 @@ var BiegiModule = (function(){
             $("#page_config #buty_table_view").show();
         },
         butyEdit: function(id) {
-            $(".config_panel").hide();
-            views.butyTableView.undelegateEvents();
-            var buty = new ButyModel({id: id});
-            buty.fetch(
-                {
-                    success: function() {
-                        views.butyEditView.render(buty);
-                        $("#page_config #buty_edit_view").show();
-                    },
-                    error: function(collection, response, options) {
-                        new ErrorView({model: response});
-                    }
-                }
-            );
         }       
     });
     views.chartView = new ChartView();
