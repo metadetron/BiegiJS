@@ -356,7 +356,7 @@ var BiegiModule = (function(){
         el: $('#biegi_view'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
-            this.listenTo(appEvents, 'BiegAddView:persisted', this.render);
+            this.listenTo(appEvents, 'BiegAddView:persisted', this.reread);
         },
         render: function(m){
             this.model = m;
@@ -368,6 +368,19 @@ var BiegiModule = (function(){
                         new BiegView({model: biegModel}).render($('div#biegi'));
                     }, this);
                 } 
+            );
+        },
+        reread: function() {
+            var biegCollection = new BiegCollection();
+            biegCollection.fetch(
+                {
+                    success: function() {
+                        views.biegiView.render(biegCollection);
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
             );
         }
     });
