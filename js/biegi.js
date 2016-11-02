@@ -665,7 +665,7 @@ var BiegiModule = (function(){
             $("#page_config.backbone_page").show();
         },
         butyEdit: function(id) {
-            this.butyTableView.undelegateEvents();
+            views.butyTableView.undelegateEvents();
             var buty = new ButyModel({id: id});
             buty.fetch(
                 {
