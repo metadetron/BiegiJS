@@ -252,6 +252,7 @@ var BiegiModule = (function(){
         el: $('#chart_view'), 
         initialize: function(){
             _.bindAll(this, 'render');  
+            this.listenTo(appEvents, 'BiegAddView:persisted', this.render);
         },
         render: function(){
             var that = this;
