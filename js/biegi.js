@@ -297,8 +297,7 @@ var BiegiModule = (function(){
         events: {
              "click .edit"   : "edit"
         },                
-        edit: function(event) {
-            event.preventDefault();
+        edit: function(event) {            
 console.log(event);            
             $(".config_panel").hide();
             views.butyTableView.undelegateEvents();
@@ -314,6 +313,7 @@ console.log(event);
                     }
                 }
             );
+            event.preventDefault();
         }
     });
 
@@ -342,8 +342,7 @@ console.log(event);
             change[target.name] = target.value;
             this.model.set(change);
         },
-        persist: function (event) {
-            event.preventDefault();
+        persist: function (event) {            
             var self = this;
             this.model.save(null, {
                 success: function (model) {
@@ -365,11 +364,12 @@ console.log(event);
                     new ErrorView({model: response});
                 }
             });
-        },
-        cancel: function(event) {
             event.preventDefault();
+        },
+        cancel: function(event) {            
             // TODO sprawdz zmiany
-            appRouter.navigate("config", {trigger: true}); 
+            appRouter.navigate("config", {trigger: true});
+            event.preventDefault(); 
         }
     });
 
