@@ -292,7 +292,7 @@ var BiegiModule = (function(){
             var that = this;
             fillTemplate('butyEdit', 
                 function (compiledTemplate) {
-                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                    $(that.el).html(compiledTemplate(that.model.toJSON()));
                 } 
             );
         },
@@ -663,14 +663,18 @@ var BiegiModule = (function(){
         config: function() {
             $(".backbone_page").hide();
             $("#page_config.backbone_page").show();
+            $(".config_panel").hide();
+            $("#page_config #buty_table_view").show();
         },
         butyEdit: function(id) {
+            $(".config_panel").hide();
             views.butyTableView.undelegateEvents();
             var buty = new ButyModel({id: id});
             buty.fetch(
                 {
                     success: function() {
                         views.butyEditView.render(buty);
+                        $("#page_config #buty_edit_view").show();
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});

@@ -18,7 +18,7 @@ div#fullName {
     padding: 1px 5px;
 }
 
-#backbone_page {
+.backbone_page, .config_panel {
     display: none;
 }
 
