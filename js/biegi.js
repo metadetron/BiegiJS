@@ -298,6 +298,7 @@ var BiegiModule = (function(){
              "click .edit"   : "edit"
         },                
         edit: function(event) {
+            event.preventDefault();
 console.log(event);            
             $(".config_panel").hide();
             views.butyTableView.undelegateEvents();
