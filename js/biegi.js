@@ -118,6 +118,7 @@ var BiegiModule = (function(){
         model: BiegModel 
     });
 
+// usunac wiatr
     var WiatrModel = Backbone.Model.extend({
         defaults: {
             wtr_id: null,
@@ -136,6 +137,25 @@ var BiegiModule = (function(){
     var WiatrCollection = Backbone.Collection.extend({
         url: 'http://run.metadetron.com/Biegi/wiatr/',
         model: WiatrModel 
+    });
+// ------------------     
+    var ButyModel = Backbone.Model.extend({
+        defaults: {
+            bty_id: null,
+	        bty_nazwa: null,
+	        bty_date_created: null,
+	        bty_date_modified: null,
+		    bty_usr_created_id: null,
+	        bty_usr_modified_id: null
+        },
+        urlRoot: 'http://run.metadetron.com/Biegi/buty/',
+        initialize: function(){        
+        }
+    });
+
+    var ButyCollection = Backbone.Collection.extend({
+        url: 'http://run.metadetron.com/Biegi/buty/',
+        model: ButyModel 
     });
     //////////////////////////////// V I E W S ///////////////////////////////////////
 
@@ -156,6 +176,7 @@ var BiegiModule = (function(){
         }
     });
 
+// usunac wiatr
     var WiatrTableView = Backbone.View.extend({
         el: $('#wiatr_table_view'),
         initialize: function(){
@@ -219,6 +240,81 @@ var BiegiModule = (function(){
                                 self.undelegateEvents(); // potrzebne?
                                 // appRouter.navigate("config", {trigger: true});
                                 appEvents.trigger('WiatrEditView:persisted'); // model.sync event???                                
+                            },
+                            error: function(collection, response, options) {
+                                new ErrorView({model: response});
+                            }
+                        }
+                    );            
+                },
+                error: function (model, response) {
+                    new ErrorView({model: response});
+                }
+            });
+            event.preventDefault();
+        },
+    });
+// ------------------------
+
+    var ButyTableView = Backbone.View.extend({
+        el: $('#buty_table_view'),
+        initialize: function(){
+            _.bindAll(this, 'render');
+            this.listenTo(appEvents, 'ButyEditView:persisted', this.render);
+        },        
+        render: function(m){
+            this.model = m;
+            var that = this;
+            fillTemplate('butyTable', 
+                function (compiledTemplate) {
+                    $(that.el).html(compiledTemplate());
+                    $("tbody", that.el).empty();
+                    _.each(that.model.models, function (butyModel) {
+                        fillTemplate('butyTableRow', 
+                            function (compiledTemplate) {
+                                $("tbody", that.el).append(compiledTemplate(butyModel.toJSON()));
+                            } 
+                        );
+                    }, that);                    
+                } 
+            );
+        }
+    });
+
+    var ButyEditView = Backbone.View.extend({
+        el: $('#buty_edit_view'),
+        initialize: function(){
+            _.bindAll(this, 'render');
+            this.render();
+        },        
+        render: function(){
+            var that = this;
+            fillTemplate('butyEdit', 
+                function (compiledTemplate) {
+                    $(that.el).append(compiledTemplate(that.model.toJSON()));
+                } 
+            );
+        },
+        events: {
+            "change"        : "change",
+             "click .save"   : "persist"
+        },
+        change: function (event) {
+            var target = event.target;
+            var change = {};
+            change[target.name] = target.value;
+            this.model.set(change);
+        },
+        persist: function (event) {
+            var self = this;
+            this.model.save(null, {
+                success: function (model) {
+                    var butyCollection = new ButyCollection('buty'); 
+                    butyCollection.fetch(
+                        {
+                            success: function() {
+                                self.undelegateEvents(); // potrzebne?
+                                appEvents.trigger('ButyEditView:persisted');                                
                             },
                             error: function(collection, response, options) {
                                 new ErrorView({model: response});
