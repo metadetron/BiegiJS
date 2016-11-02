@@ -665,12 +665,12 @@ var BiegiModule = (function(){
             $("#page_config.backbone_page").show();
         },
         butyEdit: function(id) {
-            this.wiatrTableView.undelegateEvents();
-            var wiatr = new WiatrModel({id: id});
-            wiatr.fetch(
+            this.butyTableView.undelegateEvents();
+            var buty = new ButyModel({id: id});
+            buty.fetch(
                 {
                     success: function() {
-                        views.wiatrEditView.render(wiatr);
+                        views.butyEditView.render(buty);
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
