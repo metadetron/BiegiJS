@@ -299,7 +299,7 @@ var BiegiModule = (function(){
              "click .edit"   : "edit"
         },                
         edit: function(event) {            
-            $(".config_panel").hide();
+//            $(".config_panel").hide();
             views.butyTableView.undelegateEvents();
             var buty = new ButyModel({id: event.currentTarget.dataset.id});
             buty.fetch(
@@ -369,7 +369,7 @@ var BiegiModule = (function(){
         },
         cancel: function(event) {            
             // TODO sprawdz zmiany
-            $(".config_panel").hide();
+//            $(".config_panel").hide();
             $("#page_config #buty_table_view").show(); 
             event.preventDefault(); 
         }
