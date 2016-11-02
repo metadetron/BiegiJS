@@ -148,13 +148,13 @@ var BiegiModule = (function(){
 		    bty_usr_created_id: null,
 	        bty_usr_modified_id: null
         },
-        urlRoot: 'http://run.metadetron.com/Biegi/buty/',
+        urlRoot: 'http://run.metadetron.com/Biegi/butyjs/',
         initialize: function(){        
         }
     });
 
     var ButyCollection = Backbone.Collection.extend({
-        url: 'http://run.metadetron.com/Biegi/buty/',
+        url: 'http://run.metadetron.com/Biegi/butyjs/',
         model: ButyModel 
     });
     //////////////////////////////// V I E W S ///////////////////////////////////////
