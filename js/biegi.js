@@ -368,7 +368,8 @@ console.log(event);
         },
         cancel: function(event) {            
             // TODO sprawdz zmiany
-            appRouter.navigate("config", {trigger: true});
+            $(".config_panel").hide();
+            $("#page_config #buty_table_view").show(); 
             event.preventDefault(); 
         }
     });
