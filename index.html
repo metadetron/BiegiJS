@@ -348,20 +348,14 @@ $(document).ready(function() {
 </script>
 
 <script id="butyEdit" type="text/template">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Edycja butów</h3>
-            </div>
-            <div class="panel-body">
-                <form role="form" class="form-horizontal">
-                    <div class="form-group">
-                        <label for="bty_nazwa">Opis</label>
-                        <input type="text" class="form-control" id="bty_nazwa" name="bty_nazwa" value="<%= bty_nazwa %>">
-                    </div>
-                    <a href="#" class="btn btn-primary save pull-right"><span class="glyphicon glyphicon-floppy-save"></span> Save</a>
-                </form>
-            </div>
+    <form role="form" class="form-horizontal">
+        <div class="form-group">
+            <label for="bty_nazwa">Opis</label>
+            <input type="text" class="form-control" id="bty_nazwa" name="bty_nazwa" value="<%= bty_nazwa %>">
         </div>
+        <a href="#config" class="btn btn-primary save pull-right"><span class="glyphicon glyphicon-floppy-save"></span> Zapisz</a>
+        <a href="#config" class="btn btn-default pull-right"> Anuluj</a>
+    </form>
 </script>
 
         <script src="js/biegi.js"></script>
