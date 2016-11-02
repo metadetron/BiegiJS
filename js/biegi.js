@@ -346,18 +346,9 @@ var BiegiModule = (function(){
             var self = this;
             this.model.save(null, {
                 success: function (model) {
-                    var butyCollection = new ButyCollection('buty'); 
-                    butyCollection.fetch(
-                        {
-                            success: function() {
-                                appEvents.trigger('ButyEditView:persisted');
-                                appRouter.navigate("config", {trigger: true});                                
-                            },
-                            error: function(collection, response, options) {
-                                new ErrorView({model: response});
-                            }
-                        }
-                    );            
+                    appEvents.trigger('ButyEditView:persisted');
+                    $(".config_panel").hide();
+                    $("#page_config #buty_table_view").show(); 
                 },
                 error: function (model, response) {
                     new ErrorView({model: response});
