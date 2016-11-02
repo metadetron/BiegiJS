@@ -274,6 +274,7 @@ var BiegiModule = (function(){
                         fillTemplate('butyTableRow', 
                             function (compiledTemplate) {
                                 $("tbody", that.el).append(compiledTemplate(butyModel.toJSON()));
+                                that.delegateEvents();
                             } 
                         );
                     }, that);                    
