@@ -7,7 +7,7 @@ var BiegiModule = (function(){
     var odcinekCollection = null;
     var views = {
         chartView: null,
-        wiatrTableView: null,
+        butyTableView: null,
         statsView: null,
         biegAddView: null,
         biegiView: null,
@@ -681,7 +681,7 @@ var BiegiModule = (function(){
         }       
     });
     views.chartView = new ChartView();
-    views.wiatrTableView = new WiatrTableView();
+    views.butyTableView = new ButyTableView();
     views.statsView = new StatsView(); 
     views.biegAddView = new BiegAddView({model: new BiegModel()});
     views.biegiView = new BiegiView();
