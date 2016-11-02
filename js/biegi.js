@@ -745,12 +745,12 @@ var BiegiModule = (function(){
                 }
             }
         );
-        var wiatrCollection = new WiatrCollection('wiatr');
+        var butyCollection = new ButyCollection('buty');
         var that = this; 
-        wiatrCollection.fetch(
+        butyCollection.fetch(
             {
                 success: function() {
-                    views.wiatrTableView.render(wiatrCollection);
+                    views.butyTableView.render(butyCollection);
                 },
                 error: function(collection, response, options) {
                     new ErrorView({model: response});
