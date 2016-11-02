@@ -261,7 +261,7 @@ var BiegiModule = (function(){
         el: $('#buty_table_view'),
         initialize: function(){
             _.bindAll(this, 'render');
-            this.listenTo(appEvents, 'ButyEditView:persisted', this.render);
+            this.listenTo(appEvents, 'ButyEditView:persisted', this.reread);
         },        
         render: function(m){
             this.model = m;
@@ -279,7 +279,21 @@ var BiegiModule = (function(){
                     }, that);                    
                 } 
             );
-        }
+        },
+        reread: function() {
+            var butyCollection = new ButyCollection('buty');
+            var that = this; 
+            butyCollection.fetch(
+                {
+                    success: function() {
+                        that.render(butyCollection);
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );            
+        }        
     });
 
     var ButyEditView = Backbone.View.extend({
