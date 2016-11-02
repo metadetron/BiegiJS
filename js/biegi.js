@@ -298,7 +298,6 @@ var BiegiModule = (function(){
              "click .edit"   : "edit"
         },                
         edit: function(event) {            
-console.log(event);            
             $(".config_panel").hide();
             views.butyTableView.undelegateEvents();
             var buty = new ButyModel({id: event.currentTarget.dataset.id});
