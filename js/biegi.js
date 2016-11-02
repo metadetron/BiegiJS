@@ -327,6 +327,7 @@ var BiegiModule = (function(){
             fillTemplate('butyEdit', 
                 function (compiledTemplate) {
                     $(that.el).html(compiledTemplate(that.model.toJSON()));
+                    that.delegateEvents();
                 } 
             );
         },
