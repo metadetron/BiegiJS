@@ -8,6 +8,7 @@ var BiegiModule = (function(){
     var views = {
         chartView: null,
         butyTableView: null,
+        butyEditView: null,
         statsView: null,
         biegAddView: null,
         biegiView: null,
@@ -285,9 +286,9 @@ var BiegiModule = (function(){
         el: $('#buty_edit_view'),
         initialize: function(){
             _.bindAll(this, 'render');
-            this.render();
         },        
-        render: function(){
+        render: function(m){
+            this.model = m;
             var that = this;
             fillTemplate('butyEdit', 
                 function (compiledTemplate) {
@@ -636,7 +637,7 @@ var BiegiModule = (function(){
             "dashboard": "dashboard",
             "config": "config",
             "biegi/details/:id": "biegDetails",
-            "wiatr/edit/:id": "wiatrEdit"
+            "buty/edit/:id": "butyEdit"
         },
         login: function() {
             $(".backbone_page").hide();
@@ -663,15 +664,13 @@ var BiegiModule = (function(){
             $(".backbone_page").hide();
             $("#page_config.backbone_page").show();
         },
-        wiatrEdit: function(id) {
-            console.log("wiatrEdit navigation called");
-            // $('#col_left #left_top_1').empty();
+        butyEdit: function(id) {
             this.wiatrTableView.undelegateEvents();
             var wiatr = new WiatrModel({id: id});
             wiatr.fetch(
                 {
                     success: function() {
-                        new WiatrEditView({model: wiatr});
+                        views.wiatrEditView.render(wiatr);
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
@@ -682,6 +681,7 @@ var BiegiModule = (function(){
     });
     views.chartView = new ChartView();
     views.butyTableView = new ButyTableView();
+    views.butyEditView = new ButyEditView();
     views.statsView = new StatsView(); 
     views.biegAddView = new BiegAddView({model: new BiegModel()});
     views.biegiView = new BiegiView();
