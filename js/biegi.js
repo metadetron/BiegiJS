@@ -301,7 +301,7 @@ var BiegiModule = (function(){
 console.log(event);            
             $(".config_panel").hide();
             views.butyTableView.undelegateEvents();
-            var buty = new ButyModel({id: 1});
+            var buty = new ButyModel({id: event.currentTarget.dataset.id});
             buty.fetch(
                 {
                     success: function() {
