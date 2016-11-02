@@ -354,6 +354,7 @@ var BiegiModule = (function(){
         el: $('#biegi_view'), // renderowanego w tym elemencie
         initialize: function(){
             _.bindAll(this, 'render'); // zeby metody znaly "this" 
+            this.listenTo(appEvents, 'BiegAddView:persisted', this.render);
         },
         render: function(m){
             this.model = m;
@@ -495,7 +496,8 @@ var BiegiModule = (function(){
             var self = this;
             this.model.save(null, {
                 success: function (model) {
-                    appRouter.dashboard();
+                    appEvents.trigger('BiegAddView:persisted');
+                    self.render();
                 },
                 error: function (model, response) {
                     new ErrorView({model: response});
