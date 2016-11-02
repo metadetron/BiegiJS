@@ -343,6 +343,7 @@ console.log(event);
             this.model.set(change);
         },
         persist: function (event) {
+            event.preventDefault();
             var self = this;
             this.model.save(null, {
                 success: function (model) {
@@ -364,9 +365,9 @@ console.log(event);
                     new ErrorView({model: response});
                 }
             });
-            event.preventDefault();
         },
         cancel: function(event) {
+            event.preventDefault();
             // TODO sprawdz zmiany
             appRouter.navigate("config", {trigger: true}); 
         }
