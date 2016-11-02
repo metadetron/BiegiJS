@@ -238,7 +238,6 @@ var BiegiModule = (function(){
                     wiatrCollection.fetch(
                         {
                             success: function() {
-                                self.undelegateEvents(); // potrzebne?
                                 // appRouter.navigate("config", {trigger: true});
                                 appEvents.trigger('WiatrEditView:persisted'); // model.sync event???                                
                             },
@@ -299,8 +298,8 @@ var BiegiModule = (function(){
              "click .edit"   : "edit"
         },                
         edit: function(event) {            
-//            $(".config_panel").hide();
-            views.butyTableView.undelegateEvents();
+            $(".config_panel").hide();
+//            views.butyTableView.undelegateEvents(); // WHAAAAAA???
             var buty = new ButyModel({id: event.currentTarget.dataset.id});
             buty.fetch(
                 {
@@ -351,7 +350,6 @@ var BiegiModule = (function(){
                     butyCollection.fetch(
                         {
                             success: function() {
-                                self.undelegateEvents(); // potrzebne?
                                 appEvents.trigger('ButyEditView:persisted');
                                 appRouter.navigate("config", {trigger: true});                                
                             },
@@ -369,7 +367,7 @@ var BiegiModule = (function(){
         },
         cancel: function(event) {            
             // TODO sprawdz zmiany
-//            $(".config_panel").hide();
+            $(".config_panel").hide();
             $("#page_config #buty_table_view").show(); 
             event.preventDefault(); 
         }
