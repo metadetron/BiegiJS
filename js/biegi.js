@@ -14,6 +14,8 @@ var BiegiModule = (function(){
         pBSView: null 
     };
 
+    var appEvents = _.extend({}, Backbone.Events);
+
     var getSessionToken = function() {
         return this.sessionToken;
     }
@@ -576,7 +578,6 @@ var BiegiModule = (function(){
     views.pBSView = new PBSView();
 
     var appRouter = new AppRouter();
-    var appEvents = _.extend({}, Backbone.Events);
     Backbone.history.start();
 
     /////////////////////////// U T I L S //////////////////////////
