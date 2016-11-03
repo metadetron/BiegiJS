@@ -9,6 +9,8 @@ var BiegiModule = (function(){
         chartView: null,
         butyTableView: null,
         butyEditView: null,
+        miejsceTableView: null,
+        miejsceEditView: null,
         statsView: null,
         biegAddView: null,
         biegiView: null,
