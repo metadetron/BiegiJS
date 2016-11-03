@@ -355,12 +355,12 @@ $(document).ready(function() {
             <label for="bty_nazwa">Opis</label>
             <input type="text" class="form-control" id="bty_nazwa" name="bty_nazwa" value="<%= bty_nazwa %>">
         </div>
-        <dl>
-            <dt>ID</dt></dd><%= bty_id %></dd>
-            <dt>Data utworzenia</dt></dd><%= bty_date_created %></dd>
-            <dt>Data modyfikacji</dt></dd><%= bty_date_modified %></dd>
-            <dt>Użytkownik tworzący</dt></dd><%= bty_usr_created_id %></dd>
-            <dt>Użytkownik modyfikujący</dt></dd><%= bty_usr_modified_id %></dd>
+        <dl class="small dl-horizontal">
+            <dt>ID</dt><dd><%= bty_id %></dd>
+            <dt>Data utworzenia</dt><dd><%= bty_date_created %></dd>
+            <dt>Data modyfikacji</dt><dd><%= bty_date_modified %></dd>
+            <dt>Użytkownik tworzący</dt><dd><%= bty_usr_created_id %></dd>
+            <dt>Użytkownik modyfikujący</dt><dd><%= bty_usr_modified_id %></dd>
         </dl>
         <button type="button" class="btn btn-default cancel"> Anuluj</button>
         <button type="button" class="btn btn-primary save"><span class="glyphicon glyphicon-floppy-save"></span> Zapisz</button>
