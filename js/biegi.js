@@ -300,6 +300,7 @@ var BiegiModule = (function(){
         },
         events: {
              "click .edit"   : "edit",
+             "click .delete"   : "delete",
              "click .add"   : "add"
         },                
         edit: function(event) {            
@@ -326,6 +327,20 @@ var BiegiModule = (function(){
             views.butyAddView.render(buty);
             $("#page_config #buty_add_view").show();
             event.preventDefault(); 
+        },
+        delete: function(event) {
+            var buty = new ButyModel({id: event.currentTarget.dataset.id});
+            buty.destroy(
+                {
+                    success: function() {
+                        reread();
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );
+            event.preventDefault();            
         }
     });
 
