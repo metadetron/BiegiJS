@@ -8,6 +8,7 @@ var BiegiModule = (function(){
     var views = {
         chartView: null,
         butyTableView: null,
+        butyAddView: null,
         butyEditView: null,
         miejsceTableView: null,
         miejsceEditView: null,
@@ -263,6 +264,7 @@ var BiegiModule = (function(){
         initialize: function(){
             _.bindAll(this, 'render');
             this.listenTo(appEvents, 'ButyEditView:persisted', this.reread);
+            this.listenTo(appEvents, 'ButyAddView:persisted', this.reread);
         },        
         render: function(m){
             this.model = m;
@@ -297,7 +299,8 @@ var BiegiModule = (function(){
             );            
         },
         events: {
-             "click .edit"   : "edit"
+             "click .edit"   : "edit",
+             "click .add"   : "add"
         },                
         edit: function(event) {            
             $(".config_panel").hide();
@@ -315,6 +318,60 @@ var BiegiModule = (function(){
                 }
             );
             event.preventDefault();
+        },
+        add: function(event) {            
+            // TODO sprawdz zmiany
+            views.butyAddView.render(buty);
+            $("#page_config #buty_add_view").show();
+            event.preventDefault(); 
+        }
+    });
+
+    var ButyAddView = Backbone.View.extend({
+        el: $('#buty_add_view'),
+        initialize: function(){
+            _.bindAll(this, 'render');
+        },        
+        render: function(m){
+            this.model = m;
+            var that = this;
+            fillTemplate('butyAdd', 
+                function (compiledTemplate) {
+                    $(that.el).html(compiledTemplate(that.model.toJSON()));
+                    that.delegateEvents();
+                } 
+            );
+        },
+        events: {
+            "change"        : "change",
+             "click .save"   : "persist",
+             "click .cancel"   : "cancel"
+        },
+        change: function (event) {
+            var target = event.target;
+            var change = {};
+            change[target.name] = target.value;
+            this.model.set(change);
+        },
+        persist: function (event) {            
+            var self = this;
+            this.model.save(null, {
+                success: function (model) {
+                    appEvents.trigger('ButyAddView:persisted');
+                    $(".config_panel").hide();
+                    $("#page_config #buty_table_view").show(); 
+                },
+                error: function (model, response) {
+                    new ErrorView({model: response});
+                }
+            });
+            event.preventDefault();
+        },
+        cancel: function(event) {            
+            // TODO sprawdz zmiany
+            $(".config_panel").hide();
+            $("#page_config #buty_table_view").show(); 
+            event.preventDefault(); 
         }
     });
 
@@ -706,6 +763,7 @@ var BiegiModule = (function(){
     });
     views.chartView = new ChartView();
     views.butyTableView = new ButyTableView();
+    views.butyAddView = new ButyAddView();
     views.butyEditView = new ButyEditView();
     views.statsView = new StatsView(); 
     views.biegAddView = new BiegAddView({model: new BiegModel()});
