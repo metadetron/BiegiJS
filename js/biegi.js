@@ -321,6 +321,7 @@ var BiegiModule = (function(){
         },
         add: function(event) {            
             // TODO sprawdz zmiany
+            var buty = new ButyModel();
             views.butyAddView.render(buty);
             $("#page_config #buty_add_view").show();
             event.preventDefault(); 
