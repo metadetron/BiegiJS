@@ -152,6 +152,9 @@ var BiegiModule = (function(){
 		    bty_usr_created_id: null,
 	        bty_usr_modified_id: null
         },
+        id: function() {
+            return bty_id
+        },
         urlRoot: 'http://run.metadetron.com/Biegi/butyjs/',
         initialize: function(){        
         }
