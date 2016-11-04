@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="#">Trasy<span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="#">Miejsca<span class="sr-only">(current)</span></a></li>
                         <li><a href="#">Odcinki</a></li>
                         <li><a href="#">Buty</a></li>
                     </ul>
@@ -74,6 +74,7 @@
                     <div id="miejsce_table_view" class="config_panel"></div>
                     <div id="miejsce_edit_view" class="config_panel"></div>
                     <div id="buty_table_view" class="config_panel"></div>
+                    <div id="buty_add_view" class="config_panel"></div>
                     <div id="buty_edit_view" class="config_panel"></div>
                 </div>
             </div>
@@ -331,6 +332,7 @@
         <tbody>
         </tbody>
     </table>
+    <button type="button" class="btn btn-primary add"><span class="glyphicon glyphicon-plus"></span> Dodaj</button>
 <script type="text/javascript">
 $(document).ready(function() {
     $('#butyTableHtml').DataTable();
@@ -362,6 +364,17 @@ $(document).ready(function() {
             <dt>Użytkownik tworzący</dt><dd><%= createdBy %></dd>
             <dt>Użytkownik modyfikujący</dt><dd><%= modifiedBy %></dd>
         </dl>
+        <button type="button" class="btn btn-default cancel"> Anuluj</button>
+        <button type="button" class="btn btn-primary save"><span class="glyphicon glyphicon-floppy-save"></span> Zapisz</button>
+    </form>
+</script>
+
+<script id="butyAdd" type="text/template">
+    <form role="form" class="form-horizontal">
+        <div class="form-group">
+            <label for="bty_nazwa">Opis</label>
+            <input type="text" class="form-control" id="bty_nazwa" name="bty_nazwa" value="<%= bty_nazwa %>">
+        </div>
         <button type="button" class="btn btn-default cancel"> Anuluj</button>
         <button type="button" class="btn btn-primary save"><span class="glyphicon glyphicon-floppy-save"></span> Zapisz</button>
     </form>
