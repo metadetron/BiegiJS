@@ -30,13 +30,9 @@ var BiegiModule = (function(){
 
     var _sync = Backbone.sync;
     Backbone.sync = function(method, model, options) {
-
-        if( model && (method === 'create' || method === 'update' || method === 'patch' || method === 'delete' || method === 'put') ) {
-            options.contentType = 'application/json';
-            options.data = JSON.stringify(options.attrs || model.toJSON());
-            options.url = model.urlRoot + "?token=" + getSessionToken();
+        if (model && model.url) {
+            options.url = model.url + "?token=" + getSessionToken();
         }
-
         return _sync.call( this, method, model, options );
     }
 
@@ -152,10 +148,8 @@ var BiegiModule = (function(){
 		    bty_usr_created_id: null,
 	        bty_usr_modified_id: null
         },
-        idAttribute: "bty_id",
+        idAttribute: 'bty_id',
         urlRoot: 'http://run.metadetron.com/Biegi/butyjs/',
-        initialize: function(){        
-        }
     });
 
     var ButyCollection = Backbone.Collection.extend({
