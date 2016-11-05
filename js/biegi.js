@@ -451,7 +451,7 @@ var BiegiModule = (function(){
     });
 
     var InfoView = Backbone.View.extend({
-        el: $('#error'), 
+        el: $('#info'), 
         initialize: function(){
             _.bindAll(this, 'render');  
             this.render();  
