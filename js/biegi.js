@@ -329,6 +329,7 @@ var BiegiModule = (function(){
             buty.destroy(
                 {
                     success: function() {
+                        new InfoView({model: {message: "Buty usunięte"}});
                         that.reread();
                     },
                     error: function(collection, response, options) {
@@ -444,10 +445,22 @@ var BiegiModule = (function(){
         },
         render: function(){
             var compiledTemplate = _.template('<div class="alert alert-danger" role="alert"><%= responseText %> <%= statusText %></div>');
-            // $("div.modal-body", this.el).empty();
             $("div.modal-body", this.el).html(compiledTemplate(this.model));
             $(this.el).modal();
-        }
+        },        
+    });
+
+    var InfoView = Backbone.View.extend({
+        el: $('#error'), 
+        initialize: function(){
+            _.bindAll(this, 'render');  
+            this.render();  
+        },
+        render: function(){
+            var compiledTemplate = _.template('<div class="alert alert-success" role="alert"><%= message %></div>');
+            $("div.modal-body", this.el).html(compiledTemplate(this.model));
+            $(this.el).modal();
+        },        
     });
 
     var ChartView = Backbone.View.extend({
