@@ -324,11 +324,12 @@ var BiegiModule = (function(){
             event.preventDefault(); 
         },
         delete: function(event) {
+            var that = this;
             var buty = new ButyModel({bty_id: event.currentTarget.dataset.id});
             buty.destroy(
                 {
                     success: function() {
-                        reread();
+                        that.reread();
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
