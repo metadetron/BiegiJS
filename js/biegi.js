@@ -31,7 +31,7 @@ var BiegiModule = (function(){
     var _sync = Backbone.sync;
     Backbone.sync = function(method, model, options) {
         if (model && model.urlRoot) {
-            options.url = model.urlRoot + "?token=" + getSessionToken();
+            options.url = _.result(model, 'url') + "?token=" + getSessionToken();
         }
         return _sync.call( this, method, model, options );
     }
