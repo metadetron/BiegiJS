@@ -324,7 +324,7 @@ var BiegiModule = (function(){
             event.preventDefault(); 
         },
         delete: function(event) {
-            var buty = new ButyModel({id: event.currentTarget.dataset.id});
+            var buty = new ButyModel({bty_id: event.currentTarget.dataset.id});
             buty.destroy(
                 {
                     success: function() {
