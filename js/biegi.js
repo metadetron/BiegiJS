@@ -324,7 +324,7 @@ var BiegiModule = (function(){
             event.preventDefault(); 
         },
         delete: function(event) {
-            new ConfirmationView({model: {question: "Na pewno chcesz usunąć buty '" + this.bty_nazwa + "'?"}, yes: this.delete_confirmed});
+            new ConfirmationView({model: {question: "Na pewno chcesz usunąć buty '" + event.currentTarget.dataset.id + "'?"}, yesFunction: this.delete_confirmed});
         },
         delete_confirmed: function(event) {
             var that = this;
@@ -476,6 +476,17 @@ var BiegiModule = (function(){
             var compiledTemplate = _.template('<div class="alert alert-warning" role="alert"><%= question %></div>');
             $("div.modal-body", this.el).html(compiledTemplate(this.model));
             $(this.el).modal();            
+        },
+        events: {
+            'click .yes':'yes',
+            'click .no':'no'
+        },
+        yes:function(){
+             this.yesFunction();
+             this.close();
+        },
+        no:function(e){
+            this.close();
         }
     });
 
