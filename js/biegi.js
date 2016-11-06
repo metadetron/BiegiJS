@@ -260,6 +260,7 @@ var BiegiModule = (function(){
             _.bindAll(this, 'render');
             this.listenTo(appEvents, 'ButyEditView:persisted', this.reread);
             this.listenTo(appEvents, 'ButyAddView:persisted', this.reread);
+            this.listenTo(appEvents, 'ButyTableView:deleted', this.reread);
         },        
         render: function(m){
             this.model = m;
@@ -333,7 +334,7 @@ var BiegiModule = (function(){
                 {
                     success: function() {
                         new InfoView({model: {message: "Buty usunięte"}});
-                        that.reread();
+                        appEvents.trigger('ButyTableView:deleted');
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
