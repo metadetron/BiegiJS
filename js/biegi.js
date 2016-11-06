@@ -324,7 +324,7 @@ var BiegiModule = (function(){
             event.preventDefault(); 
         },
         delete: function(event) {
-            new ConfirmationView({model: {question: "Na pewno chcesz usunąć buty '" + this.bty_nazwa + "'?"}, yes: delete_confirmed});
+            new ConfirmationView({model: {question: "Na pewno chcesz usunąć buty '" + this.bty_nazwa + "'?"}, yes: this.delete_confirmed});
         },
         delete_confirmed: function(event) {
             var that = this;
