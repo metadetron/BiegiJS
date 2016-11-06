@@ -308,7 +308,7 @@ var BiegiModule = (function(){
                     success: function() {
                         views.butyEditView.render(buty);
                         $("#page_config #buty_edit_view").show();
-                        $('#page_config #buty_edit_view input[autofocus]', that.el).get(0).focus();                        
+                        $('#page_config #buty_edit_view input[autofocus]').get(0).focus();                        
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
