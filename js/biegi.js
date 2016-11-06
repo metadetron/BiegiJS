@@ -324,6 +324,9 @@ var BiegiModule = (function(){
             event.preventDefault(); 
         },
         delete: function(event) {
+            new ConfirmationView({model: {question: "Na pewno chcesz usunąć buty '" + this.bty_nazwa + "'?"}, yes: delete_confirmed});
+        },
+        delete_confirmed: function(event) {
             var that = this;
             var buty = new ButyModel({bty_id: event.currentTarget.dataset.id});
             buty.destroy(
@@ -461,6 +464,19 @@ var BiegiModule = (function(){
             $("div.modal-body", this.el).html(compiledTemplate(this.model));
             $(this.el).modal();
         },        
+    });
+
+    var ConfirmationView = Backbone.View.extend({
+        el: $('#confirm'),
+        initialize: function() {
+            _.bindAll(this, 'render');
+            this.render();
+        },
+        render: function() {
+            var compiledTemplate = _.template('<div class="alert alert-warning" role="alert"><%= question %></div>');
+            $("div.modal-body", this.el).html(compiledTemplate(this.model));
+            $(this.el).modal();            
+        }
     });
 
     var ChartView = Backbone.View.extend({
