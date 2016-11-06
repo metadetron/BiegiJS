@@ -356,7 +356,7 @@ var BiegiModule = (function(){
             fillTemplate('butyAdd', 
                 function (compiledTemplate) {
                     $(that.el).html(compiledTemplate(that.model.toJSON()));
-                    $('input[autofocus]', that.el).focus();
+                    $('input[autofocus]', that.el).get(0).focus();
                     that.delegateEvents();
                 } 
             );
@@ -406,7 +406,7 @@ var BiegiModule = (function(){
             fillTemplate('butyEdit', 
                 function (compiledTemplate) {
                     $(that.el).html(compiledTemplate(that.model.toJSON()));
-                    $('input[autofocus]', that.el).focus();
+                    $('input[autofocus]', that.el).get(0).focus();
                     that.delegateEvents();
                 } 
             );
