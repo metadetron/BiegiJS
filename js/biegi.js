@@ -323,6 +323,7 @@ var BiegiModule = (function(){
             var buty = new ButyModel();
             views.butyAddView.render(buty);
             $("#page_config #buty_add_view").show();
+            $('#page_config #buty_add_view input[autofocus]').get(0).focus();                        
             event.preventDefault(); 
         },
         delete: function(event) {
