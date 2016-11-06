@@ -308,6 +308,7 @@ var BiegiModule = (function(){
                     success: function() {
                         views.butyEditView.render(buty);
                         $("#page_config #buty_edit_view").show();
+                        $('#page_config #buty_edit_view input[autofocus]', that.el).get(0).focus();                        
                     },
                     error: function(collection, response, options) {
                         new ErrorView({model: response});
@@ -356,7 +357,6 @@ var BiegiModule = (function(){
             fillTemplate('butyAdd', 
                 function (compiledTemplate) {
                     $(that.el).html(compiledTemplate(that.model.toJSON()));
-                    $('input[autofocus]', that.el).get(0).focus();
                     that.delegateEvents();
                 } 
             );
@@ -406,7 +406,6 @@ var BiegiModule = (function(){
             fillTemplate('butyEdit', 
                 function (compiledTemplate) {
                     $(that.el).html(compiledTemplate(that.model.toJSON()));
-                    $('input[autofocus]', that.el).get(0).focus();
                     that.delegateEvents();
                 } 
             );
