@@ -375,6 +375,7 @@ var BiegiModule = (function(){
             var self = this;
             this.model.save(null, {
                 success: function (model) {
+                    new InfoView({model: {message: "Buty dodane"}});
                     appEvents.trigger('ButyAddView:persisted');
                     $(".config_panel").hide();
                     $("#page_config #buty_table_view").show(); 
@@ -423,6 +424,7 @@ var BiegiModule = (function(){
             var self = this;
             this.model.save(null, {
                 success: function (model) {
+                    new InfoView({model: {message: "Buty zmienione"}});
                     appEvents.trigger('ButyEditView:persisted');
                     $(".config_panel").hide();
                     $("#page_config #buty_table_view").show(); 
