@@ -481,12 +481,12 @@ var BiegiModule = (function(){
             'click .yes':'yes',
             'click .no':'no'
         },
-        yes:function(){
+        yes: function(){
              this.yesFunction();
-             this.close();
+             $(this.el).modal('hide');
         },
-        no:function(e){
-            this.close();
+        no: function(e){
+            $(this.el).modal('hide');
         }
     });
 
