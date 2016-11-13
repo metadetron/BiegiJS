@@ -785,7 +785,9 @@ var BiegiModule = (function(){
             "login": "login",
             "": "login",
             "dashboard": "dashboard",
-            "config": "config",
+            "config-miejsca": "configMiejsca",
+            "config-odcinki": "configOdcinki",
+            "config-buty": "configButy",
             "biegi/details/:id": "biegDetails",
             "buty/edit/:id": "butyEdit"
         },
@@ -810,7 +812,7 @@ var BiegiModule = (function(){
                 }
             );
         },
-        config: function() {
+        configButy: function() {
             $(".backbone_page").hide();
             $("#page_config.backbone_page").show();
             $(".config_panel").hide();
