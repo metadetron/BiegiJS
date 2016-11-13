@@ -818,7 +818,11 @@ var BiegiModule = (function(){
             $(".config_panel").hide();
             $("#page_config #buty_table_view").show();
         },
-        butyEdit: function(id) {
+        configMiejsca: function() {
+            $(".backbone_page").hide();
+            $("#page_config.backbone_page").show();
+            $(".config_panel").hide();
+            $("#page_config #miejsca_table_view").show();
         }       
     });
     views.chartView = new ChartView();
