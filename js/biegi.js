@@ -281,7 +281,7 @@ var BiegiModule = (function(){
             );
         },
         reread: function() {
-            var butyCollection = new ButyCollection('buty');
+            var butyCollection = new ButyCollection();
             var that = this; 
             butyCollection.fetch(
                 {
@@ -985,7 +985,7 @@ var BiegiModule = (function(){
                 }
             }
         );
-        var butyCollection = new ButyCollection('buty');
+        var butyCollection = new ButyCollection();
         var that = this; 
         butyCollection.fetch(
             {
@@ -998,7 +998,7 @@ var BiegiModule = (function(){
             }
         );            
 
-        var miejsceCollection = new MiejsceCollection();
+        var miejsceCollection = new DictionaryCollection('miejsce')
         var that = this; 
         miejsceCollection.fetch(
             {
