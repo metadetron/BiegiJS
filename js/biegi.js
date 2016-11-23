@@ -878,8 +878,7 @@ var BiegiModule = (function(){
             "login": "login",
             "": "login",
             "dashboard": "dashboard",
-            "config-miejsca": "configMiejsca",
-            "config-odcinki": "configOdcinki",
+            "config-miejsce": "configMiejsce",
             "config-buty": "configButy",
             "biegi/details/:id": "biegDetails",
             "buty/edit/:id": "butyEdit"
@@ -911,11 +910,11 @@ var BiegiModule = (function(){
             $(".config_panel").hide();
             $("#page_config #buty_table_view").show();
         },
-        configMiejsca: function() {
+        configMiejsce: function() {
             $(".backbone_page").hide();
             $("#page_config.backbone_page").show();
             $(".config_panel").hide();
-            $("#page_config #miejsca_table_view").show();
+            $("#page_config #miejsce_table_view").show();
         }       
     });
     views.chartView = new ChartView();
