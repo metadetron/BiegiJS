@@ -998,6 +998,19 @@ var BiegiModule = (function(){
             }
         );            
 
+        var miejsceCollection = new MiejsceCollection();
+        var that = this; 
+        miejsceCollection.fetch(
+            {
+                success: function() {
+                    views.miejsceTableView.render(miejsceCollection);
+                },
+                error: function(collection, response, options) {
+                    new ErrorView({model: response});
+                }
+            }
+        );            
+
         appRouter.navigate("dashboard", {trigger: true}); // raczej ma byc: appRouter.dashboard(); ?
     };
 
