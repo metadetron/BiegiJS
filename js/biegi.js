@@ -445,6 +445,99 @@ var BiegiModule = (function(){
         }
     });
 
+    var MiejsceTableView = Backbone.View.extend({
+        el: $('#miejsce_table_view'),
+        initialize: function(){
+            _.bindAll(this, 'render');
+            this.listenTo(appEvents, 'MiejsceEditView:persisted', this.reread);
+            this.listenTo(appEvents, 'MiejsceAddView:persisted', this.reread);
+            this.listenTo(appEvents, 'MiejsceTableView:deleted', this.reread);
+        },        
+        render: function(m){
+            this.model = m;
+            var that = this;
+            fillTemplate('miejsceTable', 
+                function (compiledTemplate) {
+                    $(that.el).html(compiledTemplate());
+                    $("tbody", that.el).empty();
+                    _.each(that.model.models, function (butyModel) {
+                        fillTemplate('miejsceTableRow', 
+                            function (compiledTemplate) {
+                                $("tbody", that.el).append(compiledTemplate(butyModel.toJSON()));
+                                that.delegateEvents();
+                            } 
+                        );
+                    }, that);                    
+                } 
+            );
+        },
+        reread: function() {
+            var miejsceCollection = new DictionaryCollection('miejsce');
+            var that = this; 
+            miejsceCollection.fetch(
+                {
+                    success: function() {
+                        that.render(miejsceCollection);
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );            
+        },
+        events: {
+             "click .edit"   : "edit",
+             "click .delete"   : "delete",
+             "click .add"   : "add"
+        },                
+        edit: function(event) {            
+            $(".config_panel").hide();
+//            views.butyTableView.undelegateEvents(); // WHAAAAAA???
+            var buty = new MiejsceModel({mjs_id: event.currentTarget.dataset.id});
+            miejsce.fetch(
+                {
+                    success: function() {
+                        views.miejsceEditView.render(buty);
+                        $("#page_config #miejsce_edit_view").show();
+                        $('#page_config #miejsce_edit_view input[autofocus]').get(0).focus();                        
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );
+            event.preventDefault();
+        },
+        add: function(event) {            
+            // TODO sprawdz zmiany
+            $(".config_panel").hide();
+            var miejsce = new MiejsceModel();
+            views.miejsceAddView.render(miejsce);
+            $("#page_config #miejsce_add_view").show();
+            $('#page_config #miejsce_add_view input[autofocus]').get(0).focus();                        
+            event.preventDefault(); 
+        },
+        delete: function(event) {
+            new ConfirmationView({model: {question: "Na pewno chcesz usunąć miejsce '" + event.currentTarget.dataset.title + "'?", yesFunction: this.delete_confirmed, event: event}});
+        },
+        delete_confirmed: function(event) {
+            var that = this;
+            var miejsce = new miejsceModel({mjs_id: event.currentTarget.dataset.id});
+            miejsce.destroy(
+                {
+                    success: function() {
+                        new InfoView({model: {message: "Miejsce usunięte"}});
+                        appEvents.trigger('MiejsceTableView:deleted');
+                    },
+                    error: function(collection, response, options) {
+                        new ErrorView({model: response});
+                    }
+                }
+            );
+            event.preventDefault();            
+        }
+    });    
+
     var ErrorView = Backbone.View.extend({
         el: $('#error'), 
         initialize: function(){
@@ -829,6 +922,7 @@ var BiegiModule = (function(){
     views.butyTableView = new ButyTableView();
     views.butyAddView = new ButyAddView();
     views.butyEditView = new ButyEditView();
+    views.miejsceTableView = new MiejsceTableView();
     views.statsView = new StatsView(); 
     views.biegAddView = new BiegAddView({model: new BiegModel()});
     views.biegiView = new BiegiView();
