@@ -156,6 +156,24 @@ var BiegiModule = (function(){
         url: 'http://run.metadetron.com/Biegi/butyjs/',
         model: ButyModel 
     });
+
+    var MiejsceModel = Backbone.Model.extend({
+        defaults: {
+            mjs_id: null,
+	        mjs_nazwa: null,
+	        mjs_date_created: null,
+	        mjs_date_modified: null,
+		    mjs_usr_created_id: null,
+	        mjs_usr_modified_id: null
+        },
+        idAttribute: 'mjsv_id',
+        urlRoot: 'http://run.metadetron.com/Biegi/miejsce/',
+    });
+
+    var MiejsceCollection = Backbone.Collection.extend({
+        url: 'http://run.metadetron.com/Biegi/miejsce/',
+        model: MiejsceModel 
+    });
     //////////////////////////////// V I E W S ///////////////////////////////////////
 
     var DictionarySelectionView = Backbone.View.extend({        
@@ -472,7 +490,7 @@ var BiegiModule = (function(){
             );
         },
         reread: function() {
-            var miejsceCollection = new DictionaryCollection('miejsce');
+            var miejsceCollection = new MiejsceCollection();
             var that = this; 
             miejsceCollection.fetch(
                 {
@@ -998,7 +1016,7 @@ var BiegiModule = (function(){
             }
         );            
 
-        var miejsceCollection = new DictionaryCollection('miejsce')
+        var miejsceCollection = new MiejsceCollection()
         var that = this; 
         miejsceCollection.fetch(
             {
