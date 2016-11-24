@@ -458,6 +458,26 @@ $(document).ready(function() {
         </td>
     </tr>
 </script>
+
+<script id="miejsceEdit" type="text/template">
+    <h2 class="sub-header">Buty</h2>
+    <form role="form" class="form-horizontal">
+        <div class="form-group">
+            <label for="mjs_nazwa">Opis</label>
+            <input type="text" class="form-control" id="mjs_nazwa" name="mjs_nazwa" value="<%= mjs_nazwa %>" autofocus>
+        </div>
+        <dl class="small dl-horizontal">
+            <dt>ID</dt><dd><%= bty_id %></dd>
+            <dt>Data utworzenia</dt><dd><%= mjs_date_created %></dd>
+            <dt>Data modyfikacji</dt><dd><%= mjs_date_modified %></dd>
+            <dt>Użytkownik tworzący</dt><dd><%= createdBy %></dd>
+            <dt>Użytkownik modyfikujący</dt><dd><%= modifiedBy %></dd>
+        </dl>
+        <button type="button" class="btn btn-default cancel"> Anuluj</button>
+        <button type="button" class="btn btn-primary save"><span class="glyphicon glyphicon-floppy-save"></span> Zapisz</button>
+    </form>
+</script>
+
         <script src="js/biegi.js"></script>
     </body>
 </html>

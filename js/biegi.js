@@ -555,6 +555,55 @@ var BiegiModule = (function(){
         }
     });    
 
+    var MiejsceEditView = Backbone.View.extend({
+        el: $('#miejsce_edit_view'),
+        initialize: function(){
+            _.bindAll(this, 'render');
+        },        
+        render: function(m){
+            this.model = m;
+            var that = this;
+            fillTemplate('miejsceEdit', 
+                function (compiledTemplate) {
+                    $(that.el).html(compiledTemplate(that.model.toJSON()));
+                    that.delegateEvents();
+                } 
+            );
+        },
+        events: {
+            "change"        : "change",
+             "click .save"   : "persist",
+             "click .cancel"   : "cancel"
+        },
+        change: function (event) {
+            var target = event.target;
+            var change = {};
+            change[target.name] = target.value;
+            this.model.set(change);
+        },
+        persist: function (event) {            
+            var self = this;
+            this.model.save(null, {
+                success: function (model) {
+                    new InfoView({model: {message: "Miejsce zmienione"}});
+                    appEvents.trigger('MiejsceEditView:persisted');
+                    $(".config_panel").hide();
+                    $("#page_config #miejsce_table_view").show(); 
+                },
+                error: function (model, response) {
+                    new ErrorView({model: response});
+                }
+            });
+            event.preventDefault();
+        },
+        cancel: function(event) {            
+            // TODO sprawdz zmiany
+            $(".config_panel").hide();
+            $("#page_config #miejsce_table_view").show(); 
+            event.preventDefault(); 
+        }
+    });
+
     var ErrorView = Backbone.View.extend({
         el: $('#error'), 
         initialize: function(){
