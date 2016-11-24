@@ -167,11 +167,11 @@ var BiegiModule = (function(){
 	        mjs_usr_modified_id: null
         },
         idAttribute: 'mjsv_id',
-        urlRoot: 'http://run.metadetron.com/Biegi/miejsce/',
+        urlRoot: 'http://run.metadetron.com/Biegi/miejscejs/',
     });
 
     var MiejsceCollection = Backbone.Collection.extend({
-        url: 'http://run.metadetron.com/Biegi/miejsce/',
+        url: 'http://run.metadetron.com/Biegi/miejscejs/',
         model: MiejsceModel 
     });
     //////////////////////////////// V I E W S ///////////////////////////////////////
