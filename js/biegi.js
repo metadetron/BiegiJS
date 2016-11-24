@@ -510,12 +510,11 @@ var BiegiModule = (function(){
         },                
         edit: function(event) {            
             $(".config_panel").hide();
-//            views.butyTableView.undelegateEvents(); // WHAAAAAA???
-            var buty = new MiejsceModel({mjs_id: event.currentTarget.dataset.id});
+            var miejsce = new MiejsceModel({mjs_id: event.currentTarget.dataset.id});
             miejsce.fetch(
                 {
                     success: function() {
-                        views.miejsceEditView.render(buty);
+                        views.miejsceEditView.render(miejsce);
                         $("#page_config #miejsce_edit_view").show();
                         $('#page_config #miejsce_edit_view input[autofocus]').get(0).focus();                        
                     },
