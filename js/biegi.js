@@ -939,6 +939,7 @@ var BiegiModule = (function(){
     views.butyAddView = new ButyAddView();
     views.butyEditView = new ButyEditView();
     views.miejsceTableView = new MiejsceTableView();
+    views.miejsceEditView = new MiejsceEditView();
     views.statsView = new StatsView(); 
     views.biegAddView = new BiegAddView({model: new BiegModel()});
     views.biegiView = new BiegiView();
